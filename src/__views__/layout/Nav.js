@@ -7,7 +7,7 @@ const Nav = () => {
         <nav className="navbar navbar-expand">
           <div className="d-flex w-100">
             <div className="nav-link" href="#">
-              <i class="fas fa-bars text-dark"></i>
+              <i className="fas fa-bars text-dark"></i>
             </div>
             <div>
               <input type="text" name="search" className="form-control w-0" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"/>

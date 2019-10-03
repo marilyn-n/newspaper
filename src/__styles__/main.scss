@@ -1,0 +1,10 @@
+@import './__components__/unordered-list.scss';
+@import './__components__/text.scss';
+@import './Footer.scss';
+@import './Nav.scss';
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
