@@ -1,0 +1,28 @@
+.new-wrapper {
+  display: flex;
+  flex-direction: column;
+  .new-header {
+    &__title {
+      margin: 1.5rem 0;
+      display: block;
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bolder;
+    }
+  }
+
+  .new-body {
+    img {
+      align-self: center;
+      margin-bottom: 1rem;
+    }
+    p {
+      text-align: justify;
+      width: 600px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+}

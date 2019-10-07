@@ -9,6 +9,9 @@
 
 // views
 @import './__views__/home.scss';
+@import './__views__/category.scss';
+@import './__views__/new-details.scss';
+
 .app-wrapper {
   display: flex;
   flex-direction: column;

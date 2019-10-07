@@ -2,9 +2,10 @@
   height: 3.5rem;
   width: 16rem;
   display: flex;
-  
+
   img {
     margin-right: .45rem;
+    object-fit: fill;
   }
 
   &__text {
