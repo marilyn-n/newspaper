@@ -152,6 +152,22 @@ const Footer = () => {
           </li>
         </ul>
       </div>
+        <div className="footer__navigation">
+          <ul>
+            <li>©&nbsp;Newspaper Company</li>
+            <li>navigation</li>
+            <li>navigation</li>
+            <li>navigation</li>
+            <li>navigation</li>
+            <li>navigation</li>
+            <li>navigation</li>
+            <li>navigation</li>
+            <li>navigation</li>
+            <li>navigation</li>
+            <li>navigation</li>
+            <li>navigation</li>
+          </ul>
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,34 @@
+.footer-wrapper {
+  border-top: .3rem double rgb(235, 235, 235);
+  display: flex;
+  flex-direction: column;
+  
+  .footer {
+    &__links {
+      display: flex;
+      ul {
+        flex: 1;
+        li:first-child {
+          margin-bottom: .25rem;
+          text-transform: uppercase;
+        }
+      }
+    }
+    &__navigation {
+      ul {
+        display: flex;
+        color: gray;
+        font-size: 11px;
+        list-style: none;
+        padding: 0;
+        padding-top: .65rem;
+        border-top: 1px solid rgb(235, 235, 235);
+        
+        li {
+          flex: 1;
+        }
+      }
+    }
+  }
+  
+}

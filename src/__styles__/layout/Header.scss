@@ -1,0 +1,11 @@
+.header-wrapper {
+  height: 7rem;
+  width: 100%;
+  border-bottom: 1px solid rgb(235, 235, 235);
+  display: flex;
+  div {
+    flex: 1;
+    text-align: center;
+    align-self: center;
+  }
+}

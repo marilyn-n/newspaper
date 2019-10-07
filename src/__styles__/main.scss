@@ -1,7 +1,8 @@
 @import './__components__/unordered-list.scss';
 @import './__components__/text.scss';
-@import './Footer.scss';
-@import './Nav.scss';
+@import './layout/Footer.scss';
+@import './layout/Nav.scss';
+@import './layout/Header.scss';
 
 .app-wrapper {
   display: flex;
