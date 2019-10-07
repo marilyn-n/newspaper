@@ -1,0 +1,16 @@
+.mini-nav-wrapper {
+  border-bottom: 2px solid black;
+  padding: .3rem;
+  ul {
+    display: flex;
+    li {
+      text-align: center;
+      flex: 1;
+      a {
+        color: black;
+        
+      }
+    }
+  }
+
+}

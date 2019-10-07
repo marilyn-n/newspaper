@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
 const Nav = () => {
     return (
@@ -13,11 +13,11 @@ const Nav = () => {
               <input type="text" name="search" className="form-control w-0" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
             </div>
           </div>
-          <div className="d-flex w-100">
+          {/* <div className="d-flex w-100">
             <NavLink to="/" className="navbar-brand text-dark">
               Newspaper
             </NavLink>
-          </div>
+          </div> */}
         </nav>
       </div>
     );
