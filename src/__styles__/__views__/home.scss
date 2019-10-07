@@ -1,0 +1,11 @@
+.home-wrapper {
+  .briefing {
+    padding: 1rem 0;
+    display: flex;
+    border-bottom: double black;
+    &__item {
+      margin-right: 1rem;
+      border-right: 1px solid rgb(235, 235, 235);  
+    }
+  }
+}

@@ -6,6 +6,7 @@
   .footer {
     &__links {
       display: flex;
+      margin: 1rem 0;
       ul {
         flex: 1;
         li:first-child {

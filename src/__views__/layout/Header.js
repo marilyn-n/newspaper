@@ -2,15 +2,17 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <div className="header-wrapper">
-      <div>
-        <span>Monday, October 7, 2019</span>
-      </div>
-      <div>
-        <span>Newspaper</span>
-      </div>
-      <div>
-        <span>Today’s Paper</span>
+    <div className="container">
+      <div className="header-wrapper">
+        <div>
+          <span>Monday, October 7, 2019</span>
+        </div>
+        <div>
+          <span>Newspaper</span>
+        </div>
+        <div>
+          <span>Today’s Paper</span>
+        </div>
       </div>
     </div>
   );

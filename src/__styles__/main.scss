@@ -1,10 +1,14 @@
-@import './__components__/unordered-list.scss';
-@import './__components__/text.scss';
+// ui components
+@import './__ui_components__/unordered-list.scss';
+@import './__ui_components__/text.scss';
+@import './__ui_components__/compact-card.scss';
 @import './layout/Footer.scss';
 @import './layout/Nav.scss';
 @import './layout/Header.scss';
 @import './layout/MiniNav.scss';
 
+// views
+@import './__views__/home.scss';
 .app-wrapper {
   display: flex;
   flex-direction: column;

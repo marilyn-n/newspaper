@@ -1,0 +1,28 @@
+.compact-card {
+  height: 3.5rem;
+  width: 16rem;
+  display: flex;
+  
+  img {
+    margin-right: .45rem;
+  }
+
+  &__text {
+    font-size: 13px;
+
+    &--title {
+      font-weight: bolder;
+    }
+
+    &--subtitle {
+      font-weight: 400;
+      color: #555555;
+    }
+
+    span {
+      display: block;
+    }
+
+  }
+  
+}
