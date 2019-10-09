@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NewsList from '../news/NewsList';
 
 class Category extends Component {
   render() {
@@ -6,7 +7,7 @@ class Category extends Component {
       <div className="container">
         <div className="category-wrapper">
           <div className="category__title">
-            <span>List of news</span>
+            <NewsList/>
           </div>
         </div>
       </div>

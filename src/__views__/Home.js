@@ -1,5 +1,6 @@
 import React from 'react';
 import CompactCard from '../__ui_components__/CompactCard';
+import MediaCard from '../__ui_components__/MediaCard';
 import Header from '../__views__/layout/Header';
 import MiniNav from '../__views__/layout/MiniNav';
 
@@ -21,7 +22,24 @@ const Home = () => {
           </div>
         </div>
         <div className="news-wrapper">
+          <div className="">
+            <MediaCard/>
+            <MediaCard/>
+            <MediaCard/>
+          </div>
 
+          {/* <div className="">
+            <MediaCard/>
+            <MediaCard/>
+            <MediaCard/>
+          </div>
+
+          <div className="">
+            <MediaCard/>
+            <MediaCard/>
+            <MediaCard/>
+          </div> */}
+         
         </div>
       </div>
     </div>
