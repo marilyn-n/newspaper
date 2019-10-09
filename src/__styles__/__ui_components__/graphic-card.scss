@@ -1,0 +1,32 @@
+.graphic-card {
+  height: 20rem;
+  width: 47rem;
+  // padding: 0 15px;
+  display: flex;
+  .item {
+    flex: 1;
+    img {
+      max-width: 100%;
+    }
+  }
+
+  &__header {
+    &--title {
+      font-weight: bold;
+    }
+  }
+
+  &__body {
+    &__paragraph {
+      font-size: .875rem;
+      &--tags {
+        span {
+          font-size: .75rem;
+          color: gray;
+          margin-right: .45rem;
+        }
+      }
+    }
+  }
+
+}
