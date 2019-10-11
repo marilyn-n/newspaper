@@ -5,7 +5,9 @@ const GraphicCard = () => {
     <div className="graphic-card">
       <div className="item pr-3">
         <div className="graphic-card__header">
-          <span className="graphic-card__header--title"></span>
+          <span className="graphic-card__header--title">
+            Stand by Trump Because They Like What He Does, Republicans.
+          </span>
         </div>
         <div className="graphic-card__body">
           <div className="graphic-card__body__paragraph">

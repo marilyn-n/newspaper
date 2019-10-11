@@ -5,15 +5,15 @@ const MediaCard = () => {
     <div className="media-card">
       <div className="item">
         <div className="media-card__header">
-          <span className="media-card__header--title">
-            Republicans Stand by Trump Because They Like What He Does
-          </span>
+          <h2 className="media-card__header--title">
+              Diahann Carroll Was the Only Mother I Knew
+          </h2>
         </div>
         <div className="media-card__body">
-            <span className="media-card__body__paragraph">
+            <p className="media-card__body__paragraph">
               Stand by Trump Because They Like What He Does, 
               Republicans.
-            </span>
+            </p>
             <div className="media-card__body__paragraph--tags">
               <span>Style</span>
               <span>7m ago</span>

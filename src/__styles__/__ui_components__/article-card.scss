@@ -1,0 +1,45 @@
+.article-card {
+  width: 22.6rem;
+  height: 24.5rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+
+    img {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+  }
+
+  &__body {
+    &--title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      line-height: 27px;
+      margin-bottom: .45rem;
+    }
+
+    &--paragraph {
+      font-weight: 500;
+      line-height: 22px;
+      margin-bottom: 0;
+    }
+    &__details {
+      margin-top: .3rem;
+      color: gray; 
+      display: flex;
+      font-size: .95rem;
+      font-weight: 500;
+      &--date {
+        margin-right: .5rem;
+      }
+
+      &--author {
+
+      }
+    }
+  }
+}
