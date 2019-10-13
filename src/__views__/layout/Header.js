@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <div className="container">
+    <div className="">
       <div className="header-wrapper">
         <div>
           <span>Monday, October 7, 2019</span>

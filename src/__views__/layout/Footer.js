@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <div className="container">
+    <div className="">
       <div className="footer-wrapper">
         <div className="text">
           <span className="text--title">Newspaper</span>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const NewDetails = () => {
   return (
-    <div className="container">
+    <div className="">
       <div className="new-wrapper">
         <div className="new-header">
           <span className="new-header__title"> Timeline of the Ukraine Affair</span>

@@ -17,12 +17,7 @@ const GraphicCard = () => {
             vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia vol
             uptas sit aspernatur aut odit aut fugit, sed quia consequuntur 
             magni dolores eos qui ratione voluptatem sequi nesciunt. Neque 
-            porro quisquam est, qui dolorem ipsum quia dolor sit amet, cons
-            ectetur, adipisci velit, sed quia non numquam eius modi tempora
-            incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
-            Ut enim ad minima veniam, quis nostrum exercitationem ullam co
-            rporis suscipit laboriosam, nisi ut aliquid ex ea commodi cons
-            equatur? 
+            porro.
             <div className="graphic-card__body__paragraph--tags">
               <span>Top news</span>
               <span>1 week ago</span>          
