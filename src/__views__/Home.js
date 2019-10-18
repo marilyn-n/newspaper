@@ -26,8 +26,7 @@ const Home = () => {
           </div>
         </div>
         <div className="news-wrapper py-3">
-
-          <div className="col-8">
+          <div className="top-stories col-8">
             <GraphicCard/>
             <GraphicCard/>
             <div className="w-100 d-flex justify-content-between my-3">
@@ -36,49 +35,40 @@ const Home = () => {
               <MiniArticleCard/>
             </div>
           </div>
-
-          <div className="col-4">
+          <div className="opinion col-4">
             <MediaCard/>
-            <div className="w-100 d-flex justify-content-between">
-              <QuoteCard/>
-              <QuoteCard/>
-            </div>
-            <MediaCard/>
-            <MediaCard/>
-            <div className="w-100 d-flex justify-content-between">
-              <div>
-                <QuoteCard/>
-                <QuoteCard/>
+            <div className="d-flex py-2">
+              <div className="pr-3 border-right d-flex flex-column justify-content-between">
+                  <QuoteCard/>
+                  <QuoteCard/>
+                  <QuoteCard/>
+                  <QuoteCard/>
               </div>
-              <div>
-                <QuoteCard/>
-                <QuoteCard/>
+              <div className="pl-3 d-flex flex-column justify-content-between">
+                  <QuoteCard/>
+                  <QuoteCard/>
+                  <QuoteCard/>
+                  <QuoteCard/>
               </div>
             </div>
-          </div>
-
-          <div className="w-100 d-flex justify-content-between">
-            <ArticleCard/>
-            <ArticleCard/>
+            <MediaCard/>
+            <MediaCard/>
             <ArticleCard/>
           </div>
-
-          <div className="w-100 d-flex justify-content-between my-3">
+          <div className="w-100 d-flex flex-wrap justify-content-between my-3">
             <MiniArticleCard/>
             <MiniArticleCard/>
             <MiniArticleCard/>
             <MiniArticleCard/>
             <MiniArticleCard/>
           </div>
-
-          <div className="w-100 d-flex justify-content-between my-3">
+          <div className="w-100 d-flex flex-wrap justify-content-between my-3">
             <MiniArticleCard/>
             <MiniArticleCard/>
             <MiniArticleCard/>
             <MiniArticleCard/>
             <MiniArticleCard/>
           </div>
-          
         </div>
       </div>
     </div>

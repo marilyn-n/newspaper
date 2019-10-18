@@ -5,12 +5,21 @@
     border-bottom: double black;
     &__item {
       margin-right: 1rem;
-      border-right: 1px solid rgb(235, 235, 235);  
+      border-right: 1px solid #cccccc;  
     }
   }
 
   .news-wrapper {
     display: flex;
     flex-wrap: wrap;
+
+    .top-stories {
+      padding-left: 0;
+    }
+
+    .opinion {
+      border-left: 1px solid #cccccc;
+      padding-right: 0;
+    }
   }
 }

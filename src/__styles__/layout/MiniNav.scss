@@ -3,9 +3,9 @@
   padding: .3rem;
   ul {
     display: flex;
+    justify-content: space-between;
     li {
       text-align: center;
-      flex: 1;
       a {
         color: black;
         

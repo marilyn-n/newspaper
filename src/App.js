@@ -9,7 +9,7 @@ import './__styles__/main.scss';
 
 function App() {
   return (
-    <div className="app-wrapper container-fluid">
+    <div className="app-wrapper container">
       <BrowserRouter>
         <Nav/>
         <Switch>

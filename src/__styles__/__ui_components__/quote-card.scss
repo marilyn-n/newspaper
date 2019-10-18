@@ -1,24 +1,30 @@
 .quote-card {
-  max-width: 11rem;
+  max-width: 10.68rem;
   padding: .875rem 0;
+  border-bottom: 1px solid #ebebeb;
   display: flex;
-    &--title {
-      font-size: 1rem;
-      color: gray;
-      font-weight: 400;
+  flex-direction: column;
+    
+    
+    &__quote {
+      display: flex;
+      &--author {
+        max-width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 50%;
+      }
+      &--title {
+        display: block;
+        font-size: 1rem;
+        color: gray;
+        font-weight: 600;
+      }
+
+      &--subtitle {
+        font-weight: 600;
+        line-height: 1.1875rem;
+        margin: 0;
+        font-size: 1rem;
+      }
     }
-  
-    &--quote {
-      font-size: 1rem;
-      font-weight: 600;
-      line-height: 1.1875rem;
-      margin: 0;
-    }
-  
-  &--photo-author {
-    max-width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 50%;
-  }
-  
 }
