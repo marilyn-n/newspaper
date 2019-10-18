@@ -14,6 +14,7 @@ const Home = () => {
     <div className="">
       <Header/>
       <MiniNav/>
+      <div className="divider"></div>
       <div className="home-wrapper">
         <section className="briefing">
           <div className="briefing__item">
@@ -30,16 +31,21 @@ const Home = () => {
           <section className="top-stories col-8">
             <GraphicCard/>
             <BlockArticle/>
+            <div className="single-divider"></div>
+            <BlockArticle/>
+            <div className="single-divider"></div>
             <div className="w-100 d-flex justify-content-between mb-3">
               <MiniArticleCard/>
               <MiniArticleCard/>
               <MiniArticleCard/>
             </div>
+            <div className="single-divider"></div>
             <GraphicCard/>
             <BlockArticle/>
           </section>
           <section className="opinion col-4">
             <MediaCard/>
+            <div className="single-light-divider"></div>
             <div className="d-flex py-2">
               <div className="pr-3 border-right d-flex flex-column justify-content-between">
                   <QuoteCard/>
@@ -57,14 +63,17 @@ const Home = () => {
               </div>
             </div>
             <MediaCard/>
+            <div className="single-light-divider"></div>
             <MediaCard/>
           </section>
-          <section className="w-100 d-flex flex-wrap justify-content-between mb-3">
+          <div className="double-divider"></div>
+          <section className="w-100 d-flex flex-wrap justify-content-between">
             <ArticleCard/>
             <ArticleCard/>
             <ArticleCard/>
           </section>
-          <section className="w-100 d-flex flex-wrap justify-content-between mb-3">
+          <div className="double-divider"></div>
+          <section className="w-100 d-flex flex-wrap justify-content-between">
             <MiniArticleCard/>
             <MiniArticleCard/>
             <MiniArticleCard/>
@@ -72,7 +81,8 @@ const Home = () => {
             <MiniArticleCard/>
             <MiniArticleCard/>
           </section>
-          <section className="w-100 d-flex flex-wrap justify-content-between mb-3">
+          <div className="double-divider"></div>
+          <section className="w-100 d-flex flex-wrap justify-content-between">
             <MiniArticleCard/>
             <MiniArticleCard/>
             <MiniArticleCard/>

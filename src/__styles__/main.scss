@@ -28,3 +28,26 @@
   border-right: 1px solid #ebebeb;
 }
 
+.double-divider {
+  width: 100%;
+  border-bottom: 4px double black;
+  margin: 1rem 0;
+}
+
+.double-light-divider {
+  width: 100%;
+  border-bottom: 4px double #e2e2e2;
+  margin: 1rem 0;
+}
+
+
+.single-divider {
+  width: 100%;
+  border-bottom: 1px solid black;
+  margin: 1rem 0;
+}
+
+.single-light-divider {
+  width: 100%;
+  border-bottom: 1px solid #ebebeb;
+}

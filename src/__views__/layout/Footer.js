@@ -2,11 +2,9 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <div className="">
       <div className="footer-wrapper">
-        <div className="text">
-          <span className="text--title">Newspaper</span>
-        </div>
+        <div className="double-light-divider"></div>
+        <span className="footer-wrapper--title">Newspaper</span>
         <div className="footer__links">
         <ul className="unordered-list">
           <li>
@@ -152,6 +150,7 @@ const Footer = () => {
           </li>
         </ul>
       </div>
+      <div className="single-light-divider"></div>
         <div className="footer__navigation">
           <ul>
             <li>©&nbsp;Newspaper Company</li>
@@ -169,7 +168,6 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-    </div>
   );
 }
 
