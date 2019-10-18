@@ -3,10 +3,17 @@
   // max-width: 47rem;
   margin-bottom: .65rem;
   display: flex;
-  .item {
-    flex: 1;
+  &__section {
     img {
-      max-width: 100%;
+      flex: 2;
+      max-width: 26.5rem;
+    }
+    &--caption {
+      color: #ccc;
+      font-weight: 500;
+      font-size: .65rem;
+      text-align: end;
+      display: block;
     }
   }
 
@@ -22,6 +29,7 @@
       &--tags {
         span {
           font-size: .75rem;
+          font-weight: 500;
           color: gray;
           margin-right: .45rem;
         }

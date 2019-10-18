@@ -3,7 +3,7 @@ import React from 'react';
 const GraphicCard = () => {
   return (
     <div className="graphic-card">
-      <div className="item pr-3">
+      <div className="graphic-card__section pr-3">
         <div className="graphic-card__header">
           <span className="graphic-card__header--title">
             Stand by Trump Because They Like What He Does, Republicans.
@@ -25,8 +25,9 @@ const GraphicCard = () => {
           </div>
         </div>
       </div>
-      <div className="item pl-3">
+      <div className="graphic-card__section pl-3">
         <img src="https://www.wikihow.com/images/6/64/Stop-a-Dog-from-Jumping-Step-6-Version-2.jpg"/>
+        <span className="graphic-card__section--caption">iStock by Getty Images</span>
       </div>
     </div>
   );

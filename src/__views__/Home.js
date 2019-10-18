@@ -5,6 +5,7 @@ import GraphicCard from '../__ui_components__/GraphicCard';
 import ArticleCard from '../__ui_components__/ArticleCard';
 import MiniArticleCard from '../__ui_components__/MiniArticleCard';
 import QuoteCard from '../__ui_components__/QuoteCard';
+import BlockArticle from '../__ui_components__/BlockArticle';
 import Header from '../__views__/layout/Header';
 import MiniNav from '../__views__/layout/MiniNav';
 
@@ -14,7 +15,7 @@ const Home = () => {
       <Header/>
       <MiniNav/>
       <div className="home-wrapper">
-        <div className="briefing">
+        <section className="briefing">
           <div className="briefing__item">
             <CompactCard/>
           </div>
@@ -24,21 +25,24 @@ const Home = () => {
           <div className="briefing__item">
             <CompactCard/>
           </div>
-        </div>
+        </section>
         <div className="news-wrapper py-3">
-          <div className="top-stories col-8">
+          <section className="top-stories col-8">
             <GraphicCard/>
-            <GraphicCard/>
-            <div className="w-100 d-flex justify-content-between my-3">
+            <BlockArticle/>
+            <div className="w-100 d-flex justify-content-between mb-3">
               <MiniArticleCard/>
               <MiniArticleCard/>
               <MiniArticleCard/>
             </div>
-          </div>
-          <div className="opinion col-4">
+            <GraphicCard/>
+            <BlockArticle/>
+          </section>
+          <section className="opinion col-4">
             <MediaCard/>
             <div className="d-flex py-2">
               <div className="pr-3 border-right d-flex flex-column justify-content-between">
+                  <QuoteCard/>
                   <QuoteCard/>
                   <QuoteCard/>
                   <QuoteCard/>
@@ -49,26 +53,33 @@ const Home = () => {
                   <QuoteCard/>
                   <QuoteCard/>
                   <QuoteCard/>
+                  <QuoteCard/>
               </div>
             </div>
             <MediaCard/>
             <MediaCard/>
+          </section>
+          <section className="w-100 d-flex flex-wrap justify-content-between mb-3">
             <ArticleCard/>
-          </div>
-          <div className="w-100 d-flex flex-wrap justify-content-between my-3">
+            <ArticleCard/>
+            <ArticleCard/>
+          </section>
+          <section className="w-100 d-flex flex-wrap justify-content-between mb-3">
             <MiniArticleCard/>
             <MiniArticleCard/>
             <MiniArticleCard/>
             <MiniArticleCard/>
             <MiniArticleCard/>
-          </div>
-          <div className="w-100 d-flex flex-wrap justify-content-between my-3">
+            <MiniArticleCard/>
+          </section>
+          <section className="w-100 d-flex flex-wrap justify-content-between mb-3">
             <MiniArticleCard/>
             <MiniArticleCard/>
             <MiniArticleCard/>
             <MiniArticleCard/>
             <MiniArticleCard/>
-          </div>
+            <MiniArticleCard/>
+          </section>
         </div>
       </div>
     </div>

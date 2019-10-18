@@ -1,10 +1,13 @@
 .mini-article-card {
-  width: 14rem;
-  // height: 15.65rem;
-  // margin-right: 1rem;
+  width: 12.95rem;
+  margin-bottom: 1rem;
 
   &__header {
     margin-bottom: 1rem;
+
+    &--label {
+      font-weight: bolder;
+    }
     img {
       max-width: 100%;
     }
@@ -15,6 +18,18 @@
     &--title {
       font-size: 1rem;
       font-weight: 600;
+    }
+
+    &__paragraph {
+      font-size: .875rem;
+      margin: 0;
+      &--tags {
+        span {
+          font-size: .75rem;
+          color: gray;
+          margin-right: .45rem;
+        }
+      }
     }
   }
 }
