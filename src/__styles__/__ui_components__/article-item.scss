@@ -1,0 +1,27 @@
+.article-item {
+  max-width: 47.5rem;
+  height: 9.5rem;
+  display: flex;
+
+  &__header {
+    &--title {
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+    &--paragraph {
+      font-size: .75rem;
+      font-weight: 500;
+      margin: 0;
+    }
+    &__tags {
+      span {
+        font-size: .75rem;
+        color: gray;
+      }
+    }
+  }
+  img {
+    max-width: 100%;
+    height: 100%;
+  }
+}

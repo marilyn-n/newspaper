@@ -30,6 +30,7 @@ const Home = () => {
         <div className="news-wrapper py-3">
           <section className="top-stories col-8">
             <GraphicCard/>
+            <div className="single-divider"></div>
             <BlockArticle/>
             <div className="single-divider"></div>
             <BlockArticle/>
@@ -41,6 +42,7 @@ const Home = () => {
             </div>
             <div className="single-divider"></div>
             <GraphicCard/>
+            <div className="single-divider"></div>
             <BlockArticle/>
           </section>
           <section className="opinion col-4">
@@ -62,9 +64,10 @@ const Home = () => {
                   <QuoteCard/>
               </div>
             </div>
+            <div className="double-divider"></div>
             <MediaCard/>
-            <div className="single-light-divider"></div>
-            <MediaCard/>
+            <div className="single-light-divider mb-3"></div>
+            <ArticleCard/>
           </section>
           <div className="double-divider"></div>
           <section className="w-100 d-flex flex-wrap justify-content-between">
