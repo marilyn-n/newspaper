@@ -16,6 +16,7 @@ const Home = () => {
       <MiniNav/>
       <div className="divider"></div>
       <div className="home-wrapper">
+      <div className="single-divider mt-0"></div>
         <section className="briefing">
           <div className="briefing__item">
             <CompactCard/>
@@ -27,6 +28,7 @@ const Home = () => {
             <CompactCard/>
           </div>
         </section>
+        <div className="double-divider"></div>
         <div className="news-wrapper py-3">
           <section className="top-stories col-8">
             <GraphicCard/>

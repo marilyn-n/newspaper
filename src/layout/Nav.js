@@ -34,12 +34,11 @@ class Nav extends Component {
             </div>
           </nav>
         </div>
-
-        <div className={showSidebar ? 'sidebar-wrapper' : 'd-none'} onMouseLeave={this.toggleSidebar}>
+        <div className={ showSidebar ? 'sidebar-wrapper' : 'd-none' }  onMouseLeave={this.toggleSidebar}>
           <div className="list-group">
             <ul className="sidebar-list">
               <li className="sidebar-list__item">
-                <NavLink to="/category:id" className="sidebar-list__item--text">Top News</NavLink>
+                <NavLink to="/" className="sidebar-list__item--text">Home Page</NavLink>
               </li>
               <li className="sidebar-list__item">
                 <NavLink to="/category:id" className="sidebar-list__item--text">Top News</NavLink>

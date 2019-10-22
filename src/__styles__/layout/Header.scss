@@ -1,11 +1,20 @@
 .header-wrapper {
   height: 7rem;
   width: 100%;
-  border-bottom: 1px solid #ebebeb;
   display: flex;
+  &--logo {
+    font-size: 6rem;
+    align-self: flex-start;
+  }
+  &--date, &--label {
+    font-size: .875rem;
+    align-self: flex-end;
+    font-weight: 600;
+  }
+  
   div {
     flex: 1;
     text-align: center;
-    align-self: center;
   }
+
 }

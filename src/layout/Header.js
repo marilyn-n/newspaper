@@ -2,16 +2,19 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <div className="header-wrapper">
-      <div>
-        <span>Monday, October 7, 2019</span>
+    <div>
+      <div className="header-wrapper">
+        <div className="header-wrapper--date">
+          <span>Monday, October 7, 2019</span>
+        </div>
+        <div className="header-wrapper--logo">
+          <span>📰</span>
+        </div>
+        <div className="header-wrapper--label">
+          <span>Today’s Paper</span>
+        </div>
       </div>
-      <div>
-        <span>Newspaper</span>
-      </div>
-      <div>
-        <span>Today’s Paper</span>
-      </div>
+      <div className="single-light-divider mt-3"></div>
     </div>
   );
 }

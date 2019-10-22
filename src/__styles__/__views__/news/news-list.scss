@@ -1,0 +1,15 @@
+.news-list-wrapper {
+
+  &__header {
+    height: 5rem;
+    width: 100%;
+    display: flex;
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 500;
+      align-self: flex-end;
+      margin: 0;
+    }
+  }
+}

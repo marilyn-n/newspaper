@@ -18,8 +18,9 @@
 
 // views
 @import './__views__/home.scss';
-@import './__views__/category.scss';
-@import './__views__/new-details.scss';
+// @import './__views__/news/category.scss';
+@import './__views__/news/new-details.scss';
+@import './__views__/news/news-list.scss';
 
 .app-wrapper {
   display: flex;
