@@ -6,8 +6,8 @@ import ArticleCard from '../__ui_components__/ArticleCard';
 import MiniArticleCard from '../__ui_components__/MiniArticleCard';
 import QuoteCard from '../__ui_components__/QuoteCard';
 import BlockArticle from '../__ui_components__/BlockArticle';
-import Header from '../__views__/layout/Header';
-import MiniNav from '../__views__/layout/MiniNav';
+import Header from '../layout/Header';
+import MiniNav from '../layout/MiniNav';
 
 const Home = () => {
   return (

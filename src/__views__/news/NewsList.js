@@ -3,13 +3,10 @@ import ArticleItem from '../../__ui_components__/ArticleItem';
 
 const NewsList = () => {
   return (
-    <div className="news-list-wrapper mx-auto d-block ">
+    <div className="news-list-wrapper py-3">
       <ArticleItem/>
-      <div className="single-light-divider my-3"></div>
       <ArticleItem/>
-      <div className="single-light-divider my-3"></div>
       <ArticleItem/>
-      <div className="single-light-divider my-3"></div>
       <ArticleItem/>
     </div>
   );
