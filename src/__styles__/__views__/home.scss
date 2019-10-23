@@ -1,12 +1,4 @@
 .home-wrapper {
-  .briefing {
-    display: flex;
-    &__item {
-      margin-right: 1rem;
-      border-right: 1px solid #cccccc;  
-    }
-  }
-
   .news-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -18,6 +10,21 @@
     .opinion {
       border-left: 1px solid #cccccc;
       padding-right: 0;
+    }
+  }
+}
+
+.briefing {
+  display: flex;
+  &__item {
+    margin-right: 1rem;
+    border-right: 1px solid #cccccc;  
+  }
+
+  &__forecast {
+    &__temp {
+      display: flex;
+
     }
   }
 }
