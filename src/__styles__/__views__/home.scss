@@ -22,8 +22,35 @@
   }
 
   &__forecast {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
     &__temp {
       display: flex;
+      &--img {
+        width: 3.12rem;
+      }
+      &--location {
+        margin-left: .5rem;
+        font-size: .75rem;
+        font-weight: 500;
+      }
+
+      &__measure {
+        font-weight: bolder;
+        font-size: .875rem;
+        &--max {
+          font-size: .75rem;
+          margin-right: .30rem;
+        }
+  
+        &--min {
+          color: gray;
+          font-size: .75rem;
+        }
+      }
+
+      
 
     }
   }

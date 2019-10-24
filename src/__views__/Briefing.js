@@ -19,34 +19,26 @@ class Briefing extends Component {
     const clima = data.length ?
     (data.map(item => {
       const location = item.name
-      const temperature = item.main.temp
-      const maxTemp = item.main.temp_max
-      const minTemp = item.main.temp_min
+      const temperature = Math.round(item.main.temp)
+      const maxTemp = Math.round(item.main.temp_max)
+      const minTemp = Math.round(item.main.temp_min)
       const icon = item.weather[0].icon
       const src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
       
       return(
         <div className="briefing__forecast" key={item.id}>
-
           <div className="briefing__forecast__temp">
-            <img src={src}/>
-            <div className="">
-              <span>{ temperature }</span>
-              <span className="d-flex">
-                <span className="briefing__forecast__temp--max mr-2">
-                  { maxTemp }
-                </span>
-                <span className="briefing__forecast__temp--min">
-                  { minTemp }
-                </span>
-              </span>
+            <img src={src} className="briefing__forecast__temp--img" alt="forecast"/>
+            <div>
+              <span className="briefing__forecast__temp__measure">{ temperature } °C</span>
+              <div className="d-flex">
+                <span className="briefing__forecast__temp__measure--max">{ maxTemp }°</span>
+                <span className="briefing__forecast__temp__measure--min">{ minTemp }°</span>
+              </div>
             </div>
-
           </div>
-          
-          <div>{ location }</div>
+          <span className="briefing__forecast__temp--location">{ location }</span>
         </div>
-        
       )
     })):(null)
 
@@ -62,9 +54,7 @@ class Briefing extends Component {
             <CompactCard/>
           </div>
           <div className="briefing__item">
-            <span>
               { clima }
-            </span>
           </div>
       </section>
     );
