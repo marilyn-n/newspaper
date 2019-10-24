@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Header = () => {
-  return (
-    <div>
-      <div className="header-wrapper">
-        <div className="header-wrapper--date">
-          <span>Monday, October 7, 2019</span>
+class Header extends Component {
+  render() {
+    const date = new Date();
+    const today = (date.toString()).slice(0,11);
+    
+    return (
+      <div>
+        <div className="header-wrapper">
+          <div className="header-wrapper--date">
+            <span>{ today }</span>
+          </div>
+          <div className="header-wrapper--logo">
+            <span>📰</span>
+          </div>
+          <div className="header-wrapper--label">
+            <span>Today’s Paper</span>
+          </div>
         </div>
-        <div className="header-wrapper--logo">
-          <span>📰</span>
-        </div>
-        <div className="header-wrapper--label">
-          <span>Today’s Paper</span>
-        </div>
-      </div>
       <div className="single-light-divider mt-3"></div>
     </div>
-  );
+    )
+  }
 }
 
 export default Header;

@@ -12,11 +12,12 @@ class Briefing extends Component {
       this.setState({ weather: [data] })
     })
     .catch(err => err)
+
   }
 
   render() {
     const data = this.state.weather;
-    const clima = data.length ?
+    const forecast = data.length ?
     (data.map(item => {
       const location = item.name
       const temperature = Math.round(item.main.temp)
@@ -53,8 +54,11 @@ class Briefing extends Component {
           <div className="briefing__item">
             <CompactCard/>
           </div>
+          <div className="fx">
+            
+          </div>
           <div className="briefing__item">
-              { clima }
+              { forecast }
           </div>
       </section>
     );
