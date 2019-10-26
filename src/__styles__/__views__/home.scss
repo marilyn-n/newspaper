@@ -55,3 +55,17 @@
     }
   }
 }
+
+.fx-rates {
+  width: 10rem;
+  padding-right: 1rem;
+  font-size: .75rem;
+  &--rate {
+    display: flex;
+    justify-content: space-between;
+    padding: .09rem;
+    &:hover{
+      background-color: rgba(204, 204, 204, 0.30);
+    }
+  }
+}

@@ -3,8 +3,11 @@ import CompactCard from '../__ui_components__/CompactCard';
 
 class Briefing extends Component {
   state = {
-    weather: []
+    weather: [],
+    rates: []
   }
+
+  
   componentDidMount() {
     fetch('http://api.openweathermap.org/data/2.5/weather?q=Toronto&units=metric&APPID=8e468cee5f97361ef43dbce5d6159f29')
     .then(res => res.json())
@@ -15,10 +18,55 @@ class Briefing extends Component {
 
   }
 
+  componentWillMount() {
+    fetch(`https://api.exchangeratesapi.io/latest?symbols=USD,GBP,MXN&base=CAD`)
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            weather: [], 
+            rates: [data]
+          })
+        })
+  }
+
   render() {
-    const data = this.state.weather;
-    const forecast = data.length ?
-    (data.map(item => {
+    let fxRates = this.state.rates;
+    const topRates = fxRates.length ?
+    (
+      fxRates.map(item => {
+        const MXN = Number(item.rates['MXN'] ).toFixed(2);
+        const USD = Number(item.rates['USD'] ).toFixed(2);
+        const GBP = Number(item.rates['GBP'] ).toFixed(2);
+        return(
+          <span key={Math.random() * .33 }>
+            <span className="fx-rates--rate">
+              <b>MXN</b>
+              <span>
+                { MXN }
+              </span>
+            </span>
+            <span className="fx-rates--rate">
+              <b>USD</b>
+              <span>
+                { USD }
+              </span>
+            </span>
+            <span className="fx-rates--rate">
+              <b>GBP</b>
+              <span>
+                { GBP }
+              </span>
+            </span>
+          </span>
+        )
+      })
+    ):(null)
+    
+
+    const weather = this.state.weather;
+    const forecast = weather.length ?
+    (
+      weather.map(item => {
       const location = item.name
       const temperature = Math.round(item.main.temp)
       const maxTemp = Math.round(item.main.temp_max)
@@ -54,10 +102,10 @@ class Briefing extends Component {
           <div className="briefing__item">
             <CompactCard/>
           </div>
-          <div className="fx">
-            
+          <div className="briefing__item fx-rates">
+            { topRates }
           </div>
-          <div className="briefing__item">
+          <div className="briefing__item forecast">
               { forecast }
           </div>
       </section>

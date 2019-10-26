@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Header extends Component {
   render() {
     const date = new Date();
-    const today = (date.toString()).slice(0,11);
+    const today = (date.toString()).slice(0,16);
     
     return (
       <div>
