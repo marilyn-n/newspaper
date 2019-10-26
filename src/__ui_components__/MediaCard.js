@@ -1,8 +1,9 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const MediaCard = () => {
   return (
-    <div className="media-card">
+    <NavLink to="/category:id/new:id" className="media-card anchor">
       <div className="item">
         <div className="media-card__header">
           <h2 className="media-card__header--title">
@@ -21,9 +22,9 @@ const MediaCard = () => {
         </div>
       </div>
       <div className="item">
-        <img src="http://4.bp.blogspot.com/-7YNjnSYdstE/UIURpYBf5QI/AAAAAAAAHv0/4ZZA5taIC_4/s1600/cats_kittens_ragdoll_kitten_cat_desktop_1134x850_hd-wallpaper-861351.jpeg"/>
+        <img src="http://4.bp.blogspot.com/-7YNjnSYdstE/UIURpYBf5QI/AAAAAAAAHv0/4ZZA5taIC_4/s1600/cats_kittens_ragdoll_kitten_cat_desktop_1134x850_hd-wallpaper-861351.jpeg" alt="media"/>
       </div>
-    </div>
+    </NavLink>
   );
 }
 

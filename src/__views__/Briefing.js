@@ -6,7 +6,6 @@ class Briefing extends Component {
     weather: [],
     rates: []
   }
-
   
   componentDidMount() {
     fetch('http://api.openweathermap.org/data/2.5/weather?q=Toronto&units=metric&APPID=8e468cee5f97361ef43dbce5d6159f29')

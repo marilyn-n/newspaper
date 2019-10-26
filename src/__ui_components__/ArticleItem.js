@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const ArticleItem = () => {
   return (
-    <NavLink to="/category:id/new:id" className="article-item">
+    <NavLink to="/category:id/new:id" className="article-item anchor">
       <div className="pr-3 article-item__header">
         <h2 className="article-item__header--title">
           Nicolas Ghesquière, Poster Boy for Fashion-Against-Trump
@@ -21,9 +21,7 @@ const ArticleItem = () => {
           </span>
         </span>
       </div>
-      <div className="pl-3">
-        <img src="https://images2.minutemediacdn.com/image/upload/c_crop,h_1188,w_2120,x_0,y_227/f_auto,q_auto,w_1100/v1554729678/shape/mentalfloss/58331-istock-479586616.jpg" alt=""/>
-      </div>
+      <img src="https://images2.minutemediacdn.com/image/upload/c_crop,h_1188,w_2120,x_0,y_227/f_auto,q_auto,w_1100/v1554729678/shape/mentalfloss/58331-istock-479586616.jpg" alt="article-img"/>
     </NavLink>
   );
 }

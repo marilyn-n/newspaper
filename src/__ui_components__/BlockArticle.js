@@ -1,8 +1,9 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const BlockArticle = () => {
   return (
-    <div className="block-article">
+    <NavLink to="/category:id/new:id" className="block-article anchor">
       <div className="block-article__header">
         <h3 className="block-article__header--label-lg">Johnson & Johnson Recalls Asbestos-Tainted Baby Powder</h3>
       </div>
@@ -19,7 +20,7 @@ const BlockArticle = () => {
           </span>
         </span>
       </div>
-    </div>
+    </NavLink>
   );
 }
 

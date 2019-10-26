@@ -1,8 +1,9 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const ArticleCard = () => {
   return (
-    <div className="article-card">
+    <NavLink to="/category:id/new:id" className="article-card anchor">
       <div className="article-card__header">
         <img src="https://www.hdwallpapersfreedownload.com/uploads/large/animals/rabbit-background.jpg"/>
       </div>
@@ -18,7 +19,7 @@ const ArticleCard = () => {
           <span className="article-card__body__details--author">By Ravi Kalia and Claudia Casas</span>
         </div>
       </div>
-    </div>
+    </NavLink>
   );
 }
 

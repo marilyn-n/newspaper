@@ -6,9 +6,7 @@ class Category extends Component {
     return (
       <div className="">
         <div className="category-wrapper">
-          <div className="category__title">
-            <NewsList/>
-          </div>
+          <NewsList/>
         </div>
       </div>
     );
