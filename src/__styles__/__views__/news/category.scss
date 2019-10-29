@@ -1,6 +1,15 @@
 .category-wrapper {
-  .category {
-    
-  }
+  .news-list {
+    &__header {
+      margin: 2rem 0;
+      h2 {
+        font-size: 2rem;
+      }
+    }
   
+    &__body {
+  
+    }
+  }
 }
+
