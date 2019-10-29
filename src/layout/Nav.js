@@ -32,13 +32,15 @@ class Nav extends Component {
   }
 
   render() {
+    console.log(this.props);
+    
     const sections = this.state.sections
     const sectionList = sections.length ?
     (
       sections.map(section => {
         return(
           <li className="sidebar-list__item" key={section.section}>
-            <Link to={'/' + section.section } className="sidebar-list__item--text">{ section.display_name }</Link>
+            <a href={'/' + section.section } className="sidebar-list__item--text">{ section.display_name }</a>
           </li>
         )
       })

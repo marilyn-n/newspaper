@@ -1,10 +1,13 @@
 .article-item {
   max-width: 47.5rem;
-  height: 9.5rem;
+  max-height: 9.5rem;
   display: flex;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 
   &__header {
+    width: 30rem;
+    display: flex;
+    flex-direction: column;    
     &--title {
       font-size: 1.25rem;
       font-weight: 500;
