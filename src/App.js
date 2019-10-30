@@ -10,7 +10,8 @@ import './__styles__/main.scss';
 function App() {
   return (
       <BrowserRouter>
-        <Nav/>
+      <div>
+      <Nav/>
         <div className="app-wrapper container">
           <Switch>
             <Route exact path="/" component={ Home }/>
@@ -19,6 +20,7 @@ function App() {
           </Switch>
           <Footer/>
         </div>
+      </div>
       </BrowserRouter>
   );
 }

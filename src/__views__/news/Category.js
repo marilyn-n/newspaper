@@ -19,11 +19,13 @@ class Category extends Component {
   }
 
   render() {
-    const articles = this.state.articles;    
+    const articles = this.state.articles;   
     const articleList = articles.length ?
     (
       articles.map(article => {
         if(article.title) {
+          // const imgSrc = article.multimedia[3].url; 
+                             
           return(
             <Link to="/" className="article-item anchor" key={article.title}>
               <div className="pr-3 article-item__header">
@@ -34,15 +36,16 @@ class Category extends Component {
                   { article.abstract }
                 </p>
                 <span className="article-item__header__tags">
+                  { article.byline ? 
+                    <span className="mr-2">{ article.byline }</span> : ''
+                  }
                   <span>
-                    By VANESSA FRIEDMAN
-                  </span>
-                  <span>
-                    Oct. 21, 2019
+                    { article.published_date }
                   </span>
                 </span>
               </div>
-              <img src={ article.thumbnail_standard } alt="article-img"/>
+              { article.multimedia ? <img src={ article.multimedia[3].url } alt="article-img"/>: '' }
+              
             </Link>
           )
         }
