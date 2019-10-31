@@ -4,19 +4,23 @@ import CompactCard from '../__ui_components__/CompactCard';
 class Briefing extends Component {
   state = {
     weather: [],
-    rates: []
+    rates: [],
+    briefing: []
   }
 
   componentDidMount() {
+  const key = 'PBgITfXgkBCpszcYJifHtpDtqoe18dqN';
    Promise.all([
       fetch('http://api.openweathermap.org/data/2.5/weather?q=Toronto&units=metric&APPID=8e468cee5f97361ef43dbce5d6159f29'),
-      fetch(`https://api.exchangeratesapi.io/latest?symbols=USD,GBP,MXN&base=CAD`)
+      fetch(`https://api.exchangeratesapi.io/latest?symbols=USD,GBP,MXN&base=CAD`),
+      fetch(`https://api.nytimes.com/svc/news/v3/content/nyt/briefing.json/get?api-key=${key}`)
     ])
     .then(responses => Promise.all(responses.map(response => response.json())))
     .then(data => {
       this.setState({
         weather: [data[0]],
-        rates: [data[1]]
+        rates: [data[1]],
+        briefing: data[2].results
       })
     })
       
@@ -83,17 +87,27 @@ class Briefing extends Component {
       )
     })):(null)
 
+    const top3Briefing = this.state.briefing.slice(0,3);    
+    const briefingList = top3Briefing.length?
+    (
+      top3Briefing.map(item => {
+        return(
+          <div className="briefing__item">
+            <a  className="compact-card anchor">
+              <img src={ item.thumbnail_standard } className="compact-card__thumbnail"/>
+              <div className="compact-card__text">
+                <span className="compact-card__text--title">{ item.title }</span>
+                <span className="compact-card__text--subtitle">{ item.abstract }</span>
+              </div>
+            </a>
+        </div>
+        )
+      })
+    ):(null)
+
     return(
       <section className="briefing">
-          <div className="briefing__item">
-            <CompactCard/>
-          </div>
-          <div className="briefing__item">
-            <CompactCard/>
-          </div>
-          <div className="briefing__item">
-            <CompactCard/>
-          </div>
+          { briefingList }
           <div className="briefing__item fx-rates">
             { topRates }
           </div>

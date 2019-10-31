@@ -32,8 +32,7 @@ class Home extends Component {
   }
 
   render() {
-    const sections = this.state.sections;
-
+    const sections = this.state.sections;    
     return(
       <div className="">
         <Header/>

@@ -7,7 +7,7 @@ import Category from './__views__/news/Category';
 import Footer from './layout/Footer';
 import './__styles__/main.scss';
 
-function App() {
+const App = () => {
   return (
       <BrowserRouter>
       <div>
