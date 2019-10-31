@@ -9,7 +9,7 @@ class MiniNav extends Component {
     (
       sections.map(item => {
         return(
-          <li><NavLink to="/category:id">{ item }</NavLink></li>
+          <li key={Math.random() * .23}><NavLink to="/category:id">{ item }</NavLink></li>
         )
       })
     ): null

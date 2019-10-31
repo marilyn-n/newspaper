@@ -6,26 +6,20 @@ class Briefing extends Component {
     weather: [],
     rates: []
   }
-  
+
   componentDidMount() {
-    fetch('http://api.openweathermap.org/data/2.5/weather?q=Toronto&units=metric&APPID=8e468cee5f97361ef43dbce5d6159f29')
-    .then(res => res.json())
+   Promise.all([
+      fetch('http://api.openweathermap.org/data/2.5/weather?q=Toronto&units=metric&APPID=8e468cee5f97361ef43dbce5d6159f29'),
+      fetch(`https://api.exchangeratesapi.io/latest?symbols=USD,GBP,MXN&base=CAD`)
+    ])
+    .then(responses => Promise.all(responses.map(response => response.json())))
     .then(data => {
-      this.setState({ weather: [data] })
+      this.setState({
+        weather: [data[0]],
+        rates: [data[1]]
+      })
     })
-    .catch(err => err)
-
-  }
-
-  componentWillMount() {
-    fetch(`https://api.exchangeratesapi.io/latest?symbols=USD,GBP,MXN&base=CAD`)
-        .then(res => res.json())
-        .then(data => {
-          this.setState({
-            weather: [], 
-            rates: [data]
-          })
-        })
+      
   }
 
   render() {
@@ -60,7 +54,6 @@ class Briefing extends Component {
         )
       })
     ):(null)
-    
 
     const weather = this.state.weather;
     const forecast = weather.length ?

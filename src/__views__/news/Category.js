@@ -23,9 +23,9 @@ class Category extends Component {
     const articleList = articles.length ?
     (
       articles.map(article => {
-        if(article.title) {
-          // const imgSrc = article.multimedia[3].url; 
-                             
+        console.log(article);
+        
+        if(article.title && article.multimedia) {
           return(
             <Link to="/" className="article-item anchor" key={article.title}>
               <div className="pr-3 article-item__header">
@@ -39,14 +39,30 @@ class Category extends Component {
                   { article.byline ? 
                     <span className="mr-2">{ article.byline }</span> : ''
                   }
-                  <span>
-                    { article.published_date }
-                  </span>
+                  <span>{ article.published_date.slice(0,10) }</span>
                 </span>
               </div>
-              { article.multimedia ? <img src={ article.multimedia[3].url } alt="article-img"/>: '' }
-              
+              <img src={ article.multimedia[3].url } alt="article-img"/>
             </Link>
+          )
+        } else if(article.title){
+          return(
+            <div>
+            <div className="single-divider"/>
+              <Link to="/category:id/new:id" className="block-article anchor" key={article.title}>
+                <div className="block-article__header">
+                  <h3 className="block-article__header--label-lg">{ article.title }</h3>
+                </div>
+                <div className="block-article__body">
+                  <p className="block-article__body--paragraph">{ article.abstract }</p>
+                  <span className="block-article__body__tags">
+                    { article.byline ? <span>{ article.byline}</span> : '' }
+                    <span>{ article.published_date.slice(0,10) }</span>
+                  </span>
+                </div>
+              </Link>
+              <div className="single-divider"/>
+            </div>
           )
         }
       })
@@ -54,7 +70,7 @@ class Category extends Component {
 
     return (
       <div className="category-wrapper">
-        <div className="col-md-6 offset-md-3 news-list">
+        <div className="col-md-8 offset-md-2 news-list">
           <div className="news-list__header">
             <h2></h2>
           </div>
@@ -62,7 +78,7 @@ class Category extends Component {
             { articleList }
           </div>
           <div className="text-center">
-            <span>Load more</span>
+            <button>Load more</button>
           </div>
         </div>
       </div>
