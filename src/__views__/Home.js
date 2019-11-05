@@ -8,31 +8,57 @@ import QuoteCard from '../__ui_components__/QuoteCard';
 import BlockArticle from '../__ui_components__/BlockArticle';
 import Header from '../layout/Header';
 import MiniNav from '../layout/MiniNav';
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
 
   state = {
-    sections: ''
+    home: []
   }
 
   componentDidMount() {
     const key = 'PBgITfXgkBCpszcYJifHtpDtqoe18dqN';
-    const URL = `https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=${key}`;
-    fetch(`${URL}`)
+    fetch(`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${key}`)
     .then(response => response.json())
     .then(data => {
-      const results = data.results
-      const allSections = results.map(item => item.section)
-      const unicSections = new Set(allSections)
-
-      this.setState({ 
-        sections: [...unicSections]
+      this.setState({
+        home: data.results
       })
     })
   }
 
   render() {
-    const sections = this.state.sections;    
+    console.log(this.state.home);
+
+    const homeArticles = this.state.home
+    const homeArticleList = homeArticles.length ?
+    (
+      homeArticles.map(article => {        
+        return(
+          <a className="mini-article-card anchor">
+            <div className="mini-article-card__header">
+              <span className="mini-article-card__header--label">
+                { article.section }
+              </span>
+              <img src={article.multimedia[3] ? article.multimedia[3].url: '' } alt="mini-img"/>
+            </div>
+            <div className="mini-article-card__body">
+              <h2 className="mini-article-card__body--title">
+                { article.title }
+              </h2>
+              <p className="mini-article-card__body__paragraph">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+              </p>
+              <div className="mini-article-card__body__paragraph--tags">
+                <span>{ article.section }</span>
+                <span>7m ago</span>
+              </div>
+            </div>
+          </a>
+        )
+      })
+    ):(null)
+    
     return(
       <div className="">
         <Header/>
@@ -91,22 +117,9 @@ class Home extends Component {
             </section>
             <div className="double-divider"></div>
             <section className="w-100 d-flex flex-wrap justify-content-between">
-              <MiniArticleCard/>
-              <MiniArticleCard/>
-              <MiniArticleCard/>
-              <MiniArticleCard/>
-              <MiniArticleCard/>
-              <MiniArticleCard/>
+              { homeArticleList }
             </section>
             <div className="double-divider"></div>
-            <section className="w-100 d-flex flex-wrap justify-content-between">
-              <MiniArticleCard/>
-              <MiniArticleCard/>
-              <MiniArticleCard/>
-              <MiniArticleCard/>
-              <MiniArticleCard/>
-              <MiniArticleCard/>
-            </section>
           </div>
         </div>
       </div>

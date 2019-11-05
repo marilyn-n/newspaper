@@ -9,9 +9,7 @@ class Category extends Component {
     let categoryId = this.props.match.params.category_name;
     fetch(`https://api.nytimes.com/svc/news/v3/content/nyt/${categoryId}.json/get?api-key=${key}`)
       .then(response => response.json())
-      .then(data => {
-        console.log(data, 'aquiii');
-        
+      .then(data => {        
         this.setState({
           articles: data.results
         })
@@ -22,9 +20,7 @@ class Category extends Component {
     const articles = this.state.articles;   
     const articleList = articles.length ?
     (
-      articles.map(article => {
-        console.log(article);
-        
+      articles.map(article => {        
         if(article.title && article.multimedia) {
           return(
             <a href={ article.url } className="article-item anchor" key={article.title}>
