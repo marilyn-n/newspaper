@@ -36,7 +36,7 @@ class Home extends Component {
     return(
       <div className="">
         <Header/>
-        <MiniNav sections={sections}/>
+        <MiniNav/>
         <div className="single-divider mt-0"/>
           <Briefing/>
         <div className="double-divider"/>

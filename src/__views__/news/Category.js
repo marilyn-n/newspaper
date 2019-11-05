@@ -27,7 +27,7 @@ class Category extends Component {
         
         if(article.title && article.multimedia) {
           return(
-            <Link to="/" className="article-item anchor" key={article.title}>
+            <a href={ article.url } className="article-item anchor" key={article.title}>
               <div className="pr-3 article-item__header">
                 <h2 className="article-item__header--title">
                   { article.title }
@@ -43,13 +43,13 @@ class Category extends Component {
                 </span>
               </div>
               <img src={ article.multimedia[3].url } alt="article-img"/>
-            </Link>
+            </a>
           )
         } else if(article.title){
           return(
-            <div>
+            <div key={article.title}>
             <div className="single-divider"/>
-              <Link to="/category:id/new:id" className="block-article anchor" key={article.title}>
+              <Link to="/category:id/new:id" className="block-article anchor">
                 <div className="block-article__header">
                   <h3 className="block-article__header--label-lg">{ article.title }</h3>
                 </div>

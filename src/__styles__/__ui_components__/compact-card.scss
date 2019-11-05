@@ -2,19 +2,31 @@
   height: 3.5rem;
   width: 16rem;
   display: flex;
+  align-self: center;
 
   &__thumbnail {
     margin-right: .45rem;
     object-fit: fill;
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 55px;
+    height: 55px;
   }
 
   &__text {
     font-size: 13px;
+    text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      padding-right: .5rem;
 
     &--title {
       font-weight: bolder;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     &--subtitle {

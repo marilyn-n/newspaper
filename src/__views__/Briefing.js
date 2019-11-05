@@ -35,7 +35,7 @@ class Briefing extends Component {
         const USD = Number(item.rates['USD'] ).toFixed(2);
         const GBP = Number(item.rates['GBP'] ).toFixed(2);
         return(
-          <span key={Math.random() * .33 }>
+          <span className="w-100" key={Math.random() * .33 }>
             <span className="fx-rates--rate">
               <b>MXN</b>
               <span>
@@ -92,8 +92,8 @@ class Briefing extends Component {
     (
       top3Briefing.map(item => {
         return(
-          <div className="briefing__item">
-            <a  className="compact-card anchor">
+          <div className="briefing__item" key={item.title}>
+            <a className="compact-card anchor">
               <img src={ item.thumbnail_standard } className="compact-card__thumbnail"/>
               <div className="compact-card__text">
                 <span className="compact-card__text--title">{ item.title }</span>

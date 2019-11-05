@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class MiniNav extends Component {
   
   render() {
-    const sections = this.props.sections;
+    const sections = 
+      [
+        'world', 'u.s', 'politics', 'business', 'opinion', 'tech', 'science', 'health',
+        'sports', 'arts', 'books', 'style', 'food', 'travel', 'magazine', 'climate', 'fashion'
+      ];
+    
+    const capitalizeStr = (str) => `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
+
     const sectionsList = sections.length ?
     (
       sections.map(item => {
         return(
-          <li key={Math.random() * .23}><NavLink to="/category:id">{ item }</NavLink></li>
+          <li key={Math.random() * .23}><Link to={'/' + item }>{ capitalizeStr(item) }</Link></li>
         )
       })
     ): null
