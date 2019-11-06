@@ -13,29 +13,37 @@ import { Link } from 'react-router-dom';
 class Home extends Component {
 
   state = {
-    home: []
+    home: [],
+    topHomeNews: [],
+    bottomHomeNews: []
   }
 
   componentDidMount() {
     const key = 'PBgITfXgkBCpszcYJifHtpDtqoe18dqN';
     fetch(`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${key}`)
-    .then(response => response.json())
+    .then(response => response.json())    
     .then(data => {
+      const results = data.results;
+      const half = Math.ceil(results.length / 2);
+
       this.setState({
-        home: data.results
+        home: results,
+        topHomeNews: results.slice(0, half),
+        bottomHomeNews: results.slice(half, results.length)
       })
     })
   }
 
   render() {
-    console.log(this.state.home);
+    
+    console.log(this.state.bottomHomeNews, 'bottom');
 
-    const homeArticles = this.state.home
+    const homeArticles = this.state.bottomHomeNews
     const homeArticleList = homeArticles.length ?
     (
       homeArticles.map(article => {        
         return(
-          <a className="mini-article-card anchor">
+          <a className="mini-article-card anchor" key={article.title}>
             <div className="mini-article-card__header">
               <span className="mini-article-card__header--label">
                 { article.section }
