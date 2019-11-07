@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import Briefing from '../__views__/Briefing';
+import Opinion from '../__views__/Opinion';
 import MediaCard from '../__ui_components__/MediaCard';
-import GraphicCard from '../__ui_components__/GraphicCard';
 import ArticleCard from '../__ui_components__/ArticleCard';
-import MiniArticleCard from '../__ui_components__/MiniArticleCard';
-import QuoteCard from '../__ui_components__/QuoteCard';
-import BlockArticle from '../__ui_components__/BlockArticle';
 import Header from '../layout/Header';
 import MiniNav from '../layout/MiniNav';
 import { Link } from 'react-router-dom';
@@ -15,30 +12,72 @@ class Home extends Component {
   state = {
     home: [],
     topHomeNews: [],
-    bottomHomeNews: []
+    bottomHomeNews: [],
+    opinion: []
   }
 
   componentDidMount() {
     const key = 'PBgITfXgkBCpszcYJifHtpDtqoe18dqN';
-    fetch(`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${key}`)
-    .then(response => response.json())    
-    .then(data => {
-      const results = data.results;
+    Promise.all([
+      fetch(`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${key}`),
+      fetch(`https://api.nytimes.com/svc/topstories/v2/opinion.json?api-key=${key}`)
+    ])
+    .then(responses => Promise.all(responses.map(res => res.json() )))    
+    .then(data => {      
+      const results = data[0].results;
+      const opinionResults = data[1].results
       const half = Math.ceil(results.length / 2);
 
       this.setState({
         home: results,
         topHomeNews: results.slice(0, half),
-        bottomHomeNews: results.slice(half, results.length)
+        bottomHomeNews: results.slice(half, results.length),
+        opinion: opinionResults
       })
     })
   }
 
+
   render() {
+    const createdDate = (str) => str.slice(0,10);
     const topHomeNews = this.state.topHomeNews;
-    const mainNewscolumn = topHomeNews.slice(0, Math.floor(topHomeNews.length / 2));
-    const secondaryNewsColsmn = topHomeNews.slice(Math.floor(topHomeNews.length / 2), topHomeNews.length);
-    
+    const opinionHeadArticle = this.state.opinion.slice(0,1);
+
+    const opinionItem = opinionHeadArticle.length ?
+    (
+      opinionHeadArticle.map((item) => {
+        console.log(item);
+        
+        return(
+          <div>
+            <span>{ item.section }</span>
+            <Link to="/category:id/new:id" className="media-card anchor">
+              <div className="item">
+                <div className="media-card__header">
+                  <h2 className="media-card__header--title">
+                    {item.title}
+                  </h2>
+                </div>
+                <div className="media-card__body">
+                    <p className="media-card__body__paragraph">
+                    </p>
+                    <div className="media-card__body__paragraph--tags">
+                      <span>{ item.section }</span>
+                      <span>{ createdDate(item.created_date) }</span>
+                    </div>
+                </div>
+              </div>
+              <div className="item">
+                <img  alt="media"/>
+              </div>
+            </Link>
+            <div className="single-light-divider"></div>
+          </div>
+        )
+      })
+    ):(null)
+
+    const mainNewscolumn = topHomeNews.slice(0, Math.floor(topHomeNews.length / 2));    
     const mainColumnList = mainNewscolumn.length ?
     (
       mainNewscolumn.map((item, index) => {
@@ -68,7 +107,7 @@ class Home extends Component {
                 </div>
               </div>
               <div className="graphic-card__section pl-3">
-                <img src="https://www.wikihow.com/images/6/64/Stop-a-Dog-from-Jumping-Step-6-Version-2.jpg" alt="graphic"/>
+                <img src={ item.multimedia[4].url } alt="graphic"/>
                 <span className="graphic-card__section--caption">iStock by Getty Images</span>
               </div>
             </Link>
@@ -85,14 +124,14 @@ class Home extends Component {
                 </div>
                 <div className="block-article__body">
                   <p className="block-article__body--paragraph">
-                    Eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    { item.abstract }
                   </p>
                   <span className="block-article__body__tags">
                     <span>
-                      T-Magazine
+                      { item.section}
                     </span>
                     <span>
-                      28m ago
+                      { createdDate(item.created_date) }
                     </span>
                   </span>
                 </div>
@@ -102,7 +141,7 @@ class Home extends Component {
           )
         } 
         
-        if(index === 2) {
+        else {
           return(
             <div>
               <Link to="/category:id/new:id" className="block-article anchor">
@@ -127,50 +166,6 @@ class Home extends Component {
             </div>
           )
         } 
-        if(index > 2 && index < 5){
-          return(
-              <Link to="/category:id/new:id" className="article-card anchor">
-                <div className="article-card__header">
-                  <img src="https://www.hdwallpapersfreedownload.com/uploads/large/animals/rabbit-background.jpg"/>
-                </div>
-                <div className="article-card__body">
-                  <h2 className="article-card__body--title">
-                    { item.title }
-                  </h2>
-                  <p className="article-card__body--paragraph">
-                    Losing a pregnancy might be the loneliest experience that millions of women have faced.
-                  </p>
-                  <div className="article-card__body__details">
-                    <span className="article-card__body__details--date">1w ago</span>
-                    <span className="article-card__body__details--author">By Ravi Kalia and Claudia Casas</span>
-                  </div>
-                </div>
-              </Link>
-          )
-        } else{
-          return(
-            <Link to="/category:id/new:id" className="mini-article-card anchor">
-              <div className="mini-article-card__header">
-                <span className="mini-article-card__header--label">
-                  Politics
-                </span>
-                <img src="https://www.gannett-cdn.com/-mm-/d45a1bc902cb3f4367b332e27f859c7252d4b7fa/c=0-109-2119-1306/local/-/media/2017/03/02/USATODAY/USATODAY/636240538720039138-GettyImages-509934328.jpg?width=3200&height=1680&fit=crop" alt="mini-img"/>
-              </div>
-              <div className="mini-article-card__body">
-                <h2 className="mini-article-card__body--title">
-                  { item.title }
-                </h2>
-                <p className="mini-article-card__body__paragraph">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                </p>
-                <div className="mini-article-card__body__paragraph--tags">
-                  <span>Style</span>
-                  <span>7m ago</span>
-                </div>
-              </div>
-            </Link>
-          )
-        }
       })
     ):null
 
@@ -214,24 +209,8 @@ class Home extends Component {
               { mainColumnList }
             </section>
             <section className="opinion col-4">
-              <MediaCard/>
-              <div className="single-light-divider"></div>
-              <div className="d-flex py-2">
-                <div className="pr-3 border-right d-flex flex-column justify-content-between">
-                  <QuoteCard/>
-                  <QuoteCard/>
-                  <QuoteCard/>
-                  <QuoteCard/>
-                  <QuoteCard/>
-                </div>
-                <div className="pl-3 d-flex flex-column justify-content-between">
-                  <QuoteCard/>
-                  <QuoteCard/>
-                  <QuoteCard/>
-                  <QuoteCard/>
-                  <QuoteCard/>
-                </div>
-              </div>
+              {opinionItem}
+              <Opinion opinion={this.state.opinion}/>
               <div className="double-divider"></div>
                 <MediaCard/>
               <div className="single-light-divider mb-3"></div>

@@ -31,9 +31,7 @@ class Nav extends Component {
     }
   }
 
-  render() {
-    console.log(this.props);
-    
+  render() {    
     const sections = this.state.sections
     const sectionList = sections.length ?
     (
