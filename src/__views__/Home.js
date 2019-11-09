@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { CreatedDate, Author, StrToUpperCase } from '../Helpers.js';
 import Briefing from '../__views__/Briefing';
 import Opinion from '../__views__/Opinion';
 import MediaCard from '../__ui_components__/MediaCard';
@@ -23,24 +24,26 @@ class Home extends Component {
       fetch(`https://api.nytimes.com/svc/topstories/v2/opinion.json?api-key=${key}`)
     ])
     .then(responses => Promise.all(responses.map(res => res.json() )))    
-    .then(data => {  
+    .then(data => { 
         const articleResults = data[1].results
         const filteredOpinions = articleResults
+          .filter(item => item.multimedia.length >= 4)
+
+        const articlesAssortment = data[0].results
           .filter(item => item.multimedia.length >= 4)
 
         const half = Math.ceil(filteredOpinions.length / 2);
   
         this.setState({
-          home: filteredOpinions,
-          topHomeNews: filteredOpinions.slice(0, half),
-          bottomHomeNews: filteredOpinions.slice(half, filteredOpinions.length),
+          home: articlesAssortment,
+          topHomeNews: articlesAssortment.slice(0, half),
+          bottomHomeNews: articlesAssortment.slice(half, articlesAssortment.length),
           opinion: filteredOpinions
         })
       })
   }
 
   render() {
-    const createdDate = (str) => str.slice(0,10);
     const topHomeNews = this.state.topHomeNews;
     const opinionHeadArticle = this.state.opinion.slice(0,1);
 
@@ -49,20 +52,24 @@ class Home extends Component {
       opinionHeadArticle.map((item) => {
         return(
           <div>
-            <span>{ item.section }</span>
-            <Link to="/category:id/new:id" className="media-card anchor">
-              <div className="item">
+            <Link to={'/opinion'} className="opinion-header-title">
+              { item.section } >
+            </Link>
+            <Link to={ item.url } className="media-card anchor">
+              <div className="item pr-3">
                 <div className="media-card__header">
                   <h2 className="media-card__header--title">
                     {item.title}
                   </h2>
                 </div>
                 <div className="media-card__body">
+                    <span className="media-card__body--byline">{ StrToUpperCase(Author(item.byline)) }</span>
                     <p className="media-card__body__paragraph">
+                      { item.abstract }
                     </p>
                     <div className="media-card__body__paragraph--tags">
                       <span>{ item.section }</span>
-                      <span>{ createdDate(item.created_date) }</span>
+                      <span>{ CreatedDate(item.created_date) }</span>
                     </div>
                 </div>
               </div>
@@ -80,10 +87,9 @@ class Home extends Component {
     const mainColumnList = mainNewscolumn.length ?
     (
       mainNewscolumn.map((item, index) => {
-        console.log(item, 'amer')
         if(index === 0) {
           return(
-            <Link to="/category:id/new:id" className="graphic-card anchor">
+            <Link to={ item.url } className="graphic-card anchor">
               <div className="graphic-card__section pr-3">
                 <div className="graphic-card__header">
                   <span className="graphic-card__header--title">
@@ -95,14 +101,16 @@ class Home extends Component {
                     { item.abstract }
                     <div className="graphic-card__body__paragraph--tags">
                       <span>{ item.section }</span>
-                      <span>{ createdDate(item.created_date) }</span>          
+                      <span>{ CreatedDate(item.created_date) }</span>          
                     </div>
                   </div>
                 </div>
               </div>
               <div className="graphic-card__section pl-3">
                 <img src={ item.multimedia[4].url } alt="graphic"/>
-                <span className="graphic-card__section--caption">{ item.multimedia[4].copyright }</span>
+                <span className="graphic-card__section--caption">
+                  { item.multimedia[4].copyright }
+                </span>
               </div>
             </Link>
           )
@@ -112,7 +120,7 @@ class Home extends Component {
           return(
             <div>
               <div className="single-divider"></div>
-              <Link to="/category:id/new:id" className="block-article anchor">
+              <Link to={ item.url } className="block-article anchor">
                 <div className="block-article__header">
                   <h3 className="block-article__header--label-lg">{ item.title }</h3>
                 </div>
@@ -125,7 +133,7 @@ class Home extends Component {
                       { item.section}
                     </span>
                     <span>
-                      { createdDate(item.created_date) }
+                      { CreatedDate(item.created_date) }
                     </span>
                   </span>
                 </div>
@@ -138,7 +146,7 @@ class Home extends Component {
         else {
           return(
             <div>
-              <Link to="/category:id/new:id" className="block-article anchor">
+              <Link to={ item.url } className="block-article anchor">
                 <div className="block-article__header">
                   <h3 className="block-article__header--label-lg">{ item.title }</h3>
                 </div>
@@ -151,7 +159,7 @@ class Home extends Component {
                       { item.section}
                     </span>
                     <span>
-                      { createdDate(item.created_date) }
+                      { CreatedDate(item.created_date) }
                     </span>
                   </span>
                 </div>
@@ -169,7 +177,7 @@ class Home extends Component {
     (
       homeArticles.map((article) => {        
         return(
-          <a className="mini-article-card anchor" key={article.title}>
+          <Link to={ article.url } className="mini-article-card anchor" key={article.title}>
             <div className="mini-article-card__header">
               <span className="mini-article-card__header--label">
                 { article.section }
@@ -185,7 +193,7 @@ class Home extends Component {
                 <span>7m ago</span>
               </div>
             </div>
-          </a>
+          </Link>
         )
       })
     ):(null)

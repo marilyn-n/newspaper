@@ -8,7 +8,6 @@
     flex: 1;
     img {
       width: 11.05rem;
-      height: 8.90rem;
     }
   }
 
@@ -35,6 +34,14 @@
             margin-right: .45rem;
           }
         }
+      }
+      &--byline {
+        display: block;
+        font-size: 1rem;
+        color: gray;
+        font-weight: 600;
+        margin-right: .5rem;
+        align-self:center;
       }
     }
     

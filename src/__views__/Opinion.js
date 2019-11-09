@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Author } from '../Helpers.js';
 
 
 class Opinion extends Component {
   
   render() {
-    const author = (str) => str.slice(2, str.length);
-
     const opinions = this.props.opinion;
     const topTenOpinions = opinions.slice(0, 11);
     const opinionsColOne = topTenOpinions.slice(0, topTenOpinions.length/ 2);
@@ -19,7 +18,7 @@ class Opinion extends Component {
           <Link to="/category:id/new:id" className="quote-card anchor">
             <div className={ item.byline ? "quote-card__quote": "d-none"}>
                 <h2 className="quote-card__quote--title">
-                  { author(item.byline) }
+                  { Author(item.byline) }
                 </h2>
                 <img src={ item.multimedia[4].url } className="quote-card__quote--author"/>      
             </div>
@@ -40,7 +39,7 @@ class Opinion extends Component {
           <Link to="/category:id/new:id" className="quote-card anchor">
             <div className={ item.byline ? "quote-card__quote": "d-none"}>
               <h2 className="quote-card__quote--title">
-                { author(item.byline) }
+                { Author(item.byline) }
               </h2>
               <img src={ item.multimedia[0].url } className="quote-card__quote--author"/>      
             </div>
