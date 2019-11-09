@@ -23,20 +23,21 @@ class Home extends Component {
       fetch(`https://api.nytimes.com/svc/topstories/v2/opinion.json?api-key=${key}`)
     ])
     .then(responses => Promise.all(responses.map(res => res.json() )))    
-    .then(data => {      
-      const results = data[0].results;
-      const opinionResults = data[1].results
-      const half = Math.ceil(results.length / 2);
+    .then(data => {  
+        const articleResults = data[1].results
+        const filteredOpinions = articleResults
+          .filter(item => item.multimedia.length >= 4)
 
-      this.setState({
-        home: results,
-        topHomeNews: results.slice(0, half),
-        bottomHomeNews: results.slice(half, results.length),
-        opinion: opinionResults
+        const half = Math.ceil(filteredOpinions.length / 2);
+  
+        this.setState({
+          home: filteredOpinions,
+          topHomeNews: filteredOpinions.slice(0, half),
+          bottomHomeNews: filteredOpinions.slice(half, filteredOpinions.length),
+          opinion: filteredOpinions
+        })
       })
-    })
   }
-
 
   render() {
     const createdDate = (str) => str.slice(0,10);
@@ -46,8 +47,6 @@ class Home extends Component {
     const opinionItem = opinionHeadArticle.length ?
     (
       opinionHeadArticle.map((item) => {
-        console.log(item);
-        
         return(
           <div>
             <span>{ item.section }</span>
@@ -68,7 +67,7 @@ class Home extends Component {
                 </div>
               </div>
               <div className="item">
-                <img  alt="media"/>
+                <img src={ item.multimedia[4].url } alt="media"/>
               </div>
             </Link>
             <div className="single-light-divider"></div>
@@ -81,6 +80,7 @@ class Home extends Component {
     const mainColumnList = mainNewscolumn.length ?
     (
       mainNewscolumn.map((item, index) => {
+        console.log(item, 'amer')
         if(index === 0) {
           return(
             <Link to="/category:id/new:id" className="graphic-card anchor">
@@ -92,23 +92,17 @@ class Home extends Component {
                 </div>
                 <div className="graphic-card__body">
                   <div className="graphic-card__body__paragraph">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem 
-                    accusantium doloremque laudantium, totam rem aperiam, eaque ip
-                    sa quae ab illo inventore veritatis et quasi architecto beatae 
-                    vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia vol
-                    uptas sit aspernatur aut odit aut fugit, sed quia consequuntur 
-                    magni dolores eos qui ratione voluptatem sequi nesciunt. Neque 
-                    porro.
+                    { item.abstract }
                     <div className="graphic-card__body__paragraph--tags">
-                      <span>Top news</span>
-                      <span>1 week ago</span>          
+                      <span>{ item.section }</span>
+                      <span>{ createdDate(item.created_date) }</span>          
                     </div>
                   </div>
                 </div>
               </div>
               <div className="graphic-card__section pl-3">
                 <img src={ item.multimedia[4].url } alt="graphic"/>
-                <span className="graphic-card__section--caption">iStock by Getty Images</span>
+                <span className="graphic-card__section--caption">{ item.multimedia[4].copyright }</span>
               </div>
             </Link>
           )
@@ -150,14 +144,14 @@ class Home extends Component {
                 </div>
                 <div className="block-article__body">
                   <p className="block-article__body--paragraph">
-                    Eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    { item.abstract }
                   </p>
                   <span className="block-article__body__tags">
                     <span>
-                      T-Magazine
+                      { item.section}
                     </span>
                     <span>
-                      28m ago
+                      { createdDate(item.created_date) }
                     </span>
                   </span>
                 </div>
@@ -209,7 +203,7 @@ class Home extends Component {
               { mainColumnList }
             </section>
             <section className="opinion col-4">
-              {opinionItem}
+              { opinionItem }
               <Opinion opinion={this.state.opinion}/>
               <div className="double-divider"></div>
                 <MediaCard/>

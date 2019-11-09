@@ -18,11 +18,15 @@ class Opinion extends Component {
         return(
           <Link to="/category:id/new:id" className="quote-card anchor">
             <div className={ item.byline ? "quote-card__quote": "d-none"}>
-                <h2 className="quote-card__quote--title">{ author(item.byline) }</h2>
-                <img src="https://www.hd-wallpapersdownload.com/script/bulk-upload/lion-running-images.jpg" className="quote-card__quote--author"/>      
+                <h2 className="quote-card__quote--title">
+                  { author(item.byline) }
+                </h2>
+                <img src={ item.multimedia[4].url } className="quote-card__quote--author"/>      
             </div>
             <div>
-              <p className="quote-card__quote--subtitle">{ item.title }</p>
+              <p className="quote-card__quote--subtitle">
+                { item.title }
+              </p>
             </div>
           </Link>
         )
@@ -35,11 +39,15 @@ class Opinion extends Component {
         return(
           <Link to="/category:id/new:id" className="quote-card anchor">
             <div className={ item.byline ? "quote-card__quote": "d-none"}>
-              <h2 className="quote-card__quote--title">{ author(item.byline) }</h2>
-              <img src="https://www.hd-wallpapersdownload.com/script/bulk-upload/lion-running-images.jpg" className="quote-card__quote--author"/>      
+              <h2 className="quote-card__quote--title">
+                { author(item.byline) }
+              </h2>
+              <img src={ item.multimedia[0].url } className="quote-card__quote--author"/>      
             </div>
             <div>
-              <p className="quote-card__quote--subtitle">{ item.title }</p>
+              <p className="quote-card__quote--subtitle">
+                { item.title }
+              </p>
             </div>
           </Link>
         )
@@ -48,10 +56,10 @@ class Opinion extends Component {
     
     return(
       <div className="opinion-wrapper d-flex">
-        <div className="d-flex flex-column">
+        <div className="d-flex flex-column pr-3 border-right">
           { opinionsListOne }
         </div>
-        <div className="d-flex flex-column">
+        <div className="d-flex flex-column pl-3">
           { opinionsListTwo }
         </div>
       </div>
