@@ -3,6 +3,7 @@
   max-width: 25rem;
   padding: 1rem 0;
   display: flex;
+  font-family: nyt-cheltenham;
    
   .item {
     flex: 1;
@@ -15,9 +16,10 @@
       line-height: 1.1875rem;
       &--title {
         font-size: 1rem;
-        font-weight: bold;
-        letter-spacing: 0.1px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
         margin: 0 0 .3rem 0;
+        text-align: justify;
       }
     }
   
@@ -26,10 +28,16 @@
         font-size: .875rem;
         line-height: 1.1875rem;
         margin: 0;
+        text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 5;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         &--tags {
           span {
             font-size: .75rem;
             font-weight: 500;
+            font-family: 'Arial';
             color: gray;
             margin-right: .45rem;
           }

@@ -66,3 +66,15 @@
 .boder-right-none {
   border-right: none;
 }
+
+.border-partial {
+  border: 1px solid #ebebeb;
+  width: 3.75rem;
+  margin-top: .875rem;
+}
+
+.label {
+  font-size: 1.25rem;
+  font-weight: bolder;
+  padding: 1rem 0;
+}

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { CreatedDate, Author, StrToUpperCase } from '../Helpers.js';
-import Briefing from '../__views__/Briefing';
-import Opinion from '../__views__/Opinion';
-import MediaCard from '../__ui_components__/MediaCard';
-import ArticleCard from '../__ui_components__/ArticleCard';
-import Header from '../layout/Header';
-import MiniNav from '../layout/MiniNav';
+import { Author, StrToUpperCase } from '../../Helpers.js';
+import moment from 'moment';
+import Briefing from '../Briefing';
+import MainNews from '../news/MainNews.js';
+import Opinion from '../Opinion';
+import ArticleCard from '../../__ui_components__/ArticleCard';
+import Header from '../../layout/Header';
+import MiniNav from '../../layout/MiniNav';
 import { Link } from 'react-router-dom';
 
 class Home extends Component {
@@ -44,12 +45,49 @@ class Home extends Component {
   }
 
   render() {
-    const topHomeNews = this.state.topHomeNews;
-    const opinionArticles = this.state.opinion.slice(0,1);
+    const opinions = this.state.opinion
+    const topHomeNews = this.state.topHomeNews
+    const firstOpinion = opinions.slice(0,1);
+    const popularOpinionions = opinions.slice(1, opinions.length)
+    
+    const topEditorsPicks = topHomeNews.slice((topHomeNews.length -3), (topHomeNews.length));
 
-    const opinionItem = opinionArticles.length ?
+    const editorsPicks = topEditorsPicks.length ?
     (
-      opinionArticles.map((item) => {
+      topEditorsPicks.map(item => {
+        return(
+          <div>
+            <Link to={ item.url } className="media-card anchor">
+              <div className="item pr-3">
+                <div className="media-card__header">
+                  <h2 className="media-card__header--title">
+                    {item.title}
+                  </h2>
+                </div>
+                <div className="media-card__body">
+                    <span className="media-card__body--byline">{ StrToUpperCase(Author(item.byline)) }</span>
+                    <p className="media-card__body__paragraph">
+                      { item.abstract }
+                    </p>
+                    <div className="media-card__body__paragraph--tags">
+                      <span>{ item.section }</span>
+                      <span>{ moment(item.created_date).fromNow() } </span>
+                    </div>
+                </div>
+              </div>
+              <div className="item">
+                <img src={ item.multimedia[4].url } alt="media"/>
+              </div>
+            </Link>
+            <div className="single-light-divider"></div>
+          </div>
+        )
+      })
+    ):(null)
+
+    const opinionItem = opinions.length ?
+    (
+      firstOpinion.map((item) => {
         return(
           <div>
             <Link to={'/opinion'} className="opinion-header-title">
@@ -69,7 +107,7 @@ class Home extends Component {
                     </p>
                     <div className="media-card__body__paragraph--tags">
                       <span>{ item.section }</span>
-                      <span>{ CreatedDate(item.created_date) }</span>
+                      <span>{ moment(item.created_date).fromNow() }</span>
                     </div>
                 </div>
               </div>
@@ -82,92 +120,6 @@ class Home extends Component {
         )
       })
     ):(null)
-
-    const mainNewscolumn = topHomeNews.slice(0, Math.floor(topHomeNews.length / 2));    
-    const mainColumnList = mainNewscolumn.length ?
-    (
-      mainNewscolumn.map((item, index) => {
-        if(index === 0) {
-          return(
-            <Link to={ item.url } className="graphic-card anchor">
-              <div className="graphic-card__section pr-3">
-                <div className="graphic-card__header">
-                  <span className="graphic-card__header--title">
-                    { item.title }
-                  </span>
-                </div>
-                <div className="graphic-card__body">
-                  <div className="graphic-card__body__paragraph">
-                    { item.abstract }
-                    <div className="graphic-card__body__paragraph--tags">
-                      <span>{ item.section }</span>
-                      <span>{ CreatedDate(item.created_date) }</span>          
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="graphic-card__section pl-3">
-                <img src={ item.multimedia[4].url } alt="graphic"/>
-                <span className="graphic-card__section--caption">
-                  { item.multimedia[4].copyright }
-                </span>
-              </div>
-            </Link>
-          )
-        } else if (index % 3){
-          return (
-          <div>
-            <Link to={ item.url } className="block-article anchor">
-              <div className="block-article__header">
-                <h3 className="block-article__header--label-lg">{ item.title }</h3>
-              </div>
-              <div className="block-article__body">
-                <p className="block-article__body--paragraph">
-                  { item.abstract }
-                </p>
-                <span className="block-article__body__tags">
-                  <span>
-                    { item.section}
-                  </span>
-                  <span>
-                    { CreatedDate(item.created_date) }
-                  </span>
-                </span>
-              </div>
-            </Link>
-            <div className="single-divider"></div>
-          </div>
-          )
-        }else {
-          return (
-            <Link to={ item.url } className="graphic-card anchor">
-              <div className="graphic-card__section pr-3">
-                <div className="graphic-card__header">
-                  <span className="graphic-card__header--title">
-                    { item.title }
-                  </span>
-                </div>
-                <div className="graphic-card__body">
-                  <div className="graphic-card__body__paragraph">
-                    { item.abstract }
-                    <div className="graphic-card__body__paragraph--tags">
-                      <span>{ item.section }</span>
-                      <span>{ CreatedDate(item.created_date) }</span>          
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="graphic-card__section pl-3">
-                <img src={ item.multimedia[4].url } alt="graphic"/>
-                <span className="graphic-card__section--caption">
-                  { item.multimedia[4].copyright }
-                </span>
-              </div>
-            </Link>
-          )
-        }
-      })
-    ):null
 
     const homeBottomArticles = this.state.bottomHomeNews
     const secondaryColumnList = homeBottomArticles.length ?
@@ -205,28 +157,35 @@ class Home extends Component {
         <div className="home-wrapper">
           <div className="news-wrapper py-3">
             <section className="top-stories col-8">
-              { mainColumnList }
+              <MainNews topHomeNews={this.state.topHomeNews}/>
             </section>
             <section className="opinion col-4">
               { opinionItem }
-              <Opinion opinion={this.state.opinion}/>
+              <Opinion opinion={popularOpinionions}/>
               <div className="double-divider"></div>
-              { opinionItem }
-              <div className="single-light-divider mb-3"></div>
-                <ArticleCard/>
-            </section>
-
-            <div className="double-divider"></div>
-            <section className="w-100 d-flex flex-wrap justify-content-between">
-              <ArticleCard/>
-              <ArticleCard/>
-              <ArticleCard/>
+              <div>
+                <span className="label">Editors' Picks</span>
+                <div className="border-partial"></div>
+              </div>
+              { editorsPicks } 
             </section>
             <div className="double-divider"></div>
             <section className="w-100 d-flex flex-wrap justify-content-between">
-              { secondaryColumnList }
+              <ArticleCard/>
+              <ArticleCard/>
+              <ArticleCard/>
             </section>
             <div className="double-divider"></div>
+            <section className="d-flex flex-column">
+              <div>
+                <span className="label">News</span>
+                <div className="border-partial"></div>
+              </div>
+              <div className="w-100 d-flex flex-wrap justify-content-between py-3">
+                { secondaryColumnList }
+              </div>
+              
+            </section>
           </div>
         </div>
       </div>
