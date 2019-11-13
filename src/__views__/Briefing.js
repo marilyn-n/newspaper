@@ -111,7 +111,7 @@ class Briefing extends Component {
           <div className="briefing__item fx-rates">
             { topRates }
           </div>
-          <div className="briefing__item forecast">
+          <div className="briefing__item forecast boder-right-none mr-0">
               { forecast }
           </div>
       </section>

@@ -45,11 +45,11 @@ class Home extends Component {
 
   render() {
     const topHomeNews = this.state.topHomeNews;
-    const opinionHeadArticle = this.state.opinion.slice(0,1);
+    const opinionArticles = this.state.opinion.slice(0,1);
 
-    const opinionItem = opinionHeadArticle.length ?
+    const opinionItem = opinionArticles.length ?
     (
-      opinionHeadArticle.map((item) => {
+      opinionArticles.map((item) => {
         return(
           <div>
             <Link to={'/opinion'} className="opinion-header-title">
@@ -114,68 +114,65 @@ class Home extends Component {
               </div>
             </Link>
           )
+        } else if (index % 3){
+          return (
+          <div>
+            <Link to={ item.url } className="block-article anchor">
+              <div className="block-article__header">
+                <h3 className="block-article__header--label-lg">{ item.title }</h3>
+              </div>
+              <div className="block-article__body">
+                <p className="block-article__body--paragraph">
+                  { item.abstract }
+                </p>
+                <span className="block-article__body__tags">
+                  <span>
+                    { item.section}
+                  </span>
+                  <span>
+                    { CreatedDate(item.created_date) }
+                  </span>
+                </span>
+              </div>
+            </Link>
+            <div className="single-divider"></div>
+          </div>
+          )
+        }else {
+          return (
+            <Link to={ item.url } className="graphic-card anchor">
+              <div className="graphic-card__section pr-3">
+                <div className="graphic-card__header">
+                  <span className="graphic-card__header--title">
+                    { item.title }
+                  </span>
+                </div>
+                <div className="graphic-card__body">
+                  <div className="graphic-card__body__paragraph">
+                    { item.abstract }
+                    <div className="graphic-card__body__paragraph--tags">
+                      <span>{ item.section }</span>
+                      <span>{ CreatedDate(item.created_date) }</span>          
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="graphic-card__section pl-3">
+                <img src={ item.multimedia[4].url } alt="graphic"/>
+                <span className="graphic-card__section--caption">
+                  { item.multimedia[4].copyright }
+                </span>
+              </div>
+            </Link>
+          )
         }
-
-        if(index === 1) {
-          return(
-            <div>
-              <div className="single-divider"></div>
-              <Link to={ item.url } className="block-article anchor">
-                <div className="block-article__header">
-                  <h3 className="block-article__header--label-lg">{ item.title }</h3>
-                </div>
-                <div className="block-article__body">
-                  <p className="block-article__body--paragraph">
-                    { item.abstract }
-                  </p>
-                  <span className="block-article__body__tags">
-                    <span>
-                      { item.section}
-                    </span>
-                    <span>
-                      { CreatedDate(item.created_date) }
-                    </span>
-                  </span>
-                </div>
-              </Link>
-              <div className="single-divider"></div>
-            </div>
-          )
-        } 
-        
-        else {
-          return(
-            <div>
-              <Link to={ item.url } className="block-article anchor">
-                <div className="block-article__header">
-                  <h3 className="block-article__header--label-lg">{ item.title }</h3>
-                </div>
-                <div className="block-article__body">
-                  <p className="block-article__body--paragraph">
-                    { item.abstract }
-                  </p>
-                  <span className="block-article__body__tags">
-                    <span>
-                      { item.section}
-                    </span>
-                    <span>
-                      { CreatedDate(item.created_date) }
-                    </span>
-                  </span>
-                </div>
-              </Link>
-              <div className="single-divider"></div>
-            </div>
-          )
-        } 
       })
     ):null
 
-
-    const homeArticles = this.state.bottomHomeNews
-    const homeArticleList = homeArticles.length ?
+    const homeBottomArticles = this.state.bottomHomeNews
+    const secondaryColumnList = homeBottomArticles.length ?
     (
-      homeArticles.map((article) => {        
+      homeBottomArticles.map((article) => {        
         return(
           <Link to={ article.url } className="mini-article-card anchor" key={article.title}>
             <div className="mini-article-card__header">
@@ -214,10 +211,11 @@ class Home extends Component {
               { opinionItem }
               <Opinion opinion={this.state.opinion}/>
               <div className="double-divider"></div>
-                <MediaCard/>
+              { opinionItem }
               <div className="single-light-divider mb-3"></div>
                 <ArticleCard/>
             </section>
+
             <div className="double-divider"></div>
             <section className="w-100 d-flex flex-wrap justify-content-between">
               <ArticleCard/>
@@ -226,7 +224,7 @@ class Home extends Component {
             </section>
             <div className="double-divider"></div>
             <section className="w-100 d-flex flex-wrap justify-content-between">
-              { homeArticleList }
+              { secondaryColumnList }
             </section>
             <div className="double-divider"></div>
           </div>
