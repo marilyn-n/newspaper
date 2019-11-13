@@ -47,11 +47,42 @@ class Home extends Component {
   render() {
     const opinions = this.state.opinion
     const topHomeNews = this.state.topHomeNews
+
     const firstOpinion = opinions.slice(0,1);
     const popularOpinionions = opinions.slice(1, opinions.length)
     
-    const topEditorsPicks = topHomeNews.slice((topHomeNews.length -3), (topHomeNews.length));
+    const otherNews = topHomeNews.slice(11, 14);
+    
+    const blockOtherNews = otherNews.length ? 
+    (
+      otherNews.map((item) => {
+        return(
+          <Link to="/category:id/new:id" className="article-card anchor">
+            <div className="article-card__header">
+              <img src={ item.multimedia[4].url }/>
+            </div>
+            <div className="article-card__body">
+              <h2 className="article-card__body--title">
+                { item.title }
+              </h2>
+              <p className="article-card__body--paragraph">
+                { item.abstract }
+              </p>
+              <div className="article-card__body__details">
+                <span className="article-card__body__details--date">
+                  { moment(item.created_date).fromNow() }
+                </span>
+                <span className="article-card__body__details--author">
+                  { item.section }
+                </span>
+              </div>
+            </div>
+          </Link>
+        )
+      })
+    ):(null)
 
+    const topEditorsPicks = topHomeNews.slice((topHomeNews.length -3), (topHomeNews.length));
     const editorsPicks = topEditorsPicks.length ?
     (
       topEditorsPicks.map(item => {
@@ -171,9 +202,7 @@ class Home extends Component {
             </section>
             <div className="double-divider"></div>
             <section className="w-100 d-flex flex-wrap justify-content-between">
-              <ArticleCard/>
-              <ArticleCard/>
-              <ArticleCard/>
+              { blockOtherNews }
             </section>
             <div className="double-divider"></div>
             <section className="d-flex flex-column">
