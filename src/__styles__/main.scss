@@ -78,3 +78,35 @@
   font-weight: bolder;
   padding: 1rem 0;
 }
+
+.ellipsis-1 {
+  text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.ellipsis-2 {
+  text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.ellipsis-3 {
+  text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.caption {
+  color: #808080;
+  font-weight: 500;
+  font-size: .65rem;
+  text-align: end;
+  display: block;
+}

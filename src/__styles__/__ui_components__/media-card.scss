@@ -8,7 +8,8 @@
   .item {
     flex: 1;
     img {
-      width: 11.05rem;
+      width: 10.67rem;
+      height: 10.67rem;
     }
   }
 
@@ -17,9 +18,7 @@
       &--title {
         font-size: 1rem;
         font-weight: 700;
-        letter-spacing: -0.5px;
         margin: 0 0 .3rem 0;
-        text-align: justify;
       }
     }
   

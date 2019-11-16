@@ -1,4 +1,5 @@
 import React from 'react';
+import MiniNav from './MiniNav';
 
 const Footer = () => {
   return (
@@ -152,20 +153,7 @@ const Footer = () => {
       </div>
       <div className="single-light-divider"></div>
         <div className="footer__navigation">
-          <ul>
-            <li>©&nbsp;Newspaper Company</li>
-            <li>navigation</li>
-            <li>navigation</li>
-            <li>navigation</li>
-            <li>navigation</li>
-            <li>navigation</li>
-            <li>navigation</li>
-            <li>navigation</li>
-            <li>navigation</li>
-            <li>navigation</li>
-            <li>navigation</li>
-            <li>navigation</li>
-          </ul>
+          <MiniNav/>
         </div>
       </div>
   );

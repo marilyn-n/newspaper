@@ -60,6 +60,7 @@ class Home extends Component {
           <Link to="/category:id/new:id" className="article-card anchor">
             <div className="article-card__header">
               <img src={ item.multimedia[4].url }/>
+              <span className="caption">{ item.multimedia[4].copyright }</span>
             </div>
             <div className="article-card__body">
               <h2 className="article-card__body--title">
@@ -153,7 +154,7 @@ class Home extends Component {
     ):(null)
 
     const homeBottomArticles = this.state.bottomHomeNews
-    const secondaryColumnList = homeBottomArticles.length ?
+    const bottomNews = homeBottomArticles.length ?
     (
       homeBottomArticles.map((article) => {        
         return(
@@ -179,44 +180,50 @@ class Home extends Component {
     ):(null)
     
     return(
-      <div className="">
+      <div className="home-wrapper">
         <Header/>
         <MiniNav/>
         <div className="single-divider mt-0"/>
           <Briefing/>
         <div className="double-divider"/>
-        <div className="home-wrapper">
-          <div className="news-wrapper py-3">
-            <section className="top-stories col-8">
+          <div className="news-wrapper">
+
+            <section className="top-home-news col-8">
               <MainNews topHomeNews={this.state.topHomeNews}/>
             </section>
+
             <section className="opinion col-4">
               { opinionItem }
-              <Opinion opinion={popularOpinionions}/>
+              <Opinion opinion={ popularOpinionions }/>
               <div className="double-divider"></div>
               <div>
                 <span className="label">Editors' Picks</span>
                 <div className="border-partial"></div>
               </div>
-              { editorsPicks } 
+              { editorsPicks }
             </section>
+
             <div className="double-divider"></div>
-            <section className="w-100 d-flex flex-wrap justify-content-between">
-              { blockOtherNews }
-            </section>
-            <div className="double-divider"></div>
-            <section className="d-flex flex-column">
+
+            { blockOtherNews? 
+              <section className="block-other-news">
+                { blockOtherNews }
+                <div className="double-divider"></div>
+              </section>
+              : ' ' 
+            }
+
+            <section className="bottom-container">
               <div>
                 <span className="label">News</span>
                 <div className="border-partial"></div>
               </div>
-              <div className="w-100 d-flex flex-wrap justify-content-between py-3">
-                { secondaryColumnList }
+              <div className="bottom-news">
+                { bottomNews }
               </div>
-              
             </section>
+
           </div>
-        </div>
       </div>
     );
   }

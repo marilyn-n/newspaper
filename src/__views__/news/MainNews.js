@@ -31,7 +31,7 @@ class MainNews extends Component {
               </div>
               <div className="graphic-card__section pl-3">
                 <img src={ item.multimedia[4].url } alt="graphic"/>
-                <span className="graphic-card__section--caption">
+                <span className="caption">
                   { item.multimedia[4].copyright }
                 </span>
               </div>
@@ -82,7 +82,7 @@ class MainNews extends Component {
               </div>
               <div className="graphic-card__section pl-3">
                 <img src={ item.multimedia[4].url } alt="graphic"/>
-                <span className="graphic-card__section--caption">
+                <span className="caption">
                   { item.multimedia[4].copyright }
                 </span>
               </div>

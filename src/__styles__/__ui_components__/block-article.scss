@@ -2,7 +2,8 @@
     display: flex;
     &__header {
       display: flex;
-      padding-right: 1rem;
+      padding-right: .75rem;
+      flex: 1;
       &--label-lg{
         font-size: 1.25rem;
         margin: 0;
@@ -11,7 +12,7 @@
     &__body {
       display: flex;
       flex-direction: column;
-      padding-left: 1rem;
+      flex: 2;
       &--paragraph {
         font-size: .875rem;
         color: #555555;
