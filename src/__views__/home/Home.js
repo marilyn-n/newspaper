@@ -4,7 +4,6 @@ import moment from 'moment';
 import Briefing from '../Briefing';
 import MainNews from '../news/MainNews.js';
 import Opinion from '../Opinion';
-import ArticleCard from '../../__ui_components__/ArticleCard';
 import Header from '../../layout/Header';
 import MiniNav from '../../layout/MiniNav';
 import { Link } from 'react-router-dom';
@@ -88,7 +87,7 @@ class Home extends Component {
     (
       topEditorsPicks.map(item => {
         return(
-          <div>
+          <div key={ item.title }>
             <Link to={ item.url } className="media-card anchor">
               <div className="item pr-3">
                 <div className="media-card__header">
@@ -121,7 +120,7 @@ class Home extends Component {
     (
       firstOpinion.map((item) => {
         return(
-          <div>
+          <div key={item.title}>
             <Link to={'/opinion'} className="opinion-header-title">
               { item.section } >
             </Link>

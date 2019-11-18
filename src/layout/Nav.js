@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import SearchBar from './SearchBar';
 
 class Nav extends Component {
   state = {
@@ -53,9 +54,7 @@ class Nav extends Component {
             <button className="nav-link btn btn-light mr-2" href="#" onClick={this.toggleSidebar}>
               <i className="fas fa-bars text-dark"></i>
             </button>
-            <div>
-              <input type="text" name="search" className="form-control w-0" placeholder="Recipient's username" aria-label="Recipient's username"/>
-            </div>
+            <SearchBar/>
           </div>
         </nav>
       </div>
