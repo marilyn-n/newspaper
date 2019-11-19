@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
 
 class SearchBar extends Component {
-
+  state = {
+    searchResults: []
+  }
   concatStr = (str) => {
     const words = str.split(' ');
     return words.join('+');
@@ -11,15 +14,20 @@ class SearchBar extends Component {
     e.preventDefault();
     const query = e.target.firstChild.value;
     const key = 'PBgITfXgkBCpszcYJifHtpDtqoe18dqN';
-
-    const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${this.concatStr(query)}&page=2&sort=oldest&api-key=${key}`;
+    const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=${this.concatStr(query)}&sort=oldest&api-key=${key}`;
     
     fetch(`${url}`)
       .then(response => response.json())
-      .then(data => console.log(data, 'form search request'))
+      .then(data => this.setState({ searchResults: data.response.docs }))
   }
 
   render() {
+    if (this.state.searchResults.length > 1) {
+      return (
+        <Redirect to={ { pathname: '/search-results', results: this.state.searchResults } }/>
+      )
+    }
+
     return (
       <div className="search-bar">
         <form onSubmit={ this.articleSearch}>
@@ -27,10 +35,11 @@ class SearchBar extends Component {
             type="text" 
             name="search" 
             className="form-control" 
-            placeholder="Recipient's username"
+            placeholder="search"
             />
         </form>
       </div>
+      
     );
   }
   
