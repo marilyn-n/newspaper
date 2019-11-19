@@ -14,7 +14,7 @@ class SearchBar extends Component {
     e.preventDefault();
     const query = e.target.firstChild.value;
     const key = 'PBgITfXgkBCpszcYJifHtpDtqoe18dqN';
-    const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=${this.concatStr(query)}&sort=oldest&api-key=${key}`;
+    const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${this.concatStr(query)}&fq=headline:("${this.concatStr(query)}")&facet=true&sort=newest&&api-key=${key}`;
     
     fetch(`${url}`)
       .then(response => response.json())
