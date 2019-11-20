@@ -17,10 +17,12 @@ class SearchBar extends Component {
     fetch(`${url}`)
       .then(response => response.json())
       .then(data => {
+        console.log(data);
+        
         if(data.response.docs.length) {
           this.props.history.push({
             pathname: '/search-results', 
-            results: data.response.docs,
+            results: data,
             searchTerm: query
           })
         } else {

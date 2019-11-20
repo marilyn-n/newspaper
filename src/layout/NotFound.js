@@ -6,7 +6,7 @@ class NotFound extends Component {
     
     return (
       <div className="not-found">
-        <h3>Not found results for "{searchTerm}"</h3>
+        <h3>Not found results</h3>
       </div>
     )
   }

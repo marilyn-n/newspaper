@@ -1,29 +1,67 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
+
 class Category extends Component {
   state = {
-    articles: ''
+    articles: []
   }
   componentDidMount() {
     const key = 'PBgITfXgkBCpszcYJifHtpDtqoe18dqN';
     let categoryId = this.props.match.params.category_name;
     fetch(`https://api.nytimes.com/svc/news/v3/content/nyt/${categoryId}.json/get?api-key=${key}`)
       .then(response => response.json())
-      .then(data => {        
+      .then(data => {
+        const hasPhotoAndTitle = data.results
+          .filter(item => item.title && item.multimedia != undefined)
+          .filter(item => item.multimedia.length >= 3)
+
         this.setState({
-          articles: data.results
+          articles: hasPhotoAndTitle
         })
       })
   }
 
   render() {
-    const articles = this.state.articles;   
+    const sectionName = this.props.match.params.category_name;
+    const articles = this.state.articles;  
     const articleList = articles.length ?
     (
-      articles.map(article => {        
-        if(article.title && article.multimedia) {
+      articles.map((article, index) => {
+        if(index === 0) {
           return(
-            <a href={ article.url } className="article-item anchor" key={article.title}>
+            <div>
+              <a href={ article.url } className="graphic-card anchor" key={article.title}>
+                <div className="graphic-card__section pr-3">
+                  <div className="graphic-card__header">
+                    <span className="graphic-card__header--title">
+                      { article.title }
+                    </span>
+                  </div>
+                  <div className="graphic-card__body">
+                    <div className="graphic-card__body__paragraph">
+                      { article.abstract }
+                      <div className="graphic-card__body__paragraph--tags">
+                        <span>{ article.section }</span>
+                        <span>{ moment(article.created_date).fromNow() }</span>          
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="graphic-card__section pl-3">
+                  <img src={ article.multimedia[2].url } alt="graphic"/>
+                  <span className="caption">
+                    { article.multimedia[2].copyright }
+                  </span>
+                </div>
+              </a>
+              <div className="double-divider"/>
+            </div>
+          )
+        }    
+        if(index % 4) {
+          return(
+            <a href={article.url} className="article-item anchor" key={article.title}>
               <div className="pr-3 article-item__header">
                 <h2 className="article-item__header--title">
                   { article.title }
@@ -35,17 +73,17 @@ class Category extends Component {
                   { article.byline ? 
                     <span className="mr-2">{ article.byline }</span> : ''
                   }
-                  <span>{ article.published_date.slice(0,10) }</span>
+                  <span>{ moment(article.published_date).fromNow() }</span>
                 </span>
               </div>
-              <img src={ article.multimedia[3].url } alt="article-img"/>
+              <img src={ article.multimedia[2].url } alt="article-img"/>
             </a>
           )
-        } else if(article.title){
+        } else if(index % 3) {
           return(
             <div key={article.title}>
             <div className="single-divider"/>
-              <Link to="/category:id/new:id" className="block-article anchor">
+              <a href={article.url} className="block-article anchor">
                 <div className="block-article__header">
                   <h3 className="block-article__header--label-lg">{ article.title }</h3>
                 </div>
@@ -56,7 +94,7 @@ class Category extends Component {
                     <span>{ article.published_date.slice(0,10) }</span>
                   </span>
                 </div>
-              </Link>
+              </a>
               <div className="single-divider"/>
             </div>
           )
@@ -68,7 +106,7 @@ class Category extends Component {
       <div className="category-wrapper">
         <div className="col-md-8 offset-md-2 news-list">
           <div className="news-list__header">
-            <h2></h2>
+          <h2 className="label text-capitalize">{ sectionName }</h2>
           </div>
           <div className="news-list__body">
             { articleList }
@@ -81,11 +119,5 @@ class Category extends Component {
     );
   }
 }
-
-
-Category.propTypes = {
-  
-};
-
 
 export default Category;

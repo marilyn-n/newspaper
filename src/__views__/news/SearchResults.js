@@ -6,7 +6,8 @@ class SearchResults extends Component {
     
     render() {
       const searchTerm = this.props.location.searchTerm
-      const searchResults = this.props.location.results      
+      const totalResults = this.props.location.results.response.meta.hits;
+      const searchResults = this.props.location.results.response.docs   
       const resultsList = searchResults.length ? 
       (
         searchResults.map(item => {
@@ -68,8 +69,7 @@ class SearchResults extends Component {
         <div className="search-results-wrapper">
           <div className="col-md-8 offset-md-2">
           <div className="search-results__header">
-            <span>Showing 91,902 results for "{ searchTerm }"</span>
-            <SearchBar/>
+            <span>Showing { totalResults } results for "{ searchTerm }"</span>
           </div>
             { resultsList }
           </div>
