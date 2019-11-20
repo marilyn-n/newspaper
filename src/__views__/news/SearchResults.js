@@ -5,6 +5,7 @@ import moment from 'moment';
 class SearchResults extends Component {
     
     render() {
+      const searchTerm = this.props.location.searchTerm
       const searchResults = this.props.location.results      
       const resultsList = searchResults.length ? 
       (
@@ -34,15 +35,15 @@ class SearchResults extends Component {
             )
           } else {
             return (
-              <div>
-                <a href={item.web_url} className="block-article anchor" key={item._id}>
+              <div key={item._id}>
+                <a href={item.web_url} className="block-article anchor">
                 <div className="block-article__header">
                   <h3 className="block-article__header--label-lg">
                     { item.headline.main }
                   </h3>
                 </div>
                 <div className="block-article__body">
-                  <p className="block-article__body--paragraph">
+                  <p className="block-article__body--paragraph ellipsis-3">
                     { item.abstract }
                   </p>
                   <span className="block-article__body__tags">
@@ -67,7 +68,7 @@ class SearchResults extends Component {
         <div className="search-results-wrapper">
           <div className="col-md-8 offset-md-2">
           <div className="search-results__header">
-            <span>Showing 91,902 results for: </span>
+            <span>Showing 91,902 results for "{ searchTerm }"</span>
             <SearchBar/>
           </div>
             { resultsList }

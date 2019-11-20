@@ -15,7 +15,7 @@ class Opinion extends Component {
     (
       opinionsColOne.map((item) => {
         return(
-          <Link to="/category:id/new:id" className="quote-card anchor">
+          <Link to="/category:id/new:id" className="quote-card anchor" key={item.title}>
             <div className={ item.byline ? "quote-card__quote": "d-none"}>
                 <h2 className="quote-card__quote--title">
                   { Author(item.byline) }
@@ -36,7 +36,7 @@ class Opinion extends Component {
     (
       opinionsColTwo.map(item => {
         return(
-          <Link to="/category:id/new:id" className="quote-card anchor">
+          <Link to="/category:id/new:id" className="quote-card anchor" key={item.title}>
             <div className={ item.byline ? "quote-card__quote": "d-none"}>
               <h2 className="quote-card__quote--title">
                 { Author(item.byline) }

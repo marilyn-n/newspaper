@@ -56,7 +56,7 @@ class Home extends Component {
     (
       otherNews.map((item) => {
         return(
-          <Link to="/category:id/new:id" className="article-card anchor">
+          <Link to="/category:id/new:id" className="article-card anchor" key={item.title}>
             <div className="article-card__header">
               <img src={ item.multimedia[4].url }/>
               <span className="caption">{ item.multimedia[4].copyright }</span>

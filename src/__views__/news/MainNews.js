@@ -12,7 +12,7 @@ class MainNews extends Component {
       mainNewscolumn.map((item, index) => {
         if(index === 0) {
           return(
-            <Link to={ item.url } className="graphic-card anchor">
+            <Link to={ item.url } className="graphic-card anchor" key={item.title}>
               <div className="graphic-card__section pr-3">
                 <div className="graphic-card__header">
                   <span className="graphic-card__header--title">
@@ -39,7 +39,7 @@ class MainNews extends Component {
           )
         } else if (index % 3){
           return (
-          <div>
+          <div key={item.title}>
             <Link to={ item.url } className="block-article anchor">
               <div className="block-article__header">
                 <h3 className="block-article__header--label-lg">{ item.title }</h3>
@@ -63,7 +63,7 @@ class MainNews extends Component {
           )
         }else {
           return (
-            <Link to={ item.url } className="graphic-card anchor">
+            <Link to={ item.url } className="graphic-card anchor" key={item.title}>
               <div className="graphic-card__section pr-3">
                 <div className="graphic-card__header">
                   <span className="graphic-card__header--title">

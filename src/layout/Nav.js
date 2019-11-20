@@ -51,7 +51,7 @@ class Nav extends Component {
       <div className="nav-wrapper">
         <nav className="navbar navbar-expand">
           <div className="d-flex w-100">
-            <button className="nav-link btn btn-light mr-2" href="#" onClick={this.toggleSidebar}>
+            <button className="nav-link btn btn-light mr-2" onClick={this.toggleSidebar}>
               <i className="fas fa-bars text-dark"></i>
             </button>
             <SearchBar/>
@@ -68,7 +68,6 @@ class Nav extends Component {
           </ul>
         </div>
       </div>
-
       </div>
     )
   }

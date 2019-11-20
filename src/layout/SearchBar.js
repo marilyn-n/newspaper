@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
+import { withRouter} from 'react-router-dom';
 
 class SearchBar extends Component {
-  state = {
-    searchResults: []
-  }
+
   concatStr = (str) => {
     const words = str.split(' ');
     return words.join('+');
   }
 
-  articleSearch = (e) => {
+  search = (e) => {
     e.preventDefault();
     const query = e.target.firstChild.value;
     const key = 'PBgITfXgkBCpszcYJifHtpDtqoe18dqN';
@@ -18,19 +16,27 @@ class SearchBar extends Component {
     
     fetch(`${url}`)
       .then(response => response.json())
-      .then(data => this.setState({ searchResults: data.response.docs }))
+      .then(data => {
+        if(data.response.docs.length) {
+          this.props.history.push({
+            pathname: '/search-results', 
+            results: data.response.docs,
+            searchTerm: query
+          })
+        } else {
+          this.props.history.push({
+            pathname: '/not-found', 
+            searchTerm: query
+          })
+        }
+      })
+      .catch(err => err)      
   }
 
   render() {
-    if (this.state.searchResults.length > 1) {
-      return (
-        <Redirect to={ { pathname: '/search-results', results: this.state.searchResults } }/>
-      )
-    }
-
     return (
       <div className="search-bar">
-        <form onSubmit={ this.articleSearch}>
+        <form onSubmit={ this.search}>
           <input 
             type="text" 
             name="search" 
@@ -42,7 +48,6 @@ class SearchBar extends Component {
       
     );
   }
-  
 }
 
-export default SearchBar;
+export default withRouter(SearchBar);
