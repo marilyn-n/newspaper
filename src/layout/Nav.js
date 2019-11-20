@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
+import { withRouter } from 'react-router-dom';
 
 class Nav extends Component {
   state = {
@@ -32,7 +33,10 @@ class Nav extends Component {
     }
   }
 
-  render() {    
+  render() { 
+    const pathName = this.props.history.location.pathname;
+    console.log(pathName, 'pppp**');
+      
     const sections = this.state.sections
     const sectionList = sections.length ?
     (
@@ -55,6 +59,9 @@ class Nav extends Component {
               <i className="fas fa-bars text-dark"></i>
             </button>
             <SearchBar/>
+            <Link to={'/'} className={pathName === '/' ? "d-none" : "radius-btn" }>
+              <i class="far fa-newspaper"></i>
+            </Link>
           </div>
         </nav>
       </div>
@@ -74,4 +81,4 @@ class Nav extends Component {
     
 }
 
-export default Nav;
+export default withRouter(Nav);

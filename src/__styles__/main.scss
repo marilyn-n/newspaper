@@ -115,3 +115,25 @@
   text-align: end;
   display: block;
 }
+
+.radius-btn {
+  height: 60px;
+  width: 60px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background-color: #3eff8b;
+  color: black;
+  padding: 1rem;
+  margin: 2rem;
+  border: 1px solid #3eff8b;
+  &:hover {
+    background-color: #3eff8b;
+    border: 1px solid #3eff8b;
+    color: black;
+  }
+  i {
+    font-size: 1.5rem;
+  }
+}
