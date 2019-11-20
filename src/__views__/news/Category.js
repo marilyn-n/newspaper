@@ -31,7 +31,7 @@ class Category extends Component {
         if(index === 0) {
           return(
             <div>
-              <a href={ article.url } className="graphic-card anchor" key={article.title}>
+              <a href={ article.url } target="_blank" className="graphic-card anchor" key={article.title}>
                 <div className="graphic-card__section pr-3">
                   <div className="graphic-card__header">
                     <span className="graphic-card__header--title">
@@ -61,7 +61,7 @@ class Category extends Component {
         }    
         if(index % 4) {
           return(
-            <a href={article.url} className="article-item anchor" key={article.title}>
+            <a href={article.url} target="_blank" className="article-item anchor" key={article.title}>
               <div className="pr-3 article-item__header">
                 <h2 className="article-item__header--title">
                   { article.title }
@@ -83,7 +83,7 @@ class Category extends Component {
           return(
             <div key={article.title}>
             <div className="single-divider"/>
-              <a href={article.url} className="block-article anchor">
+              <a href={article.url} target="_blank" className="block-article anchor">
                 <div className="block-article__header">
                   <h3 className="block-article__header--label-lg">{ article.title }</h3>
                 </div>
@@ -91,7 +91,7 @@ class Category extends Component {
                   <p className="block-article__body--paragraph">{ article.abstract }</p>
                   <span className="block-article__body__tags">
                     { article.byline ? <span>{ article.byline}</span> : '' }
-                    <span>{ article.published_date.slice(0,10) }</span>
+                    <span>{ moment(article.published_date).fromNow() }</span>
                   </span>
                 </div>
               </a>
@@ -112,7 +112,7 @@ class Category extends Component {
             { articleList }
           </div>
           <div className="text-center">
-            <button>Load more</button>
+          <button className="btn btn-dark d-block mx-auto"> Load more </button>
           </div>
         </div>
       </div>

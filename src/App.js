@@ -5,6 +5,7 @@ import Home from './__views__/home/Home.js';
 import SearchResults from './__views__/news/SearchResults';
 import NotFound from './layout/NotFound';
 import Category from './__views__/news/Category';
+import Header from './layout/Header.js';
 import Footer from './layout/Footer';
 import './__styles__/main.scss';
 

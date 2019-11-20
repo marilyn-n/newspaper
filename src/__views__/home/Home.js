@@ -5,7 +5,6 @@ import Briefing from '../Briefing';
 import MainNews from '../news/MainNews.js';
 import Opinion from '../Opinion';
 import Header from '../../layout/Header';
-import MiniNav from '../../layout/MiniNav';
 import { Link } from 'react-router-dom';
 
 class Home extends Component {
@@ -56,7 +55,7 @@ class Home extends Component {
     (
       otherNews.map((item) => {
         return(
-          <Link to="/category:id/new:id" className="article-card anchor" key={item.title}>
+          <a href={item.url} target="_blank" className="article-card anchor" key={item.title}>
             <div className="article-card__header">
               <img src={ item.multimedia[4].url }/>
               <span className="caption">{ item.multimedia[4].copyright }</span>
@@ -77,7 +76,7 @@ class Home extends Component {
                 </span>
               </div>
             </div>
-          </Link>
+          </a>
         )
       })
     ):(null)
@@ -88,7 +87,7 @@ class Home extends Component {
       topEditorsPicks.map(item => {
         return(
           <div key={ item.title }>
-            <Link to={ item.url } className="media-card anchor">
+            <a href={item.url} target="_blank" className="media-card anchor">
               <div className="item pr-3">
                 <div className="media-card__header">
                   <h2 className="media-card__header--title">
@@ -109,7 +108,7 @@ class Home extends Component {
               <div className="item">
                 <img src={ item.multimedia[4].url } alt="media"/>
               </div>
-            </Link>
+            </a>
             <div className="single-light-divider"></div>
           </div>
         )
@@ -124,7 +123,7 @@ class Home extends Component {
             <Link to={'/opinion'} className="opinion-header-title">
               { item.section } >
             </Link>
-            <Link to={ item.url } className="media-card anchor">
+            <a href={item.url} target="_blank" className="media-card anchor">
               <div className="item pr-3">
                 <div className="media-card__header">
                   <h2 className="media-card__header--title">
@@ -145,7 +144,7 @@ class Home extends Component {
               <div className="item">
                 <img src={ item.multimedia[4].url } alt="media"/>
               </div>
-            </Link>
+            </a>
             <div className="single-light-divider"></div>
           </div>
         )
@@ -157,7 +156,7 @@ class Home extends Component {
     (
       homeBottomArticles.map((article) => {        
         return(
-          <Link to={ article.url } className="mini-article-card anchor" key={article.title}>
+          <a href={ article.url } target="_blank" className="mini-article-card anchor" key={article.title}>
             <div className="mini-article-card__header">
               <span className="mini-article-card__header--label">
                 { article.section }
@@ -173,7 +172,7 @@ class Home extends Component {
                 <span>7m ago</span>
               </div>
             </div>
-          </Link>
+          </a>
         )
       })
     ):(null)
@@ -181,7 +180,6 @@ class Home extends Component {
     return(
       <div className="home-wrapper">
         <Header/>
-        <MiniNav/>
         <div className="single-divider mt-0"/>
           <Briefing/>
         <div className="double-divider"/>

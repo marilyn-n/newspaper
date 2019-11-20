@@ -26,10 +26,7 @@ class SearchBar extends Component {
             searchTerm: query
           })
         } else {
-          this.props.history.push({
-            pathname: '/not-found', 
-            searchTerm: query
-          })
+          this.props.history.push('/not-found')
         }
       })
       .catch(err => err)      

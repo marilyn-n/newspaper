@@ -12,7 +12,7 @@ class MainNews extends Component {
       mainNewscolumn.map((item, index) => {
         if(index === 0) {
           return(
-            <Link to={ item.url } className="graphic-card anchor" key={item.title}>
+            <a href={item.url} target="_blank" className="graphic-card anchor" key={item.title}>
               <div className="graphic-card__section pr-3">
                 <div className="graphic-card__header">
                   <span className="graphic-card__header--title">
@@ -35,12 +35,12 @@ class MainNews extends Component {
                   { item.multimedia[4].copyright }
                 </span>
               </div>
-            </Link>
+            </a>
           )
         } else if (index % 3){
           return (
           <div key={item.title}>
-            <Link to={ item.url } className="block-article anchor">
+            <a href={item.url} target="_blank" className="block-article anchor">
               <div className="block-article__header">
                 <h3 className="block-article__header--label-lg">{ item.title }</h3>
               </div>
@@ -57,13 +57,13 @@ class MainNews extends Component {
                   </span>
                 </span>
               </div>
-            </Link>
+            </a>
             <div className="single-divider"></div>
           </div>
           )
         }else {
           return (
-            <Link to={ item.url } className="graphic-card anchor" key={item.title}>
+            <a href={item.url} target="_blank" className="graphic-card anchor" key={item.title}>
               <div className="graphic-card__section pr-3">
                 <div className="graphic-card__header">
                   <span className="graphic-card__header--title">
@@ -86,7 +86,7 @@ class MainNews extends Component {
                   { item.multimedia[4].copyright }
                 </span>
               </div>
-            </Link>
+            </a>
           )
         }
       })

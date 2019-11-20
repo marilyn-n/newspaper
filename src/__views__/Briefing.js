@@ -93,7 +93,7 @@ class Briefing extends Component {
       top3Briefing.map(item => {
         return(
           <div className="briefing__item" key={item.title}>
-            <a className="compact-card anchor">
+            <a href={item.url} target="_blank" className="compact-card anchor">
               <img src={ item.thumbnail_standard } className="compact-card__thumbnail"/>
               <div className="compact-card__text">
                 <span className="compact-card__text--title">{ item.title }</span>

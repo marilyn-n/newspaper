@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
+import MiniNav from '../layout/MiniNav.js';
+import moment from 'moment';
 
 class Header extends Component {
   render() {
-    const date = new Date();
-    const today = (date.toString()).slice(0,16);
-    
     return (
       <div>
         <div className="header-wrapper">
           <div className="header-wrapper--date">
-            <span>{ today }</span>
+            <span>{ moment().format('dddd') }, { moment().format("MMM Do YY") }</span>
           </div>
           <div className="header-wrapper--logo">
-            <span>📰</span>
+            <span role="img" aria-label="emoji-paper">📰</span>
           </div>
           <div className="header-wrapper--label">
             <span>Today’s Paper</span>
           </div>
         </div>
       <div className="single-light-divider mt-3"></div>
+      <MiniNav/>
     </div>
     )
   }
