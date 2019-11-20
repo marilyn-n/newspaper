@@ -4,12 +4,13 @@
   display: flex;
   &--logo {
     font-size: 6rem;
-    align-self: flex-start;
+    align-self: center;
   }
   &--date, &--label {
-    font-size: .875rem;
-    align-self: flex-end;
-    font-weight: 600;
+    font-size: 1rem;
+    align-self: center;
+    font-weight: bolder;
+    font-family: 'nyt-cheltenham';
   }
   
   div {

@@ -17,7 +17,7 @@ class Header extends Component {
             <span>Today’s Paper</span>
           </div>
         </div>
-      <div className="single-light-divider mt-3"></div>
+      <div className="single-light-divider"></div>
       <MiniNav/>
     </div>
     )

@@ -120,9 +120,10 @@ class Home extends Component {
       firstOpinion.map((item) => {
         return(
           <div key={item.title}>
-            <Link to={'/opinion'} className="opinion-header-title">
-              { item.section } >
+            <Link to={'/opinion'} className="label text-dark">
+              { item.section }
             </Link>
+            <div className="border-partial"></div>
             <a href={item.url} target="_blank" className="media-card anchor">
               <div className="item pr-3">
                 <div className="media-card__header">

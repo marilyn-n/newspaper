@@ -16,8 +16,9 @@
     flex-direction: column;
     overflow: hidden;
     &--title {
+      font-family: 'nyt-cheltenham';
       font-size: 1rem;
-      font-weight: 700;
+      font-weight: bolder;
       line-height: 16px;
       margin-bottom: .45rem;
       text-overflow: ellipsis;
@@ -28,7 +29,6 @@
 
     &--paragraph {
       font-size: .875;
-      font-weight: 500;
       line-height: 19px;
       margin-bottom: 0;
       text-overflow: ellipsis;

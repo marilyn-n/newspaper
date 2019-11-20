@@ -10,8 +10,9 @@
     display: flex;
     flex-direction: column;    
     &--title {
+      font-family: 'nyt-cheltenham';
       font-size: 1.25rem;
-      font-weight: 500;
+      font-weight: bolder;
     }
 
     &--paragraph {

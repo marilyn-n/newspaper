@@ -5,8 +5,10 @@
       padding-right: .75rem;
       flex: 1;
       &--label-lg{
+        font-family: 'nyt-cheltenham';
         font-size: 1.25rem;
         margin: 0;
+        font-weight: bolder;
       }
     }
     &__body {
