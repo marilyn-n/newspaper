@@ -29,5 +29,16 @@
       }
     }
   }
+}
 
+@media (max-width: 575.98px) { 
+  .graphic-card {
+  
+    &__section {
+      img {
+        width: 12rem;
+        height: 10rem;
+      }
+    }
+  }
 }

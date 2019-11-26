@@ -53,11 +53,11 @@ class Opinion extends Component {
     ):(null)
     
     return(
-      <div className="opinion-wrapper d-flex">
-        <div className="d-flex flex-column pr-3 border-right">
+      <div className="opinion-wrapper">
+        <div className="opinion-wrapper--list-one">
           { opinionsListOne }
         </div>
-        <div className="d-flex flex-column pl-3">
+        <div className="opinion-wrapper--list-two">
           { opinionsListTwo }
         </div>
       </div>

@@ -10,6 +10,18 @@
     .opinion {
       border-left: 1px solid #cccccc;
       padding-right: 0;
+
+      .opinion-wrapper {
+        display: flex;
+        &--list-one {
+          border-right: 1px solid #cccccc;
+          padding-right: 1rem;
+        }
+        &--list-two {
+          padding-left: 1rem;
+        }
+
+      }
       
       .opinion-header-title {
         font-family: 'nyt-cheltenham';
@@ -97,12 +109,25 @@
     }
   }
 }
-
 @media (max-width: 425px) { 
-  
+
+    .top-home-news {
+      padding: 0;
+    }
+
+    .opinion {
+      border: none !important;
+      padding: 0;
+    }
+
   .briefing {
-    &__forecast{
+    &__forecast, &__item:nth-child(3), &__item:nth-child(2)  {
       display: none;
+    }
+    &__item:first-child {
+      flex-basis: 100%;
+      margin: 0;
+      border: none;
     }
     .fx-rates {
       display: none;
@@ -113,5 +138,29 @@
 @media (width: 768px) {
   .news-wrapper {
     flex-direction: column;
+    .top-home-news {
+      padding: 0 !important;
+    }
+    .opinion {
+      border-left: none !important;
+      padding: 0;
+      .opinion-wrapper {
+        flex-direction: column;
+        &--list-one {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          border-right: none !important;
+        }
+        &--list-two {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          padding: 0 !important;
+        }
+      }
+    }
   }
 }

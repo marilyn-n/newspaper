@@ -54,3 +54,21 @@
     }
     
   }
+  @media (width: 425px) {
+    .media-card {
+      .item:nth-child(2) {
+        img {
+          width:100%
+        }
+      }
+    }
+  }
+
+  @media (width: 768px) {
+    .media-card {
+      max-width: 100%;
+      .item {
+        flex: auto;
+      }
+    }
+  }
