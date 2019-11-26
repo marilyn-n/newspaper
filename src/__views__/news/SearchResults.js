@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import moment from 'moment';
 
 class SearchResults extends Component {
-
+  
     render() {
       const searchTerm = this.props.location.searchTerm
       const hits = this.props.location.results.response.meta.hits;
-
+      
       const searchResults =   this.props.location.results.response.docs
       const resultsList = searchResults.length ? 
       (
@@ -73,7 +73,7 @@ class SearchResults extends Component {
           </div>
             { resultsList }
           </div>
-          <button className="btn btn-dark d-block mx-auto"> Load more </button>
+          {/* <button className="btn btn-dark d-block mx-auto"> Load more </button> */}
         </div>
       );
     }

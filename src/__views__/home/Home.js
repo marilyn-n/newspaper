@@ -57,7 +57,7 @@ class Home extends Component {
         return(
           <a href={item.url} target="_blank" className="article-card anchor" key={item.title}>
             <div className="article-card__header">
-              <img src={ item.multimedia[4].url }/>
+              <img src={ item.multimedia[4].url } alt="multimedia"/>
               <span className="caption">{ item.multimedia[4].copyright }</span>
             </div>
             <div className="article-card__body">

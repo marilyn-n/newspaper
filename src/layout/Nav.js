@@ -35,7 +35,6 @@ class Nav extends Component {
 
   render() { 
     const pathName = this.props.history.location.pathname;
-    console.log(pathName, 'pppp**');
       
     const sections = this.state.sections
     const sectionList = sections.length ?
@@ -60,7 +59,7 @@ class Nav extends Component {
             </button>
             <SearchBar/>
             <Link to={'/'} className={pathName === '/' ? "d-none" : "radius-btn" }>
-              <i class="far fa-newspaper"></i>
+              <i className="far fa-newspaper"></i>
             </Link>
           </div>
         </nav>

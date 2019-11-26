@@ -10,14 +10,17 @@ class SearchBar extends Component {
 
   search = (e) => {
     e.preventDefault();
+    const nytUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?';
     const query = e.target.firstChild.value;
-    const key = 'PBgITfXgkBCpszcYJifHtpDtqoe18dqN';
-    const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${this.concatStr(query)}&fq=headline:("${this.concatStr(query)}")&facet=true&sort=newest&&api-key=${key}`;
+    const sortBy = 'sort=newest';
+    const facet = 'facet=true';
+    const key = 'api-key=PBgITfXgkBCpszcYJifHtpDtqoe18dqN';
+    const url = `${nytUrl}q=${this.concatStr(query)}&fq=headline:("${this.concatStr(query)}")&${this.state.page}&${facet}&${sortBy}&${key}`;
     
     fetch(`${url}`)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        console.log(data, 'DATA');
         
         if(data.response.docs.length) {
           this.props.history.push({
@@ -44,7 +47,6 @@ class SearchBar extends Component {
             />
         </form>
       </div>
-      
     );
   }
 }

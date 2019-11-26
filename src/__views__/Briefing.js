@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CompactCard from '../__ui_components__/CompactCard';
 
 class Briefing extends Component {
   state = {
@@ -94,7 +93,7 @@ class Briefing extends Component {
         return(
           <div className="briefing__item" key={item.title}>
             <a href={item.url} target="_blank" className="compact-card anchor">
-              <img src={ item.thumbnail_standard } className="compact-card__thumbnail"/>
+              <img src={ item.thumbnail_standard } className="compact-card__thumbnail" alt="multimedia"/>
               <div className="compact-card__text">
                 <span className="compact-card__text--title">{ item.title }</span>
                 <span className="compact-card__text--subtitle">{ item.abstract }</span>

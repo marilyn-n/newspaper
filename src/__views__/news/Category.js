@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 class Category extends Component {
   state = {
     articles: []
   }
+  
   componentDidMount() {
     const key = 'PBgITfXgkBCpszcYJifHtpDtqoe18dqN';
     let categoryId = this.props.match.params.category_name;
@@ -13,7 +13,7 @@ class Category extends Component {
       .then(response => response.json())
       .then(data => {
         const hasPhotoAndTitle = data.results
-          .filter(item => item.title && item.multimedia != undefined)
+          .filter(item => item.title && item.multimedia !== undefined)
           .filter(item => item.multimedia.length >= 3)
 
         this.setState({
@@ -110,9 +110,6 @@ class Category extends Component {
           </div>
           <div className="news-list__body">
             { articleList }
-          </div>
-          <div className="text-center">
-          <button className="btn btn-dark d-block mx-auto"> Load more </button>
           </div>
         </div>
       </div>
