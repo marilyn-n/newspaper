@@ -186,7 +186,7 @@ class Home extends Component {
         <div className="double-divider"/>
           <div className="news-wrapper">
 
-            <section className="top-home-news col-8">
+            <section className="top-home-news col-lg-8 col-sm-12">
               <MainNews topHomeNews={this.state.topHomeNews}/>
             </section>
 

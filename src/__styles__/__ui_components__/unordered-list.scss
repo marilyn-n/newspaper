@@ -8,5 +8,10 @@
     font-size: .85rem;
     font-weight: 500;
   }
+}
 
+@media (max-width: 768px) { 
+  .unordered-list li {
+    font-size: .75rem;
+  }
 }

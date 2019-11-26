@@ -48,17 +48,18 @@
   &__item {
     display: flex;
     margin-right: 1rem;
-    border-right: 1px solid #cccccc;  
+    border-right: 1px solid #cccccc;
+    flex: 1;
   }
 
   &__forecast {
     display: flex;
     flex-direction: column;
-    margin-right: 1rem;
+    margin: 0 auto;
     &__temp {
       display: flex;
       &--img {
-        width: 3.12rem;
+        width: 3rem;
       }
       &--location {
         margin-left: .5rem;
@@ -94,5 +95,23 @@
         background-color: rgba(204, 204, 204, 0.30);
       }
     }
+  }
+}
+
+@media (max-width: 425px) { 
+  
+  .briefing {
+    &__forecast{
+      display: none;
+    }
+    .fx-rates {
+      display: none;
+    }
+  }
+}
+
+@media (width: 768px) {
+  .news-wrapper {
+    flex-direction: column;
   }
 }
