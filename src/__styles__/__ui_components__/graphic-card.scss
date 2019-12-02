@@ -1,12 +1,19 @@
 .graphic-card {
-  
   margin-bottom: .65rem;
   display: flex;
   &__section {
     img {
-      width: 29.96rem;
-      height: 17.97rem;
+      width: 100%;
+      height: auto;
     }
+  }
+
+  &__section:first-child {
+    padding-right: 1rem;
+  }
+
+  &__section:nth-child(2) {
+    padding-left: 1rem;
   }
 
   &__header {
@@ -31,14 +38,11 @@
   }
 }
 
-@media (max-width: 575.98px) { 
+@media (max-width: 768px) { 
   .graphic-card {
-  
+    flex-direction: column-reverse;
     &__section {
-      img {
-        width: 12rem;
-        height: 10rem;
-      }
+      padding: 0 !important;
     }
   }
 }

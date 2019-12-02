@@ -1,6 +1,6 @@
 .media-card {
   height: auto;
-  max-width: 25rem;
+  width: 100%;
   padding: 1rem 0;
   display: flex;
   font-family: nyt-cheltenham;
@@ -8,8 +8,8 @@
   .item {
     flex: 1;
     img {
-      width: 10.67rem;
-      height: 10.67rem;
+      width: 100%;
+      height: auto;
     }
   }
 
@@ -69,6 +69,17 @@
       max-width: 100%;
       .item {
         flex: auto;
+      }
+    }
+  }
+
+  @media (max-width: 1149.98px) { 
+    .media-card {
+      flex-direction: column-reverse;
+      &__header {
+        &--title {
+          margin: .3rem 0;
+        }
       }
     }
   }

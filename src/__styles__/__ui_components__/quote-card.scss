@@ -1,11 +1,9 @@
 .quote-card {
-  max-width: 10.68rem;
+  width: 100%;
   padding: .875rem 0;
   border-bottom: 1px solid #ebebeb;
   display: flex;
   flex-direction: column;
-    
-    
     &__quote {
       display: flex;
       justify-content: space-between;
@@ -42,3 +40,4 @@
     border: none !important;
   }
 }
+
