@@ -34,7 +34,7 @@ class Briefing extends Component {
         const USD = Number(item.rates['USD'] ).toFixed(2);
         const GBP = Number(item.rates['GBP'] ).toFixed(2);
         return(
-          <span className="w-100" key={Math.random() * .33 }>
+          <span className="fx-rates" key={Math.random() * .33 }>
             <span className="fx-rates--rate">
               <b>MXN</b>
               <span>
@@ -70,18 +70,18 @@ class Briefing extends Component {
       const src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
       
       return(
-        <div className="briefing__forecast" key={item.id}>
-          <div className="briefing__forecast__temp">
-            <img src={src} className="briefing__forecast__temp--img" alt="forecast"/>
+        <div className="forecast" key={item.id}>
+          <div className="forecast__temp">
+            <img src={src} className="forecast__temp--img" alt="forecast"/>
             <div>
-              <span className="briefing__forecast__temp__measure">{ temperature } °C</span>
+              <span className="forecast__temp__measure">{ temperature } °C</span>
               <div className="d-flex">
-                <span className="briefing__forecast__temp__measure--max">{ maxTemp }°</span>
-                <span className="briefing__forecast__temp__measure--min">{ minTemp }°</span>
+                <span className="forecast__temp__measure--max">{ maxTemp }°</span>
+                <span className="forecast__temp__measure--min">{ minTemp }°</span>
               </div>
             </div>
           </div>
-          <span className="briefing__forecast__temp--location">{ location }</span>
+          <span className="forecast__temp--location">{ location }</span>
         </div>
       )
     })):(null)
@@ -107,10 +107,10 @@ class Briefing extends Component {
     return(
       <section className="briefing">
           { briefingList }
-          <div className="briefing__item fx-rates">
+          <div className="briefing__item">
             { topRates }
           </div>
-          <div className="briefing__item forecast boder-right-none">
+          <div className="briefing__item boder-right-none">
               { forecast }
           </div>
       </section>

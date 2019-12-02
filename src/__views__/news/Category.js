@@ -30,7 +30,7 @@ class Category extends Component {
       articles.map((article, index) => {
         if(index === 0) {
           return(
-            <div>
+            <div key={article.title}>
               <a href={ article.url } target="_blank" className="graphic-card anchor" key={article.title}>
                 <div className="graphic-card__section pr-3">
                   <div className="graphic-card__header">

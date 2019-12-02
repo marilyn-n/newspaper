@@ -15,7 +15,7 @@ class SearchBar extends Component {
     const sortBy = 'sort=newest';
     const facet = 'facet=true';
     const key = 'api-key=PBgITfXgkBCpszcYJifHtpDtqoe18dqN';
-    const url = `${nytUrl}q=${this.concatStr(query)}&fq=headline:("${this.concatStr(query)}")&${this.state.page}&${facet}&${sortBy}&${key}`;
+    const url = `${nytUrl}q=${this.concatStr(query)}&fq=headline:("${this.concatStr(query)}")&${facet}&${sortBy}&${key}`;
     
     fetch(`${url}`)
       .then(response => response.json())
