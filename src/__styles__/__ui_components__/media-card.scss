@@ -20,17 +20,18 @@
         font-size: 1rem;
         font-weight: bolder;
         margin: 0 0 .3rem 0;
+        line-height: 1rem;
       }
     }
   
     &__body {
       &__paragraph {
         font-size: .875rem;
-        line-height: 1.1875rem;
+        line-height: 1rem;
         margin: 0;
         text-overflow: ellipsis;
           display: -webkit-box;
-          -webkit-line-clamp: 5;
+          -webkit-line-clamp: 4;
           -webkit-box-orient: vertical;
           overflow: hidden;
         &--tags {
@@ -50,6 +51,7 @@
         font-weight: 500;
         margin-right: .5rem;
         align-self:center;
+        line-height: 1rem;
       }
     }
     

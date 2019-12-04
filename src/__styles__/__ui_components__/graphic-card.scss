@@ -26,13 +26,13 @@
   &__body {
     &__paragraph {
       font-size: .875rem;
-      &--tags {
-        span {
-          font-size: .75rem;
-          font-weight: 500;
-          color: gray;
-          margin-right: .45rem;
-        }
+    }
+    &--tags {
+      span {
+        font-size: .75rem;
+        font-weight: 500;
+        color: gray;
+        margin-right: .45rem;
       }
     }
   }
@@ -44,5 +44,16 @@
     &__section {
       padding: 0 !important;
     }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) { 
+  .graphic-card__body__paragraph {
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: fit-content;
   }
 }

@@ -10,8 +10,8 @@ const GraphicCard = () => {
             Stand by Trump Because They Like What He Does, Republicans.
           </span>
         </div>
-        <div className="graphic-card__body">
-          <div className="graphic-card__body__paragraph">
+        <span className="graphic-card__body">
+          <span className="graphic-card__body__paragraph">
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem 
             accusantium doloremque laudantium, totam rem aperiam, eaque ip
             sa quae ab illo inventore veritatis et quasi architecto beatae 
@@ -19,12 +19,12 @@ const GraphicCard = () => {
             uptas sit aspernatur aut odit aut fugit, sed quia consequuntur 
             magni dolores eos qui ratione voluptatem sequi nesciunt. Neque 
             porro.
-            <div className="graphic-card__body__paragraph--tags">
-              <span>Top news</span>
-              <span>1 week ago</span>          
-            </div>
+          </span>
+          <div className="graphic-card__body__paragraph--tags">
+            <span>Top news</span>
+            <span>1 week ago</span>          
           </div>
-        </div>
+        </span>
       </div>
       <div className="graphic-card__section pl-3">
         <img src="https://www.wikihow.com/images/6/64/Stop-a-Dog-from-Jumping-Step-6-Version-2.jpg" alt="graphic"/>

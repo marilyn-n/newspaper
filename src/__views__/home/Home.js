@@ -186,11 +186,11 @@ class Home extends Component {
         <div className="double-divider"/>
           <div className="news-wrapper">
 
-            <section className="top-home-news col-lg-8 col-sm-12">
+            <section className="top-home-news col-lg-8 col-md-8 col-xs-12">
               <MainNews topHomeNews={this.state.topHomeNews}/>
             </section>
 
-            <section className="opinion col-lg-4">
+            <section className="opinion col-lg-4 col-md-4">
               { opinionItem }
               <Opinion opinion={ popularOpinionions }/>
               <div className="double-divider"></div>

@@ -21,10 +21,10 @@ class MainNews extends Component {
                 <div className="graphic-card__body">
                   <div className="graphic-card__body__paragraph">
                     { item.abstract }
-                    <div className="graphic-card__body__paragraph--tags">
-                      <span>{ item.section }</span>
-                      <span>{ moment(item.created_date).fromNow() }</span>          
-                    </div>
+                  </div>
+                  <div className="graphic-card__body--tags">
+                    <span>{ item.section }</span>
+                    <span>{ moment(item.created_date).fromNow() }</span>          
                   </div>
                 </div>
               </div>
@@ -72,10 +72,10 @@ class MainNews extends Component {
                 <div className="graphic-card__body">
                   <div className="graphic-card__body__paragraph">
                     { item.abstract }
-                    <div className="graphic-card__body__paragraph--tags">
-                      <span>{ item.section }</span>
-                      <span>{ moment(item.created_date).fromNow() }</span>          
-                    </div>
+                  </div>
+                  <div className="graphic-card__body--tags">
+                    <span>{ item.section }</span>
+                    <span>{ moment(item.created_date).fromNow() }</span>          
                   </div>
                 </div>
               </div>

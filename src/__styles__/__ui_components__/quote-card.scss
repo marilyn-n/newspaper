@@ -14,10 +14,9 @@
       }
       &--title {
         display: block;
-        font-size: 1rem;
+        font-size: .875rem;
         color: gray;
         font-weight: 500;
-        margin-right: .5rem;
         align-self:center;
       }
 
@@ -26,6 +25,7 @@
         font-weight: 600;
         line-height: 1.1875rem;
         margin: 0;
+        padding-right: 2rem;
         font-size: 1rem;
       }
 
