@@ -47,9 +47,9 @@
       .bottom-news {
         width:100%;
         display: flex;
+        padding: 1rem 0;
         flex-wrap: wrap;
         justify-content: space-between;
-        padding: 1rem 0;
       }
     }
   }
@@ -107,13 +107,45 @@
   }
 }
 
+// QUERIES ***************************************
+
+@media (min-width: 320px) and (max-width: 425px) { 
+  .briefing {
+    &__item {
+      border-right: none !important;
+      .fx-rates {
+        display: none;
+      }
+      margin: 0;
+    }
+
+    &__item {
+      border-right: none !important;
+      .forecast  {
+        display: none;
+      }
+      margin: 0;
+    }
+}
+
+}
+
+@media (max-width: 575px) { 
+  .top-home-news {
+    padding: 0;
+  }
+  .briefing {
+    &__item:nth-child(2)  {
+      display: none;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .news-wrapper {
-
     .opinion {
       border-left: none !important;
       padding: 0;
-
       .opinion-wrapper {
         flex-direction: column;
         &--list-one {
@@ -142,15 +174,7 @@
 
 }
 
-@media (max-width: 575px) { 
-  .briefing {
-    &__item:nth-child(2)  {
-      display: none;
-    }
-  }
-}
-
-@media (max-width: 1149.98px) {
+@media (max-width: 1000px) {
   .news-wrapper {
     .opinion {
       .opinion-wrapper {

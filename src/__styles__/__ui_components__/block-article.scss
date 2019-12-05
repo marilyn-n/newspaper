@@ -35,3 +35,9 @@
     }
     
   }
+
+  @media (min-width: 320px) and (max-width: 425px) {
+    .block-article { 
+      flex-direction: column;
+    }
+  }

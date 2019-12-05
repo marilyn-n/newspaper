@@ -157,7 +157,7 @@ class Home extends Component {
     (
       homeBottomArticles.map((article) => {        
         return(
-          <a href={ article.url } target="_blank" className="mini-article-card anchor" key={article.title}>
+          <a href={ article.url } className="mini-article-card anchor" target="_blank" key={article.title}>
             <div className="mini-article-card__header">
               <span className="mini-article-card__header--label">
                 { article.section }

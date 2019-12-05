@@ -9,7 +9,7 @@
       font-weight: bolder;
     }
     img {
-      max-width: 100%;
+      width: 100%;
     }
 
   }
@@ -35,8 +35,8 @@
   }
 }
 
-@media (min-width: 375px) and (max-width: 575.98px) { 
+@media (min-width: 320px) and (max-width: 425px) { 
   .mini-article-card {
-    width: 10rem;
+    flex-basis: calc(50% - 10px);
   }
 }
