@@ -3,7 +3,6 @@
   width: 100%;
   padding: 1rem 0;
   display: flex;
-  font-family: nyt-cheltenham;
    
   .item {
     flex: 1;
@@ -36,7 +35,7 @@
           overflow: hidden;
         &--tags {
           span {
-            font-size: .75rem;
+            font-size: .875rem;
             font-weight: 500;
             font-family: 'Arial';
             color: gray;
@@ -45,6 +44,7 @@
         }
       }
       &--byline {
+        font-family: nyt-cheltenham;
         display: block;
         font-size: 1rem;
         color: gray;

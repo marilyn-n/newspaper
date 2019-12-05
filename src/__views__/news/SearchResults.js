@@ -11,10 +11,11 @@ class SearchResults extends Component {
       const resultsList = searchResults.length ? 
       (
         searchResults.map(item => {
+          console.log(item, '***?')
           if(item.multimedia.length > 3) {
             const srcImg = item.multimedia[3].url;
             return(
-              <a href={item.url} target="_blank" className="article-item anchor" key={item._id}>
+              <a href={item.web_url} target="_blank" className="article-item anchor" key={item._id}>
                 <div className="pr-3 article-item__header">
                   <h2 className="article-item__header--title">
                     { item.headline.main }
