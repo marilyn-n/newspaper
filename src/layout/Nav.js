@@ -64,7 +64,7 @@ class Nav extends Component {
           </div>
         </nav>
       </div>
-      <div className={ showSidebar ? 'sidebar-wrapper' : 'd-none' }  onMouseLeave={this.toggleSidebar}>
+      <div className={ showSidebar ? 'sidebar-wrapper' : 'd-none' } onMouseLeave={this.toggleSidebar}>
         <div className="list-group">
           <ul className="sidebar-list">
             <li className="sidebar-list__item">

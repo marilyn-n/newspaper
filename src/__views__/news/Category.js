@@ -11,14 +11,15 @@ class Category extends Component {
     let categoryId = this.props.match.params.category_name;
     fetch(`https://api.nytimes.com/svc/news/v3/content/nyt/${categoryId}.json/get?api-key=${key}`)
       .then(response => response.json())
-      .then(data => {
-        const hasPhotoAndTitle = data.results
-          .filter(item => item.title && item.multimedia !== undefined)
-          .filter(item => item.multimedia.length >= 3)
+      .then(data => {        
+          const hasPhotoAndTitle = data.results
+            .filter(item => item.title)           
+            .filter(item => item.multimedia != null && item.multimedia.length > 2 )
 
-        this.setState({
-          articles: hasPhotoAndTitle
-        })
+          this.setState({
+            articles: hasPhotoAndTitle
+          })
+        
       })
   }
 

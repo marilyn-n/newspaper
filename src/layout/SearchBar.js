@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter} from 'react-router-dom';
 
 class SearchBar extends Component {
-
   concatStr = (str) => {
     const words = str.split(' ');
     return words.join('+');
