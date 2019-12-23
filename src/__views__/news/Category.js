@@ -17,7 +17,7 @@ class Category extends Component {
             .filter(item => item.multimedia != null && item.multimedia.length > 2 )
 
           this.setState({
-            articles: hasPhotoAndTitle
+            articles: hasPhotoAndTitle || []
           })
         
       })

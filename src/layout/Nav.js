@@ -11,26 +11,33 @@ class Nav extends Component {
 
   componentDidMount(){
     const key = 'PBgITfXgkBCpszcYJifHtpDtqoe18dqN';
-    fetch(`https://api.nytimes.com/svc/news/v3//content/section-list.json?api-key=${key}`)
+    fetch(`https://api.nytimes.com/svc/news/v3/content/section-list.json?api-key=${key}`)
     .then(response => response.json())
     .then(data => {
+      const allSections = data.results
+
+      const excludeSections = ['multimedia/photos', 'video', 'today’s paper', 'reader center', 
+      'crosswords & games','home & garden', 'home page'];
+      
+     const includeSections = allSections.filter(obj => !excludeSections.includes(obj.section))
+
       this.setState({
         ...this,
-        sections: data.results
+        sections: includeSections
        })
+
     })
   }
 
   toggleSidebar = () => {
-    if (this.state.show === false ) {
+     this.state.show === false ?
       this.setState({
         show: true
       })
-    } else {
+    :
       this.setState({
         show: false
       })
-    }
   }
 
   render() { 
@@ -77,7 +84,6 @@ class Nav extends Component {
       </div>
     )
   }
-    
 }
 
 export default withRouter(Nav);
