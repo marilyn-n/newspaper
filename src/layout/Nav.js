@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import { withRouter } from 'react-router-dom';
+import ReactDOM from "react-dom";
+
 
 class Nav extends Component {
   state = {
+    scrolled: false,
     show: false,
     sections: ''
   }
 
-  componentDidMount(){
+  componentDidMount() {
     const key = 'PBgITfXgkBCpszcYJifHtpDtqoe18dqN';
     fetch(`https://api.nytimes.com/svc/news/v3/content/section-list.json?api-key=${key}`)
     .then(response => response.json())
@@ -27,7 +30,26 @@ class Nav extends Component {
        })
 
     })
+
+    window.addEventListener('scroll', () => {
+      let isTop = window.scrollY >= 0;
+      const appWrapper = document.querySelector('.app-wrapper');
+
+      if(isTop !== true ) {
+        this.setState({ scrolled: true })
+      } else {
+        appWrapper.style.paddingTop = '50px';
+        this.setState({ scrolled: true })
+      }
+    })
+
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll');
+  }
+ 
+
 
   toggleSidebar = () => {
      this.state.show === false ?
@@ -39,6 +61,8 @@ class Nav extends Component {
         show: false
       })
   }
+
+
 
   render() { 
     const pathName = this.props.history.location.pathname;
@@ -58,9 +82,9 @@ class Nav extends Component {
     const showSidebar = this.state.show
     return (
       <div>
-      <div className="nav-wrapper">
-        <nav className="navbar navbar-expand">
-          <div className="d-flex w-100">
+      <div className={this.state.scrolled ? 'nav-wrapper scrolled' : 'nav-wrapper' }>
+        <nav>
+          <div className="p-1 d-flex w-100">
             <button className="nav-link btn btn-light mr-2" onClick={this.toggleSidebar}>
               <i className="fas fa-bars text-dark"></i>
             </button>

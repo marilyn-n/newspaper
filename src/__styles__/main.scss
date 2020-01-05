@@ -140,3 +140,10 @@
     font-size: 1.5rem;
   }
 }
+
+.scrolled {
+  width: 100%;
+  position: fixed;
+  background-color: white;
+  z-index: 10;
+}
