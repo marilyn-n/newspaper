@@ -2,36 +2,17 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import { withRouter } from 'react-router-dom';
-import ReactDOM from "react-dom";
 
 
 class Nav extends Component {
   state = {
     scrolled: false,
-    show: false,
-    sections: ''
+    show: false
   }
 
   componentDidMount() {
-    const key = 'PBgITfXgkBCpszcYJifHtpDtqoe18dqN';
-    fetch(`https://api.nytimes.com/svc/news/v3/content/section-list.json?api-key=${key}`)
-    .then(response => response.json())
-    .then(data => {
-      const allSections = data.results
 
-      const excludeSections = ['multimedia/photos', 'video', 'today’s paper', 'reader center', 
-      'crosswords & games','home & garden', 'home page'];
-      
-     const includeSections = allSections.filter(obj => !excludeSections.includes(obj.section))
-
-      this.setState({
-        ...this,
-        sections: includeSections
-       })
-
-    })
-
-    window.addEventListener('scroll', () => {
+    const stickyNav = () => {
       let isTop = window.scrollY >= 0;
       const appWrapper = document.querySelector('.app-wrapper');
 
@@ -41,7 +22,9 @@ class Nav extends Component {
         appWrapper.style.paddingTop = '50px';
         this.setState({ scrolled: true })
       }
-    })
+    }
+
+    window.addEventListener('scroll', stickyNav);
 
   }
 
@@ -49,8 +32,6 @@ class Nav extends Component {
     window.removeEventListener('scroll');
   }
  
-
-
   toggleSidebar = () => {
      this.state.show === false ?
       this.setState({
@@ -62,18 +43,17 @@ class Nav extends Component {
       })
   }
 
-
-
   render() { 
     const pathName = this.props.history.location.pathname;
-      
-    const sections = this.state.sections
+
+    const sections = this.props.sections
+
     const sectionList = sections.length ?
     (
       sections.map(section => {
         return(
           <li className="sidebar-list__item" key={section.section}>
-            <a href={'/' + section.section } className="sidebar-list__item--text">{ section.display_name }</a>
+            <a href={section.section} className="sidebar-list__item--text">{ section.display_name }</a>
           </li>
         )
       })

@@ -9,12 +9,12 @@ class Category extends Component {
   componentDidMount() {
     const key = 'PBgITfXgkBCpszcYJifHtpDtqoe18dqN';
     let categoryId = this.props.match.params.category_name;
+    
     fetch(`https://api.nytimes.com/svc/news/v3/content/nyt/${categoryId}.json/get?api-key=${key}`)
       .then(response => response.json())
       .then(data => {        
           const hasPhotoAndTitle = data.results
-            .filter(item => item.title)           
-            .filter(item => item.multimedia != null && item.multimedia.length > 2 )
+            .filter(item => (item.title) && (item.multimedia != null && item.multimedia.length > 2) )
 
           this.setState({
             articles: hasPhotoAndTitle || []
@@ -25,13 +25,14 @@ class Category extends Component {
 
   render() {
     const sectionName = this.props.match.params.category_name;
+    
     const articles = this.state.articles;  
     const articleList = articles.length ?
     (
       articles.map((article, index) => {
         if(index === 0) {
           return(
-            <div key={article.title}>
+            <div key={Math.random() * 5}>
               <a href={ article.url } target="_blank" className="graphic-card anchor" key={article.title}>
                 <div className="graphic-card__section pr-3">
                   <div className="graphic-card__header">
@@ -44,7 +45,7 @@ class Category extends Component {
                       { article.abstract }
                       <div className="graphic-card__body__paragraph--tags">
                         <span>{ article.section }</span>
-                        <span>{ moment(article.created_date).fromNow() }</span>          
+                        <span className="ml-3">{ moment(article.created_date).fromNow() }</span>          
                       </div>
                     </div>
                   </div>
@@ -62,7 +63,7 @@ class Category extends Component {
         }    
         if(index % 4) {
           return(
-            <a href={article.url} target="_blank" className="article-item anchor" key={article.title}>
+            <a href={article.url} target="_blank" className="article-item anchor" key={Math.random() * 5}>
               <div className="pr-3 article-item__header">
                 <h2 className="article-item__header--title">
                   { article.title }
@@ -82,7 +83,7 @@ class Category extends Component {
           )
         } else if(index % 3) {
           return(
-            <div key={article.title}>
+            <div key={Math.random() * 5}>
             <div className="single-divider"/>
               <a href={article.url} target="_blank" className="block-article anchor">
                 <div className="block-article__header">
@@ -109,7 +110,7 @@ class Category extends Component {
           <div className="news-list__header">
           <h2 className="label text-capitalize">{ sectionName }</h2>
           </div>
-          <div className="news-list__body">
+          <div className="news-list__body" key={Math.random() * 5}>
             { articleList }
           </div>
         </div>

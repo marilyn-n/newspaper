@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 class MiniNav extends Component {
   
   render() {
     const sections = 
       [
-        'world', 'u.s', 'politics', 'business', 'opinion', 'tech', 'science', 'health',
+        'world', 'u.s', 'business', 'opinion', 'technology', 'science', 'health',
         'sports', 'arts', 'books', 'style', 'food', 'travel', 'magazine', 'climate', 'fashion'
       ];
     
@@ -16,7 +15,7 @@ class MiniNav extends Component {
     (
       sections.map(item => {
         return(
-          <li key={Math.random() * .23}><Link to={'/' + item }>{ capitalizeStr(item) }</Link></li>
+          <li key={Math.random() * .23}><a href={'/' + item }>{ capitalizeStr(item) }</a></li>
         )
       })
     ): null
