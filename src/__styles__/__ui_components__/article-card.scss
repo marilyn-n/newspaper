@@ -54,5 +54,11 @@
 @media (min-width: 320px) and (max-width: 425px) {
   .article-card {
     flex-basis: 100%;
+    &__body{
+      &__details {
+        font-size: .75rem;
+      }
+    }
+
   }
 }

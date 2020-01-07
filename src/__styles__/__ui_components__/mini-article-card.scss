@@ -38,5 +38,8 @@
 @media (min-width: 320px) and (max-width: 425px) { 
   .mini-article-card {
     flex-basis: calc(50% - 10px);
+    &__body__paragraph--tags {
+      font-size: .75rem;
+    }
   }
 }
