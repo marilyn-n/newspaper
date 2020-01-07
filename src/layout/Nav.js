@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import { withRouter } from 'react-router-dom';
 
-
 class Nav extends Component {
   state = {
     scrolled: false,
@@ -43,17 +42,19 @@ class Nav extends Component {
       })
   }
 
+  closeMenu = () => {
+    document.querySelector('.sidebar-wrapper').classList.add('d-none');
+  }
+
   render() { 
     const pathName = this.props.history.location.pathname;
-
     const sections = this.props.sections
-
     const sectionList = sections.length ?
     (
       sections.map(section => {
         return(
           <li className="sidebar-list__item" key={section.section}>
-            <a href={section.section} className="sidebar-list__item--text">{ section.display_name }</a>
+            <a href={`/section/${section.section}`} className="sidebar-list__item--text">{ section.display_name }</a>
           </li>
         )
       })
@@ -84,6 +85,10 @@ class Nav extends Component {
             { sectionList }
           </ul>
         </div>
+        {
+          window.innerWidth <= 575.98 ? <i className="fas fa-times" onClick={this.closeMenu}></i> : ''
+        }
+        
       </div>
       </div>
     )

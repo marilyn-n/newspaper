@@ -3,7 +3,6 @@
 }
 
 .sidebar-wrapper {
-  height: 100%;
 	height: 100%;
 	overflow: scroll;
   position: fixed;
@@ -37,3 +36,13 @@
     }
   }
 }
+
+ @media (max-width: 575.98px) { 
+  .sidebar-wrapper {
+    width: 100%;
+    .list-group {
+      width: 100%;
+      text-align: center;
+    }
+  }
+ }

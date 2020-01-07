@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 class MiniNav extends Component {
   
   render() {
@@ -15,7 +15,7 @@ class MiniNav extends Component {
     (
       sections.map(item => {
         return(
-          <li key={Math.random() * .23}><a href={'/' + item }>{ capitalizeStr(item) }</a></li>
+          <li key={Math.random() * .23}><a href={'/section/' + item}>{ capitalizeStr(item) }</a></li>
         )
       })
     ): null

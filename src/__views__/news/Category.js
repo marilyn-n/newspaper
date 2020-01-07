@@ -24,7 +24,7 @@ class Category extends Component {
   }
 
   render() {
-    const sectionName = this.props.match.params.category_name;
+    const sectionTitle = this.props.match.params.category_name;
     
     const articles = this.state.articles;  
     const articleList = articles.length ?
@@ -108,7 +108,7 @@ class Category extends Component {
       <div className="category-wrapper">
         <div className="col-md-8 offset-md-2 news-list">
           <div className="news-list__header">
-          <h2 className="label text-capitalize">{ sectionName }</h2>
+          <h2 className="label text-capitalize">{ sectionTitle }</h2>
           </div>
           <div className="news-list__body" key={Math.random() * 5}>
             { articleList }

@@ -33,3 +33,13 @@
     margin-left:auto;
   }
 }
+
+@media (max-width: 425px) { 
+  .article-item {
+    flex-direction: column;
+    height: auto;
+    img {
+      width: 100%;
+    }
+  }
+}

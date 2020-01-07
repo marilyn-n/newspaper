@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Nav from './layout/Nav';
 import Home from './__views__/home/Home.js';
 import SearchResults from './__views__/news/SearchResults';
@@ -33,18 +33,16 @@ class App extends Component {
   render() {
     return(
       <BrowserRouter>
-      <div>
-      <Nav sections={this.state.sections}/>
+        <Nav sections={this.state.sections}/>
         <div className="app-wrapper container">
           <Switch>
             <Route exact path="/" component={ Home }/>
             <Route path="/search-results" component={ SearchResults }/>
-            <Route path="/not-found" component={ NotFound }/>
-            <Route path="/:category_name" component={ Category }/>
+            <Route path="/section/:category_name" component={ Category }/>
+            <Route component={ NotFound } />
           </Switch>
           <Footer/>
         </div>
-      </div>
       </BrowserRouter>
     )
   }
