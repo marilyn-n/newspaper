@@ -19,3 +19,14 @@
   }
 
 }
+
+@media (max-width: 500px) { 
+  .header-wrapper{
+    &--logo {
+      font-size: 4rem;
+    }
+    &--date, &--label {
+      font-size: .75rem;
+    }
+  } 
+}
