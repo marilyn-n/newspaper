@@ -22,15 +22,15 @@ class MainNews extends Component {
                   <div className="graphic-card__body__paragraph">
                     { item.abstract }
                   </div>
-                  <div className="graphic-card__body--tags">
-                    <span>{ item.section }</span>
-                    <span>{ moment(item.created_date).fromNow() }</span>          
+                  <div>
+                    <span className="tags--topic">{ item.section }</span>
+                    <span className="tags--date">{ moment(item.created_date).fromNow() }</span>          
                   </div>
                 </div>
               </div>
               <div className="graphic-card__section">
                 <img src={ item.multimedia[4].url } alt="graphic"/>
-                <span className="caption">
+                <span className="caption my-1">
                   { item.multimedia[4].copyright }
                 </span>
               </div>
@@ -47,14 +47,14 @@ class MainNews extends Component {
                 <p className="block-article__body--paragraph">
                   { item.abstract }
                 </p>
-                <span className="block-article__body__tags">
-                  <span>
+                <div>
+                  <span className="tags--topic">
                     { item.section}
                   </span>
-                  <span>
+                  <span className="tags--date">
                     { moment(item.created_date).fromNow() }
                   </span>
-                </span>
+                </div>
               </div>
             </a>
             <div className="single-divider"></div>
@@ -73,15 +73,15 @@ class MainNews extends Component {
                   <div className="graphic-card__body__paragraph">
                     { item.abstract }
                   </div>
-                  <div className="graphic-card__body--tags">
-                    <span>{ item.section }</span>
-                    <span>{ moment(item.created_date).fromNow() }</span>          
+                  <div>
+                    <span className="tags--topic">{ item.section }</span>
+                    <span className="tag--date">{ moment(item.created_date).fromNow() }</span>          
                   </div>
                 </div>
               </div>
               <div className="graphic-card__section pl-3">
                 <img src={ item.multimedia[4].url } alt="graphic"/>
-                <span className="caption">
+                <span className="caption my-1">
                   { item.multimedia[4].copyright }
                 </span>
               </div>

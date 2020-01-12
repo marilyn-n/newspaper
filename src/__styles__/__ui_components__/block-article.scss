@@ -5,7 +5,7 @@
       padding-right: .75rem;
       flex: 1;
       &--label-lg{
-        font-family: 'nyt-cheltenham';
+        font-family: serif;
         font-size: 1.25rem;
         margin: 0;
         font-weight: bolder;
@@ -17,20 +17,8 @@
       flex: 2;
       &--paragraph {
         font-size: .875rem;
-        color: #555555;
+        color: #555;
         margin: 0;
-      }
-      &__tags{
-        display: flex;
-        margin-top: .5rem;
-        span {
-          display: block;
-          font-weight: 500;
-          color: gray;
-          font-size: .75rem;
-          margin-right: .45rem;
-        }
-
       }
     }
     

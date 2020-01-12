@@ -16,7 +16,7 @@ class Opinion extends Component {
         return(
           <a href={item.url} target="_blank" className="quote-card anchor" key={item.title}>
             <div className={ item.byline ? "quote-card__quote": "d-none"}>
-                <h2 className="quote-card__quote--title">
+                <h2 className="tags--by">
                   { Author(item.byline) }
                 </h2>
                 <img src={ item.multimedia[4].url } className="quote-card__quote--author" alt="multimedia"/>      
@@ -37,7 +37,7 @@ class Opinion extends Component {
         return(
           <a href={item.url} target="_blank" className="quote-card anchor" key={item.title}>
             <div className={ item.byline ? "quote-card__quote": "d-none"}>
-              <h2 className="quote-card__quote--title">
+              <h2 className="tags--by">
                 { Author(item.byline) }
               </h2>
               <img src={ item.multimedia[0].url } className="quote-card__quote--author" alt="multimedia"/>      

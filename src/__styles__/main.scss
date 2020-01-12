@@ -16,6 +16,7 @@
 @import './layout/header.scss';
 @import './layout/mini-nav.scss';
 @import './layout/not-found.scss';
+@import './layout/search-bar.scss';
 
 // views
 @import './__views__/home.scss';
@@ -76,7 +77,7 @@
 }
 
 .label {
-  font-family: 'nyt-cheltenham';
+  font-family: serif;
   font-size: 1.25rem;
   font-weight: bolder;
   padding: 1rem 0;
@@ -110,7 +111,7 @@
 }
 
 .caption {
-  color: #808080;
+  color: #999;
   font-weight: 500;
   font-size: .65rem;
   text-align: end;
@@ -146,4 +147,15 @@
   position: fixed;
   background-color: white;
   z-index: 10;
+}
+
+.tags {
+  &--topic, &--by {
+    margin-right: .5rem;
+  }
+  &--topic, &--date, &--by {
+    font-size: .75rem;
+    font-weight: 500;
+    color: #999;
+  }
 }

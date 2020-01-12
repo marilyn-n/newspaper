@@ -43,18 +43,20 @@ class Category extends Component {
                   <div className="graphic-card__body">
                     <div className="graphic-card__body__paragraph">
                       { article.abstract }
-                      <div className="graphic-card__body__paragraph--tags">
-                        <span>{ article.section }</span>
-                        <span className="ml-3">{ moment(article.created_date).fromNow() }</span>          
+                      <div>
+                        <span className="tags--topic">{ article.section } </span>
+                        <span className="tags--date">{ moment(article.created_date).fromNow() }</span>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="graphic-card__section pl-3">
-                  <img src={ article.multimedia[2].url } alt="graphic"/>
-                  <span className="caption">
-                    { article.multimedia[2].copyright }
-                  </span>
+                  <img className={!article.multimedia[2].copyright ? 'mb-2' : '' } src={ article.multimedia[2].url } alt="graphic"/>
+                  { 
+                    article.multimedia[2].copyright 
+                    ? <span className="caption my-1"> { article.multimedia[2].copyright } </span> 
+                    : '' 
+                  }
                 </div>
               </a>
               <div className="double-divider"/>
@@ -71,12 +73,13 @@ class Category extends Component {
                 <p className="article-item__header--paragraph"> 
                   { article.abstract }
                 </p>
-                <span className="article-item__header__tags">
-                  { article.byline ? 
-                    <span className="mr-2">{ article.byline }</span> : ''
-                  }
-                  <span>{ moment(article.published_date).fromNow() }</span>
-                </span>
+                { article.byline ? 
+                  <div>
+                      <span className="tags--by">{ article.byline }</span> 
+                    <span className="tags--date">{ moment(article.published_date).fromNow() }</span>
+                  </div>
+                : ''
+                }
               </div>
               <img src={ article.multimedia[2].url } alt="article-img"/>
             </a>
@@ -91,10 +94,10 @@ class Category extends Component {
                 </div>
                 <div className="block-article__body">
                   <p className="block-article__body--paragraph">{ article.abstract }</p>
-                  <span className="block-article__body__tags">
-                    { article.byline ? <span>{ article.byline}</span> : '' }
-                    <span>{ moment(article.published_date).fromNow() }</span>
-                  </span>
+                  <div>
+                    { article.byline ? <span className="tags--by">{ article.byline}</span> : '' }
+                    <span className="tags--date">{ moment(article.published_date).fromNow() }</span>
+                  </div>
                 </div>
               </a>
               <div className="single-divider"/>
@@ -108,7 +111,7 @@ class Category extends Component {
       <div className="category-wrapper">
         <div className="col-md-8 offset-md-2 news-list">
           <div className="news-list__header">
-          <h2 className="label text-capitalize">{ sectionTitle }</h2>
+            <h2 className="label text-capitalize">{ sectionTitle }</h2>
           </div>
           <div className="news-list__body" key={Math.random() * 5}>
             { articleList }

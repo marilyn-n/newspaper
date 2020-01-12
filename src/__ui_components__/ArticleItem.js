@@ -12,11 +12,11 @@ const ArticleItem = () => {
         <p className="article-item__header--paragraph"> 
           LVMH’s splashy ribbon cutting with the president spurs an angry Instagram post — by one of the company’s own stars.
         </p>
-        <span className="article-item__header__tags">
-          <span>
+        <span className="article-item__header">
+          <span className="tag--topic">
             By VANESSA FRIEDMAN
           </span>
-          <span>
+          <span className="tag--date">
             Oct. 21, 2019
           </span>
         </span>

@@ -18,7 +18,7 @@ class Nav extends Component {
       if(isTop !== true ) {
         this.setState({ scrolled: true })
       } else {
-        appWrapper.style.paddingTop = '50px';
+        appWrapper.style.paddingTop = '55px';
         this.setState({ scrolled: true })
       }
     }
@@ -65,7 +65,7 @@ class Nav extends Component {
       <div>
       <div className={this.state.scrolled ? 'nav-wrapper scrolled' : 'nav-wrapper' }>
         <nav>
-          <div className="p-1 d-flex w-100">
+          <div className="py-2 px-3 d-flex w-100">
             <button className="nav-link btn btn-light mr-2" onClick={this.toggleSidebar}>
               <i className="fas fa-bars text-dark"></i>
             </button>

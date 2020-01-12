@@ -2,29 +2,23 @@
   max-width: 47.5rem;
   height: 9.5rem;
   display: flex;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   overflow: hidden;
 
   &__header {
-    width: 30rem;
     display: flex;
     flex-direction: column;    
     &--title {
-      font-family: 'nyt-cheltenham';
+      font-family: serif;
       font-size: 1.25rem;
       font-weight: bolder;
     }
 
     &--paragraph {
+      color: #555;
       font-size: .75rem;
       font-weight: 500;
       margin: 0;
-    }
-    &__tags {
-      span {
-        font-size: .75rem;
-        color: gray;
-      }
     }
   }
   img {
@@ -36,8 +30,12 @@
 
 @media (max-width: 425px) { 
   .article-item {
-    flex-direction: column;
+    flex-direction: column-reverse;
     height: auto;
+    &__header--title {
+      margin-top: .5rem;
+    }
+
     img {
       width: 100%;
     }

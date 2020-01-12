@@ -20,15 +20,15 @@ const GraphicCard = () => {
             magni dolores eos qui ratione voluptatem sequi nesciunt. Neque 
             porro.
           </span>
-          <div className="graphic-card__body__paragraph--tags">
-            <span>Top news</span>
-            <span>1 week ago</span>          
+          <div className="graphic-card__body__paragraph">
+            <span className="tag--topic">Top news</span>
+            <span className="tag--date">1 week ago</span>          
           </div>
         </span>
       </div>
       <div className="graphic-card__section pl-3">
         <img src="https://www.wikihow.com/images/6/64/Stop-a-Dog-from-Jumping-Step-6-Version-2.jpg" alt="graphic"/>
-        <span className="caption">iStock by Getty Images</span>
+        <span className="caption my-1">iStock by Getty Images</span>
       </div>
     </NavLink>
   );

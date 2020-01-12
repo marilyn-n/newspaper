@@ -16,21 +16,9 @@
 
   &__body {
     &--title {
-      font-family: 'nyt-cheltenham';
+      font-family: serif;
       font-size: 1rem;
       font-weight: bolder;
-    }
-
-    &__paragraph {
-      font-size: .875rem;
-      margin: 0;
-      &--tags {
-        span {
-          font-size: .875rem;
-          color: gray;
-          margin-right: .45rem;
-        }
-      }
     }
   }
 }
@@ -38,8 +26,5 @@
 @media (min-width: 320px) and (max-width: 425px) { 
   .mini-article-card {
     flex-basis: calc(50% - 10px);
-    &__body__paragraph--tags {
-      font-size: .75rem;
-    }
   }
 }

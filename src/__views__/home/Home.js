@@ -57,8 +57,12 @@ class Home extends Component {
         return(
           <a href={item.url} target="_blank" className="article-card anchor" key={item.title}>
             <div className="article-card__header">
-              <img src={ item.multimedia[4].url } alt="multimedia"/>
-              <span className="caption">{ item.multimedia[4].copyright }</span>
+              <img className={!item.multimedia[4].copyright ? 'mb-1' : ''} src={ item.multimedia[4].url } alt="multimedia"/>
+              { 
+                item.multimedia[4].copyright ? 
+                <span className="caption my-1">{ item.multimedia[4].copyright }</span> : 
+                ''
+              }
             </div>
             <div className="article-card__body">
               <h2 className="article-card__body--title">
@@ -67,12 +71,12 @@ class Home extends Component {
               <p className="article-card__body--paragraph">
                 { item.abstract }
               </p>
-              <div className="article-card__body__details">
-                <span className="article-card__body__details--date">
-                  { moment(item.created_date).fromNow() }
-                </span>
-                <span className="article-card__body__details--author">
+              <div>
+                <span className="tags--topic">
                   { item.section }
+                </span>
+                <span className="tags--date">
+                  { moment(item.created_date).fromNow() }
                 </span>
               </div>
             </div>
@@ -99,9 +103,9 @@ class Home extends Component {
                     <p className="media-card__body__paragraph">
                       { item.abstract }
                     </p>
-                    <div className="media-card__body__paragraph--tags">
-                      <span>{ item.section }</span>
-                      <span>{ moment(item.created_date).fromNow() } </span>
+                    <div>
+                      <span className="tags--topic">{ item.section }</span>
+                      <span className="tags--date">{ moment(item.created_date).fromNow() } </span>
                     </div>
                 </div>
               </div>
@@ -136,9 +140,9 @@ class Home extends Component {
                     <p className="media-card__body__paragraph">
                       { item.abstract }
                     </p>
-                    <div className="media-card__body__paragraph--tags">
-                      <span>{ item.section }</span>
-                      <span>{ moment(item.created_date).fromNow() }</span>
+                    <div>
+                      <span className="tags--topic">{ item.section }</span>
+                      <span className="tags--date">{ moment(item.created_date).fromNow() }</span>
                     </div>
                 </div>
               </div>
@@ -168,9 +172,9 @@ class Home extends Component {
               <h2 className="mini-article-card__body--title">
                 { article.title }
               </h2>
-              <div className="mini-article-card__body__paragraph--tags">
-                <span>{ article.section }</span>
-                <span>7m ago</span>
+              <div>
+                <span className="tags--topic">{ article.section }</span>
+                <span className="tags--date">7m ago</span>
               </div>
             </div>
           </a>

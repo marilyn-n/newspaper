@@ -15,9 +15,9 @@ const MediaCard = () => {
               Stand by Trump Because They Like What He Does, 
               Republicans.
             </p>
-            <div className="media-card__body__paragraph--tags">
-              <span>Style</span>
-              <span>7m ago</span>
+            <div className="tags">
+              <span className="tag--topic">Style</span>
+              <span className="tag--date">7m ago</span>
             </div>
         </div>
       </div>

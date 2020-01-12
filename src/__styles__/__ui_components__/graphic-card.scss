@@ -18,22 +18,15 @@
 
   &__header {
     &--title {
-      font-family: 'nyt-cheltenham';
+      font-family: serif;
       font-weight: bolder;
     }
   }
 
   &__body {
     &__paragraph {
+      color: #555;
       font-size: .875rem;
-    }
-    &--tags {
-      span {
-        font-size: .875rem;
-        font-weight: 500;
-        color: gray;
-        margin-right: .45rem;
-      }
     }
   }
 }
