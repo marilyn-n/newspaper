@@ -66,7 +66,7 @@ class Category extends Component {
         if(index % 4) {
           return(
             <a href={article.url} target="_blank" className="article-item anchor" key={Math.random() * 5}>
-              <div className="pr-3 article-item__header">
+              <div className="article-item__header">
                 <h2 className="article-item__header--title">
                   { article.title }
                 </h2>

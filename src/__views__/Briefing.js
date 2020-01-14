@@ -34,20 +34,20 @@ class Briefing extends Component {
         const USD = Number(item.rates['USD'] ).toFixed(2);
         const GBP = Number(item.rates['GBP'] ).toFixed(2);
         return(
-          <span className="fx-rates" key={Math.random() * .33 }>
-            <span className="fx-rates--rate">
+          <span className="briefing__fx-rates" key={Math.random() * .33 }>
+            <span className="briefing__fx-rates--rate">
               <b>MXN</b>
               <span>
                 { MXN }
               </span>
             </span>
-            <span className="fx-rates--rate">
+            <span className="briefing__fx-rates--rate">
               <b>USD</b>
               <span>
                 { USD }
               </span>
             </span>
-            <span className="fx-rates--rate">
+            <span className="briefing__fx-rates--rate">
               <b>GBP</b>
               <span>
                 { GBP }
@@ -70,18 +70,18 @@ class Briefing extends Component {
       const src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
       
       return(
-        <div className="forecast" key={item.id}>
-          <div className="forecast__temp">
-            <img src={src} className="forecast__temp--img" alt="forecast"/>
+        <div className="briefing__forecast boder-right-none" key={item.id}>
+          <div className="briefing__forecast__temp">
+            <img src={src} className="briefing__forecast__temp--img" alt="forecast"/>
             <div>
-              <span className="forecast__temp__measure">{ temperature } °C</span>
+              <span className="briefing__forecast__temp__measure">{ temperature } °C</span>
               <div className="d-flex">
-                <span className="forecast__temp__measure--max">{ maxTemp }°</span>
-                <span className="forecast__temp__measure--min">{ minTemp }°</span>
+                <span className="briefing__forecast__temp__measure--max">{ maxTemp }°</span>
+                <span className="briefing__forecast__temp__measure--min">{ minTemp }°</span>
               </div>
             </div>
           </div>
-          <span className="forecast__temp--location">{ location }</span>
+          <span className="briefing__forecast__temp--location">{ location }</span>
         </div>
       )
     })):(null)
@@ -91,7 +91,7 @@ class Briefing extends Component {
     (
       top3Briefing.map(item => {
         return(
-          <div className="briefing__item" key={item.title}>
+          <div className="briefing__briefing-list__item" key={item.title}>
             <a href={item.url} target="_blank" className="compact-card anchor">
               <img src={ item.thumbnail_standard } className="compact-card__thumbnail" alt="multimedia"/>
               <div className="compact-card__text">
@@ -106,13 +106,11 @@ class Briefing extends Component {
 
     return(
       <section className="briefing">
+        <div className="briefing__briefing-list">
           { briefingList }
-          <div className="briefing__item">
-            { topRates }
-          </div>
-          <div className="briefing__item boder-right-none">
-              { forecast }
-          </div>
+        </div>
+          { topRates }
+          { forecast }
       </section>
     );
   }

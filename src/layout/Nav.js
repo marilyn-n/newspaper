@@ -80,7 +80,7 @@ class Nav extends Component {
         <div className="list-group">
           <ul className="sidebar-list">
             <li className="sidebar-list__item">
-              <Link to="/" className="sidebar-list__item--text">Home Page</Link>
+              <a href="/" className="sidebar-list__item--text">Home Page</a>
             </li>
             { sectionList }
           </ul>
