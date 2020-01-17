@@ -125,7 +125,7 @@ class Home extends Component {
         return(
           <div key={item.title}>
             <Link to={'/opinion'} className="label text-dark">
-              { item.section }
+              Opinion
             </Link>
             <div className="border-partial"></div>
             <a href={item.url} target="_blank" className="media-card anchor">

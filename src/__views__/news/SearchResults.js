@@ -11,29 +11,33 @@ class SearchResults extends Component {
       const resultsList = searchResults.length ? 
       (
         searchResults.map(item => {
-          console.log(item, '***?')
           if(item.multimedia.length > 3) {
             const srcImg = item.multimedia[3].url;
             return(
-              <a href={item.web_url} target="_blank" className="article-item anchor" key={item._id}>
-                <div className="pr-3 article-item__header">
-                  <h2 className="article-item__header--title">
-                    { item.headline.main }
-                  </h2>
-                  <p className="article-item__header--paragraph"> 
-                    { item.abstract }
-                  </p>
-                  <span className="article-item__header__tags">
-                    <span>
-                      { item.byline.original }
-                    </span>
-                    <span>
-                      { moment(item.created_date).fromNow() }
-                    </span>
-                  </span>
-                </div>
-                <img src={`https://static01.nyt.com/${srcImg}`} alt="article-img"/>
-              </a>
+              <div>
+                <a href={item.web_url} target="_blank" className="article-item anchor" key={item._id}>
+                  <div className="article-item__header">
+                    <h2 className="article-item__header--title">
+                      { item.headline.main }
+                    </h2>
+                    <p className="article-item__header--paragraph"> 
+                      { item.abstract }
+                    </p>
+                    <div>
+                      { item.byline.original ? 
+                        <span className="tags--by">
+                          { item.byline.original }
+                        </span> : ''
+                      }
+                      <span className="tags--date">
+                        { moment(item.created_date).fromNow() }
+                      </span>
+                    </div>
+                  </div>
+                  <img src={`https://static01.nyt.com/${srcImg}`} alt="article-img"/>
+                </a>
+                <div className="single-divider"></div>
+              </div>
             )
           } else {
             return (
@@ -45,14 +49,14 @@ class SearchResults extends Component {
                   </h3>
                 </div>
                 <div className="block-article__body">
-                  <p className="block-article__body--paragraph ellipsis-3">
+                  <p className="block-article__body--paragraph ellipsis-3 my-2">
                     { item.abstract }
                   </p>
-                  <span className="block-article__body__tags">
-                    <span>
+                  <span className="block-article__body">
+                    <span className="tags--topic">
                       { item.section }
                     </span>
-                    <span>
+                    <span className="tags--date">
                       { moment(item.pub_date).fromNow() }
                     </span>
                   </span>
@@ -67,12 +71,12 @@ class SearchResults extends Component {
       ) : (null)
       
       return (
-        <div className="search-results-wrapper">
-          <div className="col-md-8 offset-md-2">
-          <div className="search-results__header">
-            <span>Showing { hits } results for "{ searchTerm }"</span>
-          </div>
-            { resultsList }
+        <div className="search-results">
+          <div className="search-results__wrapper col-md-8 offset-md-2">
+            <div className="search-results__header">
+              <span>Showing { hits } results for "{ searchTerm }"</span>
+            </div>
+              { resultsList }
           </div>
           {/* <button className="btn btn-dark d-block mx-auto"> Load more </button> */}
         </div>

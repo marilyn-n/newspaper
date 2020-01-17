@@ -11,30 +11,33 @@ class MainNews extends Component {
       mainNewscolumn.map((item, index) => {
         if(index === 0) {
           return(
-            <a href={item.url} target="_blank" className="graphic-card anchor" key={item.title}>
-              <div className="graphic-card__section">
-                <div className="graphic-card__header">
-                  <span className="graphic-card__header--title">
-                    { item.title }
+            <div>
+              <a href={item.url} target="_blank" className="graphic-card anchor" key={item.title}>
+                <div className="graphic-card__section">
+                  <div className="graphic-card__header">
+                    <span className="graphic-card__header--title">
+                      { item.title }
+                    </span>
+                  </div>
+                  <div className="graphic-card__body">
+                    <div className="graphic-card__body__paragraph">
+                      { item.abstract }
+                    </div>
+                    <div>
+                      <span className="tags--topic">{ item.section }</span>
+                      <span className="tags--date">{ moment(item.created_date).fromNow() }</span>          
+                    </div>
+                  </div>
+                </div>
+                <div className="graphic-card__section">
+                  <img src={ item.multimedia[4].url } alt="graphic"/>
+                  <span className="caption my-1">
+                    { item.multimedia[4].copyright }
                   </span>
                 </div>
-                <div className="graphic-card__body">
-                  <div className="graphic-card__body__paragraph">
-                    { item.abstract }
-                  </div>
-                  <div>
-                    <span className="tags--topic">{ item.section }</span>
-                    <span className="tags--date">{ moment(item.created_date).fromNow() }</span>          
-                  </div>
-                </div>
-              </div>
-              <div className="graphic-card__section">
-                <img src={ item.multimedia[4].url } alt="graphic"/>
-                <span className="caption my-1">
-                  { item.multimedia[4].copyright }
-                </span>
-              </div>
-            </a>
+              </a>
+              <div className="double-divider"></div>
+            </div>
           )
         } else if (index % 3){
           return (
@@ -62,30 +65,33 @@ class MainNews extends Component {
           )
         }else {
           return (
-            <a href={item.url} target="_blank" className="graphic-card anchor" key={item.title}>
-              <div className="graphic-card__section pr-3">
-                <div className="graphic-card__header">
-                  <span className="graphic-card__header--title">
-                    { item.title }
+            <div>
+              <a href={item.url} target="_blank" className="graphic-card anchor" key={item.title}>
+                <div className="graphic-card__section pr-3">
+                  <div className="graphic-card__header">
+                    <span className="graphic-card__header--title">
+                      { item.title }
+                    </span>
+                  </div>
+                  <div className="graphic-card__body">
+                    <div className="graphic-card__body__paragraph">
+                      { item.abstract }
+                    </div>
+                    <div>
+                      <span className="tags--topic">{ item.section }</span>
+                      <span className="tags--date">{ moment(item.created_date).fromNow() }</span>          
+                    </div>
+                  </div>
+                </div>
+                <div className="graphic-card__section pl-3">
+                  <img src={ item.multimedia[4].url } alt="graphic"/>
+                  <span className="caption my-1">
+                    { item.multimedia[4].copyright }
                   </span>
                 </div>
-                <div className="graphic-card__body">
-                  <div className="graphic-card__body__paragraph">
-                    { item.abstract }
-                  </div>
-                  <div>
-                    <span className="tags--topic">{ item.section }</span>
-                    <span className="tag--date">{ moment(item.created_date).fromNow() }</span>          
-                  </div>
-                </div>
-              </div>
-              <div className="graphic-card__section pl-3">
-                <img src={ item.multimedia[4].url } alt="graphic"/>
-                <span className="caption my-1">
-                  { item.multimedia[4].copyright }
-                </span>
-              </div>
-            </a>
+              </a>
+              <div className="single-divider"></div>
+            </div>
           )
         }
       })

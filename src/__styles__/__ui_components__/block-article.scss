@@ -27,5 +27,22 @@
   @media (max-width: 425px) {
     .block-article { 
       flex-direction: column;
+      &__header {
+        padding: 0;
+      }
     }
   }
+
+  @media (max-width: 768px) { 
+    .block-article {
+      &__header--label-lg {
+        font-size: 1rem;
+      }
+
+      &__body--paragraph {
+        font-size: .75rem;
+      }
+    }
+    
+  }
+  

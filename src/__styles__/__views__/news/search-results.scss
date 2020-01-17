@@ -1,6 +1,6 @@
-.search-results-wrapper {
-  .search-results {
-    &__header {
+.search-results{
+  .search-results__wrapper {
+    .search-results__header {
       padding: 2rem 0;
       &--title {
         font-size: 2rem;
@@ -9,3 +9,11 @@
     }
   }
 }
+
+@media (max-width: 425px) {
+  .search-results{
+    .search-results__wrapper {
+      padding: 0;
+    }
+  }
+} 

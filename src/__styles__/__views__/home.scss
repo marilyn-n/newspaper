@@ -61,15 +61,18 @@
     display: flex;
     flex: 1;
     &__item {
+      height: 100%;
       flex: 1 1 100%;
       align-self: center;
+      margin-right: .5rem;
     }
   }
 
   &__forecast {
+    height: 4rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-self: center;
     &__temp {
       display: flex;
       &--img {
@@ -100,11 +103,18 @@
 
   &__fx-rates {
     width: 6rem;
-    padding-right: 1rem;
+    height: 4rem;
+    padding-right: .5rem;
     font-size: .75rem;
+    border-right: 1px solid #ebebeb;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+
     &--rate {
       display: flex;
       justify-content: space-between;
+      flex: 1;
       padding: .09rem;
       &:hover{
         background-color: rgba(204, 204, 204, 0.30);
