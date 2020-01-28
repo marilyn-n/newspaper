@@ -19,7 +19,7 @@ class Opinion extends Component {
                 <h2 className="tags--by">
                   { Author(item.byline) }
                 </h2>
-                <img src={ item.multimedia[4].url } className="quote-card__quote--author" alt="multimedia"/>      
+                <img src={ item.multimedia[0].url } className="quote-card__quote--author" alt="multimedia"/>      
             </div>
             <div>
               <p className="quote-card__quote--subtitle">

@@ -1,7 +1,7 @@
 .article-card {
   display: flex;
-  flex-direction: column;
   flex-basis: calc(33.3333333% - 10px);
+  flex-wrap: wrap;
   margin-bottom: 1rem;
 
   &__header {
@@ -39,16 +39,11 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
-    &__details {
-      margin-top: .3rem;
-      color: gray; 
-      display: flex;
-      font-size: .875rem;
-      font-weight: 500;
-      &--date {
-        margin-right: .5rem;
-      }
-    }
+  }
+
+  &__footer {
+    display: flex;
+    align-self: flex-end;
   }
 }
 

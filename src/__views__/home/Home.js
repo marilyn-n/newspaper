@@ -57,10 +57,10 @@ class Home extends Component {
         return(
           <a href={item.url} target="_blank" className="article-card anchor" key={item.title}>
             <div className="article-card__header">
-              <img className={!item.multimedia[4].copyright ? 'mb-1' : ''} src={ item.multimedia[4].url } alt="multimedia"/>
+              <img className={!item.multimedia[0].copyright ? 'mb-1' : ''} src={ item.multimedia[0].url } alt="multimedia"/>
               { 
-                item.multimedia[4].copyright ? 
-                <span className="caption my-1">{ item.multimedia[4].copyright }</span> : 
+                item.multimedia[0].copyright ? 
+                <span className="caption my-1">{ item.multimedia[0].copyright }</span> : 
                 ''
               }
             </div>
@@ -71,14 +71,14 @@ class Home extends Component {
               <p className="article-card__body--paragraph">
                 { item.abstract }
               </p>
-              <div>
-                <span className="tags--topic">
-                  { item.section }
-                </span>
-                <span className="tags--date">
-                  { moment(item.created_date).fromNow() }
-                </span>
-              </div>
+            </div>
+            <div className="article-card__footer">
+              <span className="tags--topic">
+                { item.section }
+              </span>
+              <span className="tags--date">
+                { moment(item.created_date).fromNow() }
+              </span>
             </div>
           </a>
         )
@@ -110,7 +110,7 @@ class Home extends Component {
                 </div>
               </div>
               <div className="item">
-                <img src={ item.multimedia[4].url } alt="media"/>
+                <img src={ item.multimedia[0].url } alt="media"/>
               </div>
             </a>
             <div className="single-light-divider"></div>
@@ -147,7 +147,7 @@ class Home extends Component {
                 </div>
               </div>
               <div className="item">
-                <img src={ item.multimedia[4].url } alt="media"/>
+                <img src={ item.multimedia[0].url } alt="media"/>
               </div>
             </a>
             <div className="single-light-divider"></div>
@@ -166,16 +166,16 @@ class Home extends Component {
               <span className="mini-article-card__header--label">
                 { article.section }
               </span>
-              <img src={article.multimedia[3] ? article.multimedia[3].url: '' } alt="mini-img"/>
+              <img src={article.multimedia[0] ? article.multimedia[0].url: '' } alt="mini-img"/>
             </div>
             <div className="mini-article-card__body">
               <h2 className="mini-article-card__body--title">
                 { article.title }
               </h2>
-              <div>
-                <span className="tags--topic">{ article.section }</span>
-                <span className="tags--date">7m ago</span>
-              </div>
+            </div>
+            <div className="article-card__footer">
+              <span className="tags--topic">{ article.section }</span>
+              <span className="tags--date">7m ago</span>
             </div>
           </a>
         )
