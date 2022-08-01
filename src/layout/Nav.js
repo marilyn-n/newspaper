@@ -1,98 +1,83 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import SearchBar from './SearchBar';
-import { withRouter } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import SearchBar from "./SearchBar";
 
-class Nav extends Component {
-  state = {
-    scrolled: false,
-    show: false
-  }
+export default function Nav(props) {
+  const [scrolled, setScrolled] = useState(false);
+  const [show, setShow] = useState(false);
 
-  componentDidMount() {
+  const stickyNav = () => {
+    let isTop = window.scrollY >= 0;
+    const appWrapper = document.querySelector(".app-wrapper");
 
-    const stickyNav = () => {
-      let isTop = window.scrollY >= 0;
-      const appWrapper = document.querySelector('.app-wrapper');
-
-      if(isTop !== true ) {
-        this.setState({ scrolled: true })
-      } else {
-        appWrapper.style.paddingTop = '55px';
-        this.setState({ scrolled: true })
-      }
+    if (isTop !== true) {
+      setScrolled(false);
+    } else {
+      appWrapper.style.paddingTop = "55px";
+      setScrolled(true);
     }
+  };
 
-    window.addEventListener('scroll', stickyNav);
+  useEffect(() => {
+    window.addEventListener("scroll", stickyNav);
+  }, [scrolled]);
 
-  }
+  const closeMenu = () => {
+    document.querySelector(".sidebar-wrapper").classList.add("d-none");
+  };
 
-  componentWillUnmount() {
-    window.removeEventListener('scroll');
-  }
- 
-  toggleSidebar = () => {
-     this.state.show === false ?
-      this.setState({
-        show: true
-      })
-    :
-      this.setState({
-        show: false
-      })
-  }
+  const sections = props.sections;
 
-  closeMenu = () => {
-    document.querySelector('.sidebar-wrapper').classList.add('d-none');
-  }
-
-  render() { 
-    const pathName = this.props.history.location.pathname;
-    const sections = this.props.sections
-    const sectionList = sections.length ?
-    (
-      sections.map(section => {
-        return(
-          <li className="sidebar-list__item" key={section.section}>
-            <a href={`/section/${section.section}`} className="sidebar-list__item--text">{ section.display_name }</a>
+  const sectionList = sections.length
+    ? sections.map((section) => {
+        return (
+          <li className="sidebar-list__item" key={Math.random * 300}>
+            <a
+              href={`/section/${section}`}
+              className="sidebar-list__item--text"
+            >
+              {section}
+            </a>
           </li>
-        )
+        );
       })
-    ): (null)
+    : null;
 
-    const showSidebar = this.state.show
-    return (
-      <div>
-      <div className={this.state.scrolled ? 'nav-wrapper scrolled' : 'nav-wrapper' }>
+  return (
+    <div>
+      <div className={scrolled ? "nav-wrapper scrolled" : "nav-wrapper"}>
         <nav>
           <div className="py-2 px-3 d-flex w-100">
-            <button className="nav-link btn btn-light mr-2" onClick={this.toggleSidebar}>
+            <button
+              className="nav-link btn btn-light mr-2"
+              onClick={() => setShow(true)}
+            >
               <i className="fas fa-bars text-dark"></i>
             </button>
-            <SearchBar/>
-            <Link to={'/'} className={pathName === '/' ? "d-none" : "radius-btn" }>
+            <SearchBar />
+            <a href="/" className={"radius-btn"}>
               <i className="far fa-newspaper"></i>
-            </Link>
+            </a>
           </div>
         </nav>
       </div>
-      <div className={ showSidebar ? 'sidebar-wrapper' : 'd-none' } onMouseLeave={this.toggleSidebar}>
+      <div
+        className={show ? "sidebar-wrapper" : "d-none"}
+        onMouseLeave={() => setShow(false)}
+      >
         <div className="list-group">
           <ul className="sidebar-list">
             <li className="sidebar-list__item">
-              <a href="/" className="sidebar-list__item--text">Home Page</a>
+              <a href="/" className="sidebar-list__item--text">
+                Home Page
+              </a>
             </li>
-            { sectionList }
+            {sectionList}
           </ul>
         </div>
-        {
-          window.innerWidth <= 575.98 ? <i className="fas fa-times" onClick={this.closeMenu}></i> : ''
-        }
-        
+        {window.innerWidth <= 575.98 ? (
+          <i className="fas fa-times" onClick={() => closeMenu()}></i>
+        ) : null}
       </div>
-      </div>
-    )
-  }
+    </div>
+  );
 }
-
-export default withRouter(Nav);
