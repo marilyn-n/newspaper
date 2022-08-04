@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,55 +14,23 @@ import Footer from "./layout/Footer";
 import "./__styles__/main.scss";
 import { Link } from "react-router-dom";
 
-class App extends Component {
-  state = {
-    sections: [],
-  };
+const App = () => {
+  const [sections, setSections] = useState([]);
 
-  componentDidMount() {
-    const key = "PBgITfXgkBCpszcYJifHtpDtqoe18dqN";
-    fetch(
+  useEffect(async () => {
+    const key = "qXeixuscPMPwQiAGAHHXhoSkt2zDb9O9";
+    const res = await fetch(
       `https://api.nytimes.com/svc/news/v3/content/section-list.json?api-key=${key}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const allSections = data.results;
+    );
+    const response = await res.json();
+    setSections(response.results);
+  }, []);
 
-        const excludeSections = [
-          "multimedia/photos",
-          "video",
-          "today’s paper",
-          "reader center",
-          "crosswords & games",
-          "home & garden",
-          "home page",
-        ];
-        const includeSections = allSections.filter(
-          (obj) => !excludeSections.includes(obj.section)
-        );
-
-        this.setState({
-          sections: includeSections,
-        });
-      });
-  }
-
-  render() {
-    return (
-      <>
-        <Nav
-          sections={[
-            "multimedia/photos",
-            "video",
-            "today’s paper",
-            "reader center",
-            "crosswords & games",
-            "home & garden",
-            "home page",
-          ]}
-        />
-
-        {/* <Router>
+  return (
+    <>
+      <Nav sections={sections} />
+      <Home />
+      {/* <Router>
           <div>
             <div className="app-wrapper container">
               <Routes>
@@ -79,10 +47,9 @@ class App extends Component {
             </div>
           </div>
         </Router> */}
-        <Footer />
-      </>
-    );
-  }
-}
+      <Footer />
+    </>
+  );
+};
 
 export default App;

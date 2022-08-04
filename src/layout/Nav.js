@@ -35,7 +35,7 @@ export default function Nav(props) {
               href={`/section/${section}`}
               className="sidebar-list__item--text"
             >
-              {section}
+              {section.display_name}
             </a>
           </li>
         );
