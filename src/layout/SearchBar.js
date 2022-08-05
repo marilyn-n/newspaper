@@ -11,7 +11,7 @@ const SearchBar = () => {
     console.log(query);
     const sortBy = "sort=newest";
     const facet = "facet=true";
-    const key = "api-key=PBgITfXgkBCpszcYJifHtpDtqoe18dqN";
+    const key = "api-key=qXeixuscPMPwQiAGAHHXhoSkt2zDb9O9";
     const url = `${nytUrl}q=${query}&fq=headline:("${query}")&${facet}&${sortBy}&${key}`;
 
     fetch(`${url}`)
