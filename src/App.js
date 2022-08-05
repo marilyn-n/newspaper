@@ -1,10 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Nav from "./layout/Nav";
 import Home from "./__views__/home/Home.js";
 import SearchResults from "./__views__/news/SearchResults";
@@ -28,26 +24,15 @@ const App = () => {
 
   return (
     <>
-      <Nav sections={sections} />
-      <Home />
-      {/* <Router>
-          <div>
-            <div className="app-wrapper container">
-              <Routes>
-                <Route path="/section/:category_name">
-                  <Category />
-                </Route>
-                <Route path="/search-results">
-                  <SearchResults />
-                </Route>
-                <Route path="/">
-                  <Home />
-                </Route>
-              </Routes>
-            </div>
-          </div>
-        </Router> */}
-      <Footer />
+      <BrowserRouter>
+        <Nav sections={sections} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/section/:id" element={<Category />} />
+          <Route path="/search-results" element={<SearchResults />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </>
   );
 };

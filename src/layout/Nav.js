@@ -1,38 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 
 export default function Nav(props) {
   const [scrolled, setScrolled] = useState(false);
   const [show, setShow] = useState(false);
 
-  const stickyNav = () => {
-    let isTop = window.scrollY >= 0;
-    const appWrapper = document.querySelector(".app-wrapper");
-
-    if (isTop !== true) {
-      setScrolled(false);
-    } else {
-      appWrapper.style.paddingTop = "55px";
-      setScrolled(true);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", stickyNav);
-  }, [scrolled]);
-
   const closeMenu = () => {
-    document.querySelector(".sidebar-wrapper").classList.add("d-none");
+    setShow(false);
   };
 
   const sections = props.sections;
-
+  console.log(sections);
   const sectionList = sections.length
     ? sections.map((section) => {
         return (
-          <li className="sidebar-list__item" key={Math.random * 300}>
+          <li
+            className="sidebar-list__item"
+            key={section.display_name + Math.random * 300}
+          >
             <a
-              href={`/section/${section}`}
+              href={`/section/${section.section}`}
               className="sidebar-list__item--text"
             >
               {section.display_name}
@@ -43,7 +30,7 @@ export default function Nav(props) {
     : null;
 
   return (
-    <div>
+    <>
       <div className={scrolled ? "nav-wrapper scrolled" : "nav-wrapper"}>
         <nav>
           <div className="py-2 px-3 d-flex w-100">
@@ -78,6 +65,6 @@ export default function Nav(props) {
           <i className="fas fa-times" onClick={() => closeMenu()}></i>
         ) : null}
       </div>
-    </div>
+    </>
   );
 }

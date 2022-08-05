@@ -25,13 +25,10 @@ const Briefing = () => {
       console.log(error);
     }
 
-    const myHeaders = new Headers();
-    myHeaders.append("apikey", "q4S1EHOSKijVZoeRrtSUS8ILn1eoKfLw");
-
     const requestOptions = {
       method: "GET",
       redirect: "follow",
-      headers: myHeaders,
+      headers: { apikey: "q4S1EHOSKijVZoeRrtSUS8ILn1eoKfLw" },
     };
 
     const response = fetch(
@@ -42,7 +39,6 @@ const Briefing = () => {
       .then((data) => setRates(data));
   }, []);
 
-  console.log(rates);
   const topRates = rates.rates ? (
     <span className="briefing__fx-rates" key={Math.random() * 0.33}>
       <span className="briefing__fx-rates--rate">
@@ -91,11 +87,14 @@ const Briefing = () => {
         return (
           <div className="briefing__briefing-list__item" key={item.title}>
             <a href={item.url} target="_blank" className="compact-card anchor">
-              <img
-                src={item.thumbnail_standard}
-                className="compact-card__thumbnail"
-                alt="multimedia"
-              />
+              {item.thumbnail_standard ? (
+                <img
+                  src={item.thumbnail_standard}
+                  className="compact-card__thumbnail"
+                  alt="multimedia"
+                />
+              ) : null}
+
               <div className="compact-card__text">
                 <span className="compact-card__text--title">{item.title}</span>
                 <span className="compact-card__text--subtitle">
