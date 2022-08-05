@@ -43,7 +43,7 @@ const Briefing = () => {
   }, []);
 
   console.log(rates);
-  const topRates = rates ? (
+  const topRates = rates.rates ? (
     <span className="briefing__fx-rates" key={Math.random() * 0.33}>
       <span className="briefing__fx-rates--rate">
         <b>MXN</b>
