@@ -198,7 +198,7 @@ const Home = () => {
     <div className="home-wrapper">
       <Header />
       <div className="single-divider mt-0" />
-      {/* <Briefing /> */}
+      <Briefing />
       <div className="double-divider" />
       <div className="news-wrapper">
         <section className="top-home-news col-lg-8 col-md-8 col-xs-12">

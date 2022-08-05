@@ -1,19 +1,18 @@
 .nav-wrapper {
-  box-shadow: rgba(0,0,0,0.08) 0 0 5px 1px;
   border-bottom: 1px solid #e2e2e2;
 }
 
 .sidebar-wrapper {
-	height: 100%;
-	overflow: scroll;
+  height: 100%;
+  overflow: scroll;
   position: fixed;
-  top:0;
+  top: 0;
   z-index: 10;
   box-shadow: 0 8px 13px -6px #00000085;
   background-color: white;
-  padding: .75rem;
+  padding: 0.75rem;
   display: flex;
-  
+
   .sidebar-list {
     min-width: 12.5rem;
     list-style: none;
@@ -25,13 +24,14 @@
     &__item {
       display: flex;
       &--text {
-        padding: .5rem;
+        padding: 0.5rem;
         flex-basis: 100%;
         font-weight: bolder;
         color: black;
         text-decoration: none;
-        font-size: .875rem;
-      }:hover {
+        font-size: 0.875rem;
+      }
+      :hover {
         background-color: rgba(77, 188, 241, 0.1);
       }
     }
@@ -45,18 +45,17 @@
   z-index: 10;
 }
 
- @media (max-width: 575.98px) { 
+@media (max-width: 575.98px) {
   .sidebar-wrapper {
     width: 100%;
-
 
     .sidebar-list__item--text {
       padding: 1.5rem 0;
     }
-    
+
     .list-group {
       width: 100%;
       text-align: center;
     }
   }
- }
+}

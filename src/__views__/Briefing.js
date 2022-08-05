@@ -1,72 +1,90 @@
 import React, { useState, useEffect } from "react";
 
 const Briefing = () => {
-  const [weather, setWeather] = useState([]);
-  const [rates, setRates] = useState([]);
+  const [weather, setWeather] = useState({});
+  const [rates, setRates] = useState({});
   const [briefing, setBriefing] = useState([]);
 
-  const topRates = rates.length
-    ? rates.map((item) => {
-        const MXN = Number(item.rates["MXN"]).toFixed(2);
-        const USD = Number(item.rates["USD"]).toFixed(2);
-        const GBP = Number(item.rates["GBP"]).toFixed(2);
-        return (
-          <span className="briefing__fx-rates" key={Math.random() * 0.33}>
-            <span className="briefing__fx-rates--rate">
-              <b>MXN</b>
-              <span>{MXN}</span>
-            </span>
-            <span className="briefing__fx-rates--rate">
-              <b>USD</b>
-              <span>{USD}</span>
-            </span>
-            <span className="briefing__fx-rates--rate">
-              <b>GBP</b>
-              <span>{GBP}</span>
-            </span>
+  console.log(weather);
+
+  useEffect(() => {
+    try {
+      const key = "qXeixuscPMPwQiAGAHHXhoSkt2zDb9O9";
+      const urls = [
+        "https://api.openweathermap.org/data/2.5/weather?q=Mexico&units=metric&APPID=8e468cee5f97361ef43dbce5d6159f29",
+        `https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=${key}`,
+      ];
+
+      const promises = urls.map((url) => fetch(url).then((res) => res.json()));
+      Promise.all(promises).then((data) => {
+        console.log(data);
+        setWeather(data[0]);
+        setBriefing(data[1].results);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
+    const myHeaders = new Headers();
+    myHeaders.append("apikey", "q4S1EHOSKijVZoeRrtSUS8ILn1eoKfLw");
+
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
+      headers: myHeaders,
+    };
+
+    const response = fetch(
+      `https://api.apilayer.com/exchangerates_data/latest?symbols=MXN,CAD,GBP&base=USD`,
+      requestOptions
+    )
+      .then((res) => res.json())
+      .then((data) => setRates(data));
+  }, []);
+
+  console.log(rates);
+  const topRates = rates ? (
+    <span className="briefing__fx-rates" key={Math.random() * 0.33}>
+      <span className="briefing__fx-rates--rate">
+        <b>MXN</b>
+        <span>{rates.rates["MXN"].toFixed(2)}</span>
+      </span>
+      <span className="briefing__fx-rates--rate">
+        <b>CAD</b>
+        <span>{rates.rates["CAD"].toFixed(2)}</span>
+      </span>
+      <span className="briefing__fx-rates--rate">
+        <b>GBP</b>
+        <span>{rates.rates["GBP"].toFixed(2)}</span>
+      </span>
+    </span>
+  ) : null;
+
+  const forecast = weather.name ? (
+    <div className="briefing__forecast boder-right-none">
+      <div className="briefing__forecast__temp">
+        <img
+          src={`http://openweathermap.org/img/wn/10d@2x.png`}
+          className="briefing__forecast__temp--img"
+          alt="forecast"
+        />
+        <div>
+          <span className="briefing__forecast__temp__measure">
+            {Math.round(weather.main.temp)}
           </span>
-        );
-      })
-    : null;
-
-  const forecast = weather.length
-    ? weather.map((item) => {
-        const location = item.name;
-        const temperature = Math.round(item.main.temp);
-        const maxTemp = Math.round(item.main.temp_max);
-        const minTemp = Math.round(item.main.temp_min);
-        const icon = item.weather[0].icon;
-        const src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-
-        return (
-          <div className="briefing__forecast boder-right-none" key={item.id}>
-            <div className="briefing__forecast__temp">
-              <img
-                src={src}
-                className="briefing__forecast__temp--img"
-                alt="forecast"
-              />
-              <div>
-                <span className="briefing__forecast__temp__measure">
-                  {temperature} °C
-                </span>
-                <div className="d-flex">
-                  <span className="briefing__forecast__temp__measure--max">
-                    {maxTemp}°
-                  </span>
-                  <span className="briefing__forecast__temp__measure--min">
-                    {minTemp}°
-                  </span>
-                </div>
-              </div>
-            </div>
-            <span className="briefing__forecast__temp--location">
-              {location}
+          <div className="d-flex">
+            <span className="briefing__forecast__temp__measure--max">
+              {Math.round(weather.main.temp_max)}
+            </span>
+            <span className="briefing__forecast__temp__measure--min">
+              {Math.round(weather.main.temp_min)}
             </span>
           </div>
-        );
-      })
-    : null;
+        </div>
+      </div>
+      <span className="briefing__forecast__temp--location">{weather.name}</span>
+    </div>
+  ) : null;
 
   const top3Briefing = briefing.length
     ? briefing.slice(0, 3).map((item) => {
@@ -89,35 +107,6 @@ const Briefing = () => {
         );
       })
     : null;
-
-  useEffect(() => {
-    try {
-      const key = "PBgITfXgkBCpszcYJifHtpDtqoe18dqN";
-      Promise.all([
-        fetch(
-          "https://api.openweathermap.org/data/2.5/weather?q=Toronto&units=metric&APPID=8e468cee5f97361ef43dbce5d6159f29"
-        ),
-        fetch(
-          `https://api.exchangeratesapi.io/latest?symbols=USD,GBP,MXN&base=CAD`
-        ),
-        fetch(
-          `https://api.nytimes.com/svc/news/v3/content/nyt/briefing.json/get?api-key=${key}`
-        ),
-      ])
-        .then((responses) =>
-          Promise.all(responses.map((response) => response.json()))
-        )
-        .then((data) => {
-          console.log(data);
-          console.log("ko");
-          setWeather([data[0]]);
-          setRates([data[1]]);
-          setBriefing(data[2].results);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
 
   return (
     <section className="briefing">
