@@ -1,24 +1,16 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  useSearchParams,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 
 const Category = (props) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { id } = useParams();
   const [articles, setArticles] = useState([]);
-
-  console.log([...searchParams]);
 
   useEffect(() => {
     const key = "qXeixuscPMPwQiAGAHHXhoSkt2zDb9O9";
-    let categoryId = props.sections;
 
     fetch(
-      `https://api.nytimes.com/svc/news/v3/content/nyt/business.json?api-key=${key}`
+      `https://api.nytimes.com/svc/news/v3/content/nyt/${id}.json?api-key=${key}`
     )
       .then((response) => response.json())
       .then((data) => {
