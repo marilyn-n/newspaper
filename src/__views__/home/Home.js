@@ -13,43 +13,45 @@ const Home = () => {
   const [opinion, setOpinion] = useState([]);
 
   useEffect(() => {
-    const key = "qXeixuscPMPwQiAGAHHXhoSkt2zDb9O9";
+    const key = process.env.REACT_APP_NYT_API_KEY
     const urls = [
-      `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${key}`,
-      `https://api.nytimes.com/svc/topstories/v2/opinion.json?api-key=${key}`,
+      `${process.env.REACT_APP_NYT_URL}/svc/topstories/v2/home.json?api-key=${key}`,
+      `${process.env.REACT_APP_NYT_URL}/svc/topstories/v2/opinion.json?api-key=${key}`,
     ];
     const promises = urls.map((url) => fetch(url).then((res) => res.json()));
     Promise.all(promises).then((data) => {
-      console.log(data);
-      const articleResults = data[1].results;
 
-      const opinionArticlesWithMedia = articleResults.filter(
-        (item) => item.multimedia
-      );
+      if(!data[0].fault && !data[1].fault) {
+        const articleResults = data[1].results;
 
-      const articlesWithMedia = data[0].results.filter(
-        (item) => item.multimedia
-      );
-
-      setHome(articlesWithMedia);
-      setTopHomeNews(
-        articlesWithMedia.slice(0, opinionArticlesWithMedia.length / 2)
-      );
-      setBottomHomeNews(
-        articlesWithMedia.slice(
-          opinionArticlesWithMedia.length / 2,
-          articlesWithMedia.length
-        )
-      );
-      setOpinion(opinionArticlesWithMedia);
+        const opinionArticlesWithMedia = articleResults.length > 0 ? articleResults.filter(
+          (item) => item.multimedia
+        ): [];
+  
+        const articlesWithMedia = data[0]?.results.filter(
+          (item) => item.multimedia
+        );
+  
+        setHome(articlesWithMedia);
+        setTopHomeNews(
+          articlesWithMedia.slice(0, opinionArticlesWithMedia.length / 2)
+        );
+        setBottomHomeNews(
+          articlesWithMedia.slice(
+            opinionArticlesWithMedia.length / 2,
+            articlesWithMedia.length
+          )
+        );
+        setOpinion(opinionArticlesWithMedia);
+      } else {
+        console.log('Error with service in Home page');
+      }
     });
   }, []);
 
   const firstOpinion = opinion.slice(0, 1);
   const popularOpinionions = opinion.slice(1, opinion.length);
-
   const otherNews = topHomeNews.slice(11, 14);
-  console.log(topHomeNews);
 
   const blockOtherNews = otherNews.length
     ? otherNews.map((item) => {
@@ -94,7 +96,7 @@ const Home = () => {
     topHomeNews.length
   );
 
-  const editorsPicks = topEditorsPicks.length
+  const editorsPicks = topEditorsPicks.length > 0
     ? topEditorsPicks.map((item) => {
         return (
           <div key={item.title}>
@@ -126,7 +128,7 @@ const Home = () => {
       })
     : null;
 
-  const opinionItem = opinion.length
+  const opinionItem = opinion.length > 0
     ? firstOpinion.map((item) => {
         return (
           <div key={item.title}>
@@ -162,7 +164,7 @@ const Home = () => {
       })
     : null;
 
-  const bottomNews = bottomHomeNews.length
+  const bottomNews = bottomHomeNews.length > 0
     ? bottomHomeNews.map((article) => {
         return (
           <a
@@ -202,7 +204,7 @@ const Home = () => {
       <div className="double-divider" />
       <div className="news-wrapper">
         <section className="top-home-news col-lg-8 col-md-8 col-xs-12">
-          <MainNews topHomeNews={topHomeNews} />
+          <MainNews news={topHomeNews} />
         </section>
 
         <section className="opinion col-lg-4 col-md-4">

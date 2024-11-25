@@ -1,11 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import moment from 'moment';
 
-class MainNews extends Component {
-  render() {
-    
-    const topHomeNews = this.props.topHomeNews;
-    const mainNewscolumn = topHomeNews.slice(0, Math.floor(topHomeNews.length / 2));    
+const MainNews = ({ news }) => {
+    const mainNewscolumn = news.slice(0, Math.floor(news.length / 2));    
     const mainColumnList = mainNewscolumn.length ?
     (
       mainNewscolumn.map((item, index) => {
@@ -97,12 +94,11 @@ class MainNews extends Component {
       })
     ):null
 
-    return(
-      <div className="main-column">
-        { mainColumnList }
-      </div>
-    )
-  }
+  return (
+    <div className="main-column">
+      { mainColumnList }
+    </div>
+  )
 }
 
 export default MainNews;

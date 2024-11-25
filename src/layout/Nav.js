@@ -10,8 +10,7 @@ export default function Nav(props) {
   };
 
   const sections = props.sections;
-  console.log(sections);
-  const sectionList = sections.length
+  const sectionList = sections?.length > 0
     ? sections.map((section) => {
         return (
           <li

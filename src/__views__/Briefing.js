@@ -5,21 +5,18 @@ const Briefing = () => {
   const [rates, setRates] = useState({});
   const [briefing, setBriefing] = useState([]);
 
-  console.log(weather);
-
   useEffect(() => {
     try {
-      const key = "qXeixuscPMPwQiAGAHHXhoSkt2zDb9O9";
+      const key = process.env.REACT_APP_NYT_API_KEY
       const urls = [
         "https://api.openweathermap.org/data/2.5/weather?q=Mexico&units=metric&APPID=8e468cee5f97361ef43dbce5d6159f29",
-        `https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=${key}`,
+        `${process.env.REACT_APP_NYT_URL}/svc/news/v3/content/all/all.json?api-key=${key}`,
       ];
 
       const promises = urls.map((url) => fetch(url).then((res) => res.json()));
       Promise.all(promises).then((data) => {
-        console.log(data);
         setWeather(data[0]);
-        setBriefing(data[1].results);
+        setBriefing([]);
       });
     } catch (error) {
       console.log(error);
@@ -82,7 +79,7 @@ const Briefing = () => {
     </div>
   ) : null;
 
-  const top3Briefing = briefing.length
+  const top3Briefing = briefing.length > 0
     ? briefing.slice(0, 3).map((item) => {
         return (
           <div className="briefing__briefing-list__item" key={item.title}>

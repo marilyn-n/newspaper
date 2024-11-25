@@ -2,21 +2,24 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 
-const Category = (props) => {
+const Category = () => {
   const { id } = useParams();
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    const key = "qXeixuscPMPwQiAGAHHXhoSkt2zDb9O9";
+    const key = process.env.REACT_APP_NYT_API_KEY
 
     fetch(
-      `https://api.nytimes.com/svc/news/v3/content/nyt/${id}.json?api-key=${key}`
+      `${process.env.REACT_APP_NYT_URL}/svc/news/v3/content/nyt/${id}.json?api-key=${key}`
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.results);
 
-        setArticles(data.results.filter((item) => item.multimedia != null));
+        if(data.results) {
+          setArticles(data.results.filter((item) => item.multimedia != null));
+        } else {
+          console.log('Error - something went wrong fetching the Category service');
+        }
       });
   }, []);
 
