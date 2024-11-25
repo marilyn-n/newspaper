@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/marilyn-n/newspaper/static/css/main.ea61783b.css",
+    "main.js": "/marilyn-n/newspaper/static/js/main.81ea33a9.js",
+    "index.html": "/marilyn-n/newspaper/index.html",
+    "main.ea61783b.css.map": "/marilyn-n/newspaper/static/css/main.ea61783b.css.map",
+    "main.81ea33a9.js.map": "/marilyn-n/newspaper/static/js/main.81ea33a9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ea61783b.css",
+    "static/js/main.81ea33a9.js"
+  ]
+}
