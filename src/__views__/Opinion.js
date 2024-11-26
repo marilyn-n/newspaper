@@ -1,20 +1,19 @@
 import React from 'react';
-import { Author } from '../Helpers.js';
+import { author } from '../Helpers.js';
 
-const Opinion = ({ opinion }) => {
-  const opinions = opinion;
-  const topTenOpinions = opinions.slice(0, 11);
+const Opinion = ({ featuredOpinions }) => {
+  const topTenOpinions = featuredOpinions.slice(0, 11);
   const opinionsColOne = topTenOpinions.slice(0, topTenOpinions.length/ 2);
   const opinionsColTwo = topTenOpinions.slice(Math.floor(topTenOpinions.length/ 2), topTenOpinions.length)
   
-  const opinionsListOne = opinions.length ? 
+  const opinionsListOne = featuredOpinions.length > 0 ? 
   (
     opinionsColOne.map((item) => {
       return(
         <a href={item.url} target="_blank" className="quote-card anchor" key={item.title}>
           <div className={ item.byline ? "quote-card__quote": "d-none"}>
               <h2 className="tags--by">
-                { Author(item.byline) }
+                { author(item.byline) }
               </h2>
               <img src={ item.multimedia[0].url } className="quote-card__quote--author" alt="multimedia"/>      
           </div>
@@ -35,7 +34,7 @@ const Opinion = ({ opinion }) => {
         <a href={item.url} target="_blank" className="quote-card anchor" key={item.title}>
           <div className={ item.byline ? "quote-card__quote": "d-none"}>
             <h2 className="tags--by">
-              { Author(item.byline) }
+              { author(item.byline) }
             </h2>
             <img src={ item.multimedia[0].url } className="quote-card__quote--author" alt="multimedia"/>      
           </div>

@@ -7,10 +7,9 @@ const Briefing = () => {
 
   useEffect(() => {
     try {
-      const key = process.env.REACT_APP_NYT_API_KEY
       const urls = [
-        "https://api.openweathermap.org/data/2.5/weather?q=Mexico&units=metric&APPID=8e468cee5f97361ef43dbce5d6159f29",
-        `${process.env.REACT_APP_NYT_URL}/svc/news/v3/content/all/all.json?api-key=${key}`,
+        `${process.env.REACT_APP_WEATHER_API_URL}/data/2.5/weather?q=Mexico&units=metric&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`,
+        `${process.env.REACT_APP_NYT_URL}/svc/news/v3/content/all/all.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`,
       ];
 
       const promises = urls.map((url) => fetch(url).then((res) => res.json()));

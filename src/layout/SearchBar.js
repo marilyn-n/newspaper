@@ -20,11 +20,6 @@ const SearchBar = (props) => {
         setResults(data.response.docs[0]);
         if (data.response.docs.length) {
           navigate('/search-results');
-          // navigate({
-          //   pathname: "/search-results",
-          //   results: data,
-          //   searchTerm: query,
-          // });
         } else {
           navigate("/not-found");
         }

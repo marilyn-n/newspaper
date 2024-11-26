@@ -1,31 +1,31 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import moment from "moment";
+import { NavLink } from "react-router-dom";
 
-const MiniArticleCard = () => {
+const MiniArticleCard = ({ card }) => {
   return (
-    <div>
-      <span className="mini-article-card__header--label">
-        Politics
-      </span>
-      <NavLink to="/category:id/new:id" className="mini-article-card anchor">
-        <div className="mini-article-card__header">
-          <img src="https://www.gannett-cdn.com/-mm-/d45a1bc902cb3f4367b332e27f859c7252d4b7fa/c=0-109-2119-1306/local/-/media/2017/03/02/USATODAY/USATODAY/636240538720039138-GettyImages-509934328.jpg?width=3200&height=1680&fit=crop" alt="mini-img"/>
-        </div>
-        <div className="mini-article-card__body">
-          <h2 className="mini-article-card__body--title">
-            You Know Someone Who’s Had a Miscarriage
-          </h2>
-          <p className="mini-article-card__body__paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-          </p>
-        </div>
-        <div className="">
-          <span>Style</span>
-          <span>7m ago</span>
-        </div>
-      </NavLink>
-    </div>
+    <NavLink
+      to="/category:id/new:id"
+      className="mini-article-card anchor"
+      target="_blank"
+      key={card.title}
+    >
+      <div className="mini-article-card__header">
+        <span className="mini-article-card__header--label">{card.section}</span>
+        <img
+          src={card.multimedia[0] ? card.multimedia[0].url : ""}
+          alt="mini-img"
+        />
+      </div>
+      <div className="mini-article-card__body">
+        <h2 className="mini-article-card__body--title">{card.title}</h2>
+      </div>
+      <div className="article-card__footer">
+        <span className="tags--topic">{card.section}</span>
+        <span className="tags--date">{moment(card.updated_date).fromNow()}</span>
+      </div>
+    </NavLink>
   );
-}
+};
 
 export default MiniArticleCard;

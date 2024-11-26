@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const Category = () => {
+const Category = ( ) => {
+  
   const { id } = useParams();
   const [articles, setArticles] = useState([]);
 
@@ -23,7 +24,7 @@ const Category = () => {
       });
   }, []);
 
-  const articleList = articles.length
+  const articleList = articles.length > 0
     ? articles.map((article, index) => {
         if (index === 0) {
           return (
@@ -96,7 +97,7 @@ const Category = () => {
                   ""
                 )}
               </div>
-              <img src={article.multimedia[2].url} alt="article-img" />
+              <img src={article.multimedia[2]?.url} alt="article-img" />
             </a>
           );
         } else if (index % 3) {
@@ -140,7 +141,7 @@ const Category = () => {
     <div className="category-wrapper">
       <div className="col-md-8 offset-md-2 news-list">
         <div className="news-list__header">
-          <h2 className="label text-capitalize">headline</h2>
+          <h2 className="label text-capitalize">{ id.toLocaleLowerCase()}</h2>
         </div>
         <div className="news-list__body" key={Math.random() * 5}>
           {articleList}
