@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { author, strToUpperCase } from "../../Helpers.js";
-import moment from "moment";
 import Briefing from "../Briefing";
 import MainNews from "../news/MainNews.js";
 import Opinion from "../Opinion";
@@ -66,45 +64,15 @@ const Home = () => {
   const editorsPicks =
     topEditorsPicks.length > 0
       ? topEditorsPicks.map((item) => {
-          return (
-            <div key={item.title}>
-              <a href={item.url} target="_blank" className="media-card anchor">
-                <div className="item pr-3">
-                  <div className="media-card__header">
-                    <h2 className="media-card__header--title">{item.title}</h2>
-                  </div>
-                  <div className="media-card__body">
-                    <span className="media-card__body--byline">
-                      {strToUpperCase(author(item.byline))}
-                    </span>
-                    <p className="media-card__body__paragraph">
-                      {item.abstract}
-                    </p>
-                    <div>
-                      <span className="tags--topic">{item.section}</span>
-                      <span className="tags--date">
-                        {moment(item.created_date).fromNow()}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="item">
-                  <img src={item.multimedia[0].url} alt="media" />
-                </div>
-              </a>
-              <div className="single-light-divider"></div>
-            </div>
-          );
+          return <MediaCard details={item} />;
         })
       : null;
 
   const opinionItem = (
     <div>
-      <span class="label">Opinion</span>
-      <div class="border-partial"></div>
-      {firstOpinion[0] ? (
-        <MediaCard details={firstOpinion[0]} redirectTo="/opinion" />
-      ) : null}
+      <span className="label">Opinion</span>
+      <div className="border-partial"></div>
+      {firstOpinion[0] ? <MediaCard details={firstOpinion[0]} /> : null}
     </div>
   );
 
@@ -125,7 +93,6 @@ const Home = () => {
         <section className="top-home-news col-lg-8 col-md-8 col-xs-12">
           <MainNews news={content.primaryNews} />
         </section>
-
         <section className="opinion col-lg-4 col-md-4">
           {opinionItem}
           <Opinion featuredOpinions={featuredOpinions} />

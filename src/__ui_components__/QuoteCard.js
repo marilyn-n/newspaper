@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const QuoteCard = () => {
   return (
-    <Link to="/category:id/new:id" className="quote-card anchor">
+    <Link to={} className="quote-card anchor">
       <div className="quote-card__quote">
           <h2 className="quote-card__quote--title">Michelle Goldberg</h2>
           <img src="https://www.hd-wallpapersdownload.com/script/bulk-upload/lion-running-images.jpg" className="quote-card__quote--author"/>      

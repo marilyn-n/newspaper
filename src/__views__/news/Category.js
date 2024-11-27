@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { useParams } from "react-router-dom";
+import ArticleItem from "../../__ui_components__/ArticleItem";
 
 const Category = ( ) => {
   
@@ -75,30 +76,7 @@ const Category = ( ) => {
         }
         if (index % 4) {
           return (
-            <a
-              href={article.url}
-              target="_blank"
-              className="article-item anchor"
-              key={Math.random() * 5}
-            >
-              <div className="article-item__header">
-                <h2 className="article-item__header--title">{article.title}</h2>
-                <p className="article-item__header--paragraph">
-                  {article.abstract}
-                </p>
-                {article.byline ? (
-                  <div>
-                    <span className="tags--by">{article.byline}</span>
-                    <span className="tags--date">
-                      {moment(article.published_date).fromNow()}
-                    </span>
-                  </div>
-                ) : (
-                  ""
-                )}
-              </div>
-              <img src={article.multimedia[2]?.url} alt="article-img" />
-            </a>
+            <ArticleItem data={article} />
           );
         } else if (index % 3) {
           return (

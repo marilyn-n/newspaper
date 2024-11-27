@@ -1,9 +1,9 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const GraphicCard = () => {
   return (
-    <NavLink to="/category:id/new:id" className="graphic-card anchor">
+    <Link to={} className="graphic-card anchor">
       <div className="graphic-card__section pr-3">
         <div className="graphic-card__header">
           <span className="graphic-card__header--title">
@@ -30,7 +30,7 @@ const GraphicCard = () => {
         <img src="https://www.wikihow.com/images/6/64/Stop-a-Dog-from-Jumping-Step-6-Version-2.jpg" alt="graphic"/>
         <span className="caption my-1">iStock by Getty Images</span>
       </div>
-    </NavLink>
+    </Link>
   );
 }
 

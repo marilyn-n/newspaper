@@ -1,10 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ArticleCard = ({ card }) => {
+  
   return (
-    <NavLink
-      to="/category:id/new:id"
+    <Link
+      to={card.url}
       target="_blank"
       className="article-card anchor"
       key={card.title}
@@ -31,7 +32,7 @@ const ArticleCard = ({ card }) => {
           {moment(card.created_date).fromNow()}
         </span>
       </div>
-    </NavLink>
+    </Link>
   );
 };
 

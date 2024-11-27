@@ -1,11 +1,11 @@
 import React from "react";
 import moment from "moment";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const MiniArticleCard = ({ card }) => {
   return (
-    <NavLink
-      to="/category:id/new:id"
+    <Link
+      to={card.url}
       className="mini-article-card anchor"
       target="_blank"
       key={card.title}
@@ -24,7 +24,7 @@ const MiniArticleCard = ({ card }) => {
         <span className="tags--topic">{card.section}</span>
         <span className="tags--date">{moment(card.updated_date).fromNow()}</span>
       </div>
-    </NavLink>
+    </Link>
   );
 };
 

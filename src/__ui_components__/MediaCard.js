@@ -1,13 +1,13 @@
 import React from "react";
 import moment from "moment";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { strToUpperCase, author } from "../Helpers";
 
-const MediaCard = ({ details, redirectTo }) => {
+const MediaCard = ({ details }) => {
   return (
     <>
-      <NavLink
-        to={redirectTo ? redirectTo : "/category:id/new:id"}
+      <Link
+        to={details.url}
         className="media-card anchor"
       >
         <div className="item pr-3">
@@ -34,7 +34,7 @@ const MediaCard = ({ details, redirectTo }) => {
         <div className="item">
           <img src={details.multimedia[0].url} alt="media" />
         </div>
-      </NavLink>
+      </Link>
     </>
   );
 };
