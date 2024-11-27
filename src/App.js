@@ -27,7 +27,7 @@ const App = () => {
     <Router>
       <Nav sections={sections} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/newspaper" element={<Home />} />
         <Route path="/section/:id" element={<Category />} />
         <Route path="/search-results" element={<SearchResults />} />
         <Route path="*" element={<NotFound />} />
