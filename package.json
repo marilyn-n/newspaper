@@ -1,7 +1,7 @@
 {
   "name": "newspaper",
   "version": "1.0.0",
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "description": "",
   "main": "index.js",
   "dependencies": {
     "moment": "^2.30.1",
@@ -35,5 +35,5 @@
     "gh-pages": "^6.2.0",
     "sass": "^1.81.0"
   },
-  "homepage": "https://marilyn-n.github.io/"
+  "homepage": "https://marilyn-n.github.io/newspaper"
 }
