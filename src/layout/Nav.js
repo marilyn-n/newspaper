@@ -40,7 +40,7 @@ export default function Nav(props) {
               <i className="fas fa-bars text-dark"></i>
             </button>
             <SearchBar />
-            <a href="/" className={"radius-btn"}>
+            <a href="/newspaper" className={"radius-btn"}>
               <i className="far fa-newspaper"></i>
             </a>
           </div>
@@ -53,7 +53,7 @@ export default function Nav(props) {
         <div className="list-group">
           <ul className="sidebar-list">
             <li className="sidebar-list__item">
-              <a href="/" className="sidebar-list__item--text">
+              <a href="/newspaper" className="sidebar-list__item--text">
                 Home Page
               </a>
             </li>
