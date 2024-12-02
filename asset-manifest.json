@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/newspaper/static/css/main.75965c65.css",
-    "main.js": "/newspaper/static/js/main.32cca375.js",
+    "main.css": "/newspaper/static/css/main.9608c25a.css",
+    "main.js": "/newspaper/static/js/main.8e10aeca.js",
+    "static/media/nyt-placeholder.png": "/newspaper/static/media/nyt-placeholder.2f54335078c58e21faff.png",
     "index.html": "/newspaper/index.html",
-    "main.75965c65.css.map": "/newspaper/static/css/main.75965c65.css.map",
-    "main.32cca375.js.map": "/newspaper/static/js/main.32cca375.js.map"
+    "main.9608c25a.css.map": "/newspaper/static/css/main.9608c25a.css.map",
+    "main.8e10aeca.js.map": "/newspaper/static/js/main.8e10aeca.js.map"
   },
   "entrypoints": [
-    "static/css/main.75965c65.css",
-    "static/js/main.32cca375.js"
+    "static/css/main.9608c25a.css",
+    "static/js/main.8e10aeca.js"
   ]
 }
