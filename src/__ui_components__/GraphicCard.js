@@ -1,37 +1,30 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import moment from "moment";
 
-const GraphicCard = () => {
+const GraphicCard = ({ card }) => {
   return (
-    <Link to={} className="graphic-card anchor">
-      <div className="graphic-card__section pr-3">
+    <Link to={card.uri} className="graphic-card anchor">
+      <div className="graphic-card__section">
         <div className="graphic-card__header">
-          <span className="graphic-card__header--title">
-            Stand by Trump Because They Like What He Does, Republicans.
-          </span>
+          <span className="graphic-card__header--title">{card.title}</span>
         </div>
-        <span className="graphic-card__body">
-          <span className="graphic-card__body__paragraph">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem 
-            accusantium doloremque laudantium, totam rem aperiam, eaque ip
-            sa quae ab illo inventore veritatis et quasi architecto beatae 
-            vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia vol
-            uptas sit aspernatur aut odit aut fugit, sed quia consequuntur 
-            magni dolores eos qui ratione voluptatem sequi nesciunt. Neque 
-            porro.
-          </span>
-          <div className="graphic-card__body__paragraph">
-            <span className="tag--topic">Top news</span>
-            <span className="tag--date">1 week ago</span>          
+        <div className="graphic-card__body">
+          <div className="graphic-card__body__paragraph">{card.abstract}</div>
+          <div>
+            <span className="tags--topic">{card.section}</span>
+            <span className="tags--date">
+              {moment(card.created_date).fromNow()}
+            </span>
           </div>
-        </span>
+        </div>
       </div>
-      <div className="graphic-card__section pl-3">
-        <img src="https://www.wikihow.com/images/6/64/Stop-a-Dog-from-Jumping-Step-6-Version-2.jpg" alt="graphic"/>
-        <span className="caption my-1">iStock by Getty Images</span>
+      <div className="graphic-card__section">
+        <img src={card.multimedia[0].url} alt="graphic" />
+        <span className="caption my-1">{card.multimedia[0].copyright}</span>
       </div>
     </Link>
   );
-}
+};
 
 export default GraphicCard;

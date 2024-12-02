@@ -4,10 +4,8 @@ import BlockArticle from "../../__ui_components__/BlockArticle";
 import { useSearchParams } from "react-router-dom";
 
 const SearchResults = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState(
-    searchParams.get("query") || ""
-  );
+  const [searchParams] = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get("query") || "");
   const [searchResults, setSearchResults] = useState({
     theTotalResults: 0,
     theNewsResults: [],
@@ -18,16 +16,18 @@ const SearchResults = () => {
     const sortBy = "sort=newest";
     const facet = "facet=true";
     const key = `api-key=${process.env.REACT_APP_NYT_API_KEY}`;
-    const url = `${nytUrl}q=${searchQuery}&fq=headline:${searchQuery}&${facet}&${sortBy}&${key}`;
+    const url = `${nytUrl}q=${query}&fq=headline:${query}&${facet}&${sortBy}&${key}`;
 
     fetch(`${url}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.status === "OK") {
-          setSearchResults({
+          console.log(data.response.docs);
+          setSearchResults((prevResults) => ({
+            ...prevResults,
             theTotalResults: data.response.meta.hits,
             theNewsResults: data.response.docs,
-          });
+          }));
         } else {
           console.log("Error: search service error");
         }
@@ -35,11 +35,14 @@ const SearchResults = () => {
       .catch((err) => err);
   };
 
-  console.log(searchResults);
+  useEffect(() => {
+    const query = searchParams.get("query") || "";
+    setQuery(query);
+  }, [searchParams]);
 
   useEffect(() => {
     search();
-  }, [searchParams, searchQuery]);
+  }, [searchParams, query]);
 
   const renderResults = searchResults.theNewsResults.map((item, index) => {
     return item.multimedia.length > 0 && index % 3 === 0 ? (
@@ -61,7 +64,7 @@ const SearchResults = () => {
         <div className="search-results__header">
           <span>
             Showing {searchResults.theNewsResults.length} of{" "}
-            {searchResults.theTotalResults} results for {searchQuery}
+            {searchResults.theTotalResults} results for {query}
           </span>
         </div>
         {renderResults}

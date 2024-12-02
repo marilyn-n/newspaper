@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import ArticleItem from "../../__ui_components__/ArticleItem";
+import GraphicCard from "../../__ui_components__/GraphicCard";
+import BlockArticle from "../../__ui_components__/BlockArticle";
 
 const Category = ( ) => {
-  
-  const { id } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [id, setId] = useState(searchParams.get("id") || "")
   const [articles, setArticles] = useState([]);
-
+  
   useEffect(() => {
     const key = process.env.REACT_APP_NYT_API_KEY
 
@@ -16,6 +18,7 @@ const Category = ( ) => {
     )
       .then((response) => response.json())
       .then((data) => {
+      console.log(data);
 
         if(data.results) {
           setArticles(data.results.filter((item) => item.multimedia != null));
@@ -30,46 +33,7 @@ const Category = ( ) => {
         if (index === 0) {
           return (
             <div key={article.slug_name}>
-              <a
-                href={article.uri}
-                target="_blank"
-                className="graphic-card anchor"
-                key={article.title}
-              >
-                <div className="graphic-card__section pr-3">
-                  <div className="graphic-card__header">
-                    <span className="graphic-card__header--title">
-                      {article.title}
-                    </span>
-                  </div>
-                  <div className="graphic-card__body">
-                    <div className="graphic-card__body__paragraph">
-                      {article.abstract}
-                      <div>
-                        <span className="tags--topic">{article.section} </span>
-                        <span className="tags--date">
-                          {moment(article.created_date).fromNow()}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="graphic-card__section pl-3">
-                  <img
-                    className={!article.multimedia[2].copyright ? "mb-2" : ""}
-                    src={article.multimedia[2].url}
-                    alt="graphic"
-                  />
-                  {article.multimedia[2].copyright ? (
-                    <span className="caption my-1">
-                      {" "}
-                      {article.multimedia[2].copyright}{" "}
-                    </span>
-                  ) : (
-                    ""
-                  )}
-                </div>
-              </a>
+              <GraphicCard card={article}/>
               <div className="double-divider" />
             </div>
           );
@@ -82,32 +46,7 @@ const Category = ( ) => {
           return (
             <div key={Math.random() * 5}>
               <div className="single-divider" />
-              <a
-                href={article.url}
-                target="_blank"
-                className="block-article anchor"
-              >
-                <div className="block-article__header">
-                  <h3 className="block-article__header--label-lg">
-                    {article.title}
-                  </h3>
-                </div>
-                <div className="block-article__body">
-                  <p className="block-article__body--paragraph">
-                    {article.abstract}
-                  </p>
-                  <div>
-                    {article.byline ? (
-                      <span className="tags--by">{article.byline}</span>
-                    ) : (
-                      ""
-                    )}
-                    <span className="tags--date">
-                      {moment(article.published_date).fromNow()}
-                    </span>
-                  </div>
-                </div>
-              </a>
+              <BlockArticle data={article}/>
               <div className="single-divider" />
             </div>
           );

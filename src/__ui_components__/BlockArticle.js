@@ -7,7 +7,7 @@ const BlockArticle = ({ data }) => {
     <Link to={data.web_url} className="block-article anchor">
       <div className="block-article__header">
         <h3 className="block-article__header--label-lg ellipsis-3">
-          {data.headline.main}
+          {data.headline?.main}
         </h3>
       </div>
       <div className="block-article__body">

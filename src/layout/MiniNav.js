@@ -27,7 +27,7 @@ const MiniNav = () => {
     ? sections.map((item) => {
         return (
           <li key={item}>
-            <a href={"/section/" + item}>{capitalizeStr(item)}</a>
+            <a href={"/section?id=" + item}>{capitalizeStr(item)}</a>
           </li>
         );
       })

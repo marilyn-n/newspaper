@@ -18,7 +18,7 @@ export default function Nav(props) {
             key={section.display_name + Math.random * 300}
           >
             <a
-              href={`/section/${section.section}`}
+              href={`/section?id=${section.section}`}
               className="sidebar-list__item--text"
             >
               {section.display_name}
