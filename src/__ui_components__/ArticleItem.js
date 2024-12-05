@@ -6,7 +6,7 @@ import img from "../assets/nyt-placeholder.png"
 const ArticleItem = ({ data }) => {
  let IMG_URL = img
 
- if(data.multimedia[0]?.url.includes('.png') ) {
+ if(data.multimedia[0]?.url.includes('.png')  || data.multimedia[0]?.url.includes('.jpg')) {
   IMG_URL = `${process.env.REACT_APP_NYT_IMG_PREFIX}/${data.multimedia[0].url}`
  } 
 

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import moment from "moment";
 import { useSearchParams } from "react-router-dom";
 import ArticleItem from "../../__ui_components__/ArticleItem";
 import GraphicCard from "../../__ui_components__/GraphicCard";

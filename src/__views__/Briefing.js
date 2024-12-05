@@ -3,6 +3,7 @@ import CompactCard from "../__ui_components__/CompactCard";
 
 const Briefing = () => {
   const [weather, setWeather] = useState({});
+  const [rates, setRates] = useState({});
   const [briefing, setBriefing] = useState([]);
 
   useEffect(() => {
@@ -14,18 +15,45 @@ const Briefing = () => {
 
       const promises = urls.map((url) => fetch(url).then((res) => res.json()));
       Promise.all(promises).then((data) => {
-        if(data) {
+        if(data && data[0] && data[1] && data[1].results) {
           setWeather(data[0]);
-          if(data[1] && data[1].results) {
-            setBriefing([...data[1].results].slice(0,3));
-          }
+          setBriefing([...data[1].results].slice(0,3));
         }
-        
       });
     } catch (error) {
       console.log(error);
     }
+
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
+      headers: { apikey: "q4S1EHOSKijVZoeRrtSUS8ILn1eoKfLw" },
+    };
+
+    const response = fetch(
+      `https://api.apilayer.com/exchangerates_data/latest?symbols=MXN,CAD,GBP&base=USD`,
+      requestOptions
+    )
+      .then((res) => res.json())
+      .then((data) => setRates(data));
   }, []);
+
+  const topRates = rates.rates ? (
+    <span className="briefing__fx-rates" key={Math.random() * 0.33}>
+      <span className="briefing__fx-rates--rate">
+        <b>MXN</b>
+        <span>{rates.rates["MXN"].toFixed(2)}</span>
+      </span>
+      <span className="briefing__fx-rates--rate">
+        <b>CAD</b>
+        <span>{rates.rates["CAD"].toFixed(2)}</span>
+      </span>
+      <span className="briefing__fx-rates--rate">
+        <b>GBP</b>
+        <span>{rates.rates["GBP"].toFixed(2)}</span>
+      </span>
+    </span>
+  ) : null;
 
   const forecast = weather.name ? (
     <div className="briefing__forecast boder-right-none">
@@ -66,6 +94,7 @@ const Briefing = () => {
   return (
     <section className="briefing">
       <div className="briefing__briefing-list">{top3Briefing}</div>
+      {topRates}
       {forecast}
     </section>
   );
