@@ -13,7 +13,7 @@ const Home = () => {
     secondaryNews: [],
     opinion: [],
   });
-
+  
   useEffect(() => {
     const urls = [
       `${process.env.REACT_APP_NYT_URL}/svc/topstories/v2/home.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`,
@@ -23,24 +23,23 @@ const Home = () => {
     Promise.all(promises).then((data) => {
       if (data[0].status === "OK" && data[1].status === "OK") {
         const allNews = data;
-        const opinionArticlesWithMedia = allNews[1].results.filter(
+        const opinionNews = allNews[1].results.filter(
           (item) => item.multimedia
         );
-        const articlesWithMedia = allNews[0].results.filter(
+        const newsAssortment = allNews[0].results.filter(
           (item) => item.multimedia
         );
-
         setContent({
           ...content,
-          primaryNews: articlesWithMedia.slice(
+          primaryNews: newsAssortment.slice(
             0,
-            opinionArticlesWithMedia.length / 2
+            newsAssortment.length / 2
           ),
-          secondaryNews: articlesWithMedia.slice(
-            opinionArticlesWithMedia.length / 2,
-            articlesWithMedia.length
+          secondaryNews: newsAssortment.slice(
+            newsAssortment.length / 2,
+            newsAssortment.length
           ),
-          opinion: opinionArticlesWithMedia,
+          opinion: opinionNews,
         });
       } else {
         console.log("Error with service in Home page");

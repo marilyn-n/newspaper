@@ -1,16 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const CompactCard = () => {
+const CompactCard = ({ card }) => {
   return (
-    <Link to={} className="compact-card anchor">
-      <img src="https://picsum.photos/55" className="compact-card__thumbnail"/>
+    <Link to={card.url} className="compact-card anchor">
+      {card.thumbnail_standard ? (
+        <img
+          src={card.thumbnail_standard}
+          className="compact-card__thumbnail"
+          alt="multimedia"
+        />
+      ) : null}
+
       <div className="compact-card__text">
-        <span className="compact-card__text--title">Title</span>
-        <span className="compact-card__text--subtitle">Subtitle lorem ipsum dolor</span>
+        <span className="compact-card__text--title">{card.title}</span>
+        <span className="compact-card__text--subtitle">{card.abstract}</span>
       </div>
     </Link>
   );
-}
+};
 
 export default CompactCard;

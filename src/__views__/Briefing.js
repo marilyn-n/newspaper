@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import CompactCard from "../__ui_components__/CompactCard";
 
 const Briefing = () => {
   const [weather, setWeather] = useState({});
-  const [rates, setRates] = useState({});
   const [briefing, setBriefing] = useState([]);
 
   useEffect(() => {
@@ -14,43 +14,18 @@ const Briefing = () => {
 
       const promises = urls.map((url) => fetch(url).then((res) => res.json()));
       Promise.all(promises).then((data) => {
-        setWeather(data[0]);
-        setBriefing([]);
+        if(data) {
+          setWeather(data[0]);
+          if(data[1] && data[1].results) {
+            setBriefing([...data[1].results].slice(0,3));
+          }
+        }
+        
       });
     } catch (error) {
       console.log(error);
     }
-
-    const requestOptions = {
-      method: "GET",
-      redirect: "follow",
-      headers: { apikey: "q4S1EHOSKijVZoeRrtSUS8ILn1eoKfLw" },
-    };
-
-    const response = fetch(
-      `https://api.apilayer.com/exchangerates_data/latest?symbols=MXN,CAD,GBP&base=USD`,
-      requestOptions
-    )
-      .then((res) => res.json())
-      .then((data) => setRates(data));
   }, []);
-
-  const topRates = rates.rates ? (
-    <span className="briefing__fx-rates" key={Math.random() * 0.33}>
-      <span className="briefing__fx-rates--rate">
-        <b>MXN</b>
-        <span>{rates.rates["MXN"].toFixed(2)}</span>
-      </span>
-      <span className="briefing__fx-rates--rate">
-        <b>CAD</b>
-        <span>{rates.rates["CAD"].toFixed(2)}</span>
-      </span>
-      <span className="briefing__fx-rates--rate">
-        <b>GBP</b>
-        <span>{rates.rates["GBP"].toFixed(2)}</span>
-      </span>
-    </span>
-  ) : null;
 
   const forecast = weather.name ? (
     <div className="briefing__forecast boder-right-none">
@@ -79,25 +54,10 @@ const Briefing = () => {
   ) : null;
 
   const top3Briefing = briefing.length > 0
-    ? briefing.slice(0, 3).map((item) => {
+    ? briefing.map((item) => {
         return (
           <div className="briefing__briefing-list__item" key={item.title}>
-            <a href={item.url} target="_blank" className="compact-card anchor">
-              {item.thumbnail_standard ? (
-                <img
-                  src={item.thumbnail_standard}
-                  className="compact-card__thumbnail"
-                  alt="multimedia"
-                />
-              ) : null}
-
-              <div className="compact-card__text">
-                <span className="compact-card__text--title">{item.title}</span>
-                <span className="compact-card__text--subtitle">
-                  {item.abstract}
-                </span>
-              </div>
-            </a>
+            <CompactCard card={item} />
           </div>
         );
       })
@@ -106,7 +66,6 @@ const Briefing = () => {
   return (
     <section className="briefing">
       <div className="briefing__briefing-list">{top3Briefing}</div>
-      {topRates}
       {forecast}
     </section>
   );

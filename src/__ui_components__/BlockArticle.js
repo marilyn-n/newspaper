@@ -7,11 +7,11 @@ const BlockArticle = ({ data }) => {
     <Link to={data.web_url} className="block-article anchor">
       <div className="block-article__header">
         <h3 className="block-article__header--label-lg ellipsis-3">
-          {data.headline?.main}
+          {data.title}
         </h3>
       </div>
       <div className="block-article__body">
-        <p className="block-article__body--paragraph ellipsis-3 my-2">
+        <p className="block-article__body--paragraph ellipsis-3">
           {data.abstract}
         </p>
         <span className="block-article__body">
