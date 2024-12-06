@@ -2,9 +2,11 @@
   padding: .3rem;
   ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
     li {
       text-align: center;
+      margin-right: .85rem;
       a {
         color: black;
         font-family: serif;

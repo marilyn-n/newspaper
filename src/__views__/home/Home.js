@@ -89,10 +89,10 @@ const Home = () => {
       <Briefing />
       <div className="double-divider" />
       <div className="news-wrapper">
-        <section className="top-home-news col-lg-8 col-md-8 col-xs-12">
+        <section className="top-home-news col-lg-8 col-md-12">
           <MainNews news={content.primaryNews} />
         </section>
-        <section className="opinion col-lg-4 col-md-4">
+        <section className="opinion col-lg-4 col-md-12">
           {opinionItem}
           <Opinion featuredOpinions={featuredOpinions} />
           <div className="double-divider"></div>
