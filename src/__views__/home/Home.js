@@ -52,7 +52,7 @@ const Home = () => {
   const otherNews = content.primaryNews.slice(11, 14);
 
   const blockOtherNews = otherNews.length
-    ? otherNews.map((item) => <ArticleCard card={item} />)
+    ? otherNews.map((item, index) => <ArticleCard card={item} key={index} />)
     : null;
 
   const topEditorsPicks = content.primaryNews.slice(
@@ -62,8 +62,8 @@ const Home = () => {
 
   const editorsPicks =
     topEditorsPicks.length > 0
-      ? topEditorsPicks.map((item) => {
-          return <MediaCard details={item} />;
+      ? topEditorsPicks.map((item, index) => {
+          return <MediaCard details={item} key={index} />;
         })
       : null;
 
@@ -77,8 +77,8 @@ const Home = () => {
 
   const bottomNews =
     content.secondaryNews.length > 0
-      ? content.secondaryNews.map((article) => (
-          <MiniArticleCard card={article} />
+      ? content.secondaryNews.map((article, index) => (
+          <MiniArticleCard card={article} key={index} />
         ))
       : null;
 

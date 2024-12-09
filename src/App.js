@@ -10,10 +10,11 @@ import Footer from "./layout/Footer";
 import "./__styles__/main.scss";
 
 const App = () => {
-  const { data, error } = useFetch(`${process.env.REACT_APP_NYT_URL}/svc/news/v3/content/section-list.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`, 'categories');
+  const theCategories = useFetch(`${process.env.REACT_APP_NYT_URL}/svc/news/v3/content/section-list.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`, 'theCategories');
+  
   return (
     <Router>
-      <Nav sections={data} />
+      <Nav sections={theCategories.results} />
       <Routes>
         <Route path="/newspaper" element={<Home />} />
         <Route path="/section" element={<Category />} />

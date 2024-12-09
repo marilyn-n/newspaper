@@ -1,28 +1,30 @@
 import { useState, useEffect } from "react";
 
-const useFetch = (url, id) => {
-  const [data, setData] = useState([]);
-  const [error, setError] = useState("");
+const useFetch = (url, id, options) => {
+  const [data, setData] = useState({});
 
   const getData = async () => {
     const storage = window.localStorage.getItem(id);
       
     if (!storage) {
       try {
-        const request = await fetch(url);
+        const request = await fetch(url, options);
         const data = await request.json();
         
-        if (data.status === "OK") {
-          setData(data.results);
+        if (request.status === 200 || request.cod === 200) {
+          setData(data);
           window.localStorage.setItem(
             id,
-            JSON.stringify(data.results)
+            JSON.stringify(data)
           );
         }
       } catch (error) {
         console.log(`${error} - something went wrong while fetchig the API`);
-        setError(error);
       }
+    } else {
+      setData(JSON.parse(storage))
+      console.log('displaying data from localStorage');
+      
     }
   };
 
@@ -30,7 +32,7 @@ const useFetch = (url, id) => {
     getData();
   }, [url, id]);
 
-  return { data, error };
+  return data;
 };
 
 export default useFetch;
