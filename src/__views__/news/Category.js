@@ -3,17 +3,16 @@ import { useSearchParams } from "react-router-dom";
 import ArticleItem from "../../__ui_components__/ArticleItem";
 import GraphicCard from "../../__ui_components__/GraphicCard";
 import BlockArticle from "../../__ui_components__/BlockArticle";
+import useFetch from "../../hooks/useFetch";
 
 const Category = ( ) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [id, setId] = useState(searchParams.get("id") || "")
   const [articles, setArticles] = useState([]);
-  
-  useEffect(() => {
-    const key = process.env.REACT_APP_NYT_API_KEY
 
+  useEffect(() => {
     fetch(
-      `${process.env.REACT_APP_NYT_URL}/svc/news/v3/content/nyt/${id}.json?api-key=${key}`
+      `${process.env.REACT_APP_NYT_URL}/svc/news/v3/content/nyt/${id}.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
     )
       .then((response) => response.json())
       .then((data) => {

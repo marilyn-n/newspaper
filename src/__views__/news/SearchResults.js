@@ -13,10 +13,7 @@ const SearchResults = () => {
 
   const search = () => {
     const nytUrl = `${process.env.REACT_APP_NYT_URL}/svc/search/v2/articlesearch.json?`;
-    const sortBy = "sort=newest";
-    const facet = "facet=true";
-    const key = `api-key=${process.env.REACT_APP_NYT_API_KEY}`;
-    const url = `${nytUrl}q=${query}&fq=headline:${query}&${facet}&${sortBy}&${key}`;
+    const url = `${nytUrl}q=${query}&fq=headline:${query}&facet=true&sort=newest&api-key=${process.env.REACT_APP_NYT_API_KEY}`;
 
     fetch(`${url}`)
       .then((response) => response.json())

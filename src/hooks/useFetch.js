@@ -10,7 +10,7 @@ const useFetch = (url, id, options) => {
       try {
         const request = await fetch(url, options);
         const data = await request.json();
-        
+
         if (request.status === 200 || request.cod === 200) {
           setData(data);
           window.localStorage.setItem(
@@ -23,8 +23,7 @@ const useFetch = (url, id, options) => {
       }
     } else {
       setData(JSON.parse(storage))
-      console.log('displaying data from localStorage');
-      
+      console.log('displaying news data from localStorage');
     }
   };
 

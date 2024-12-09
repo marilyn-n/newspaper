@@ -6,6 +6,7 @@ import Header from "../../layout/Header";
 import ArticleCard from "../../__ui_components__/ArticleCard.js";
 import MiniArticleCard from "../../__ui_components__/MiniArticleCard.js";
 import MediaCard from "../../__ui_components__/MediaCard.js";
+import useFetch from "../../hooks/useFetch.js";
 
 const Home = () => {
   const [content, setContent] = useState({
@@ -13,41 +14,38 @@ const Home = () => {
     secondaryNews: [],
     opinion: [],
   });
-  
-  useEffect(() => {
-    const urls = [
-      `${process.env.REACT_APP_NYT_URL}/svc/topstories/v2/home.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`,
-      `${process.env.REACT_APP_NYT_URL}/svc/topstories/v2/opinion.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`,
-    ];
-    const promises = urls.map((url) => fetch(url).then((res) => res.json()));
-    Promise.all(promises).then((data) => {
-      if (data[0].status === "OK" && data[1].status === "OK") {
-        const allNews = data;
-        const opinionNews = allNews[1].results.filter(
-          (item) => item.multimedia
-        );
-        const newsAssortment = allNews[0].results.filter(
-          (item) => item.multimedia
-        );
-        setContent({
-          ...content,
-          primaryNews: newsAssortment.slice(
-            0,
-            newsAssortment.length / 2
-          ),
-          secondaryNews: newsAssortment.slice(
-            newsAssortment.length / 2,
-            newsAssortment.length
-          ),
-          opinion: opinionNews,
-        });
-      } else {
-        console.log("Error with service in Home page");
-      }
-    });
-  }, []);
 
-  const firstOpinion = content.opinion.slice(0, 1);
+  const theFeedNews = useFetch(
+    `${process.env.REACT_APP_NYT_URL}/svc/topstories/v2/home.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`,
+    "theFeedNews"
+  );
+  const theOpinionNews = useFetch(
+    `${process.env.REACT_APP_NYT_URL}/svc/topstories/v2/opinion.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`,
+    "theOpinionNews"
+  );
+
+  useEffect(() => {
+    if (theFeedNews.results && theOpinionNews.results) {
+      const opinionNews = theOpinionNews.results.filter(
+        (item) => item.multimedia
+      );
+      const newsAssortment = theFeedNews.results.filter(
+        (item) => item.multimedia
+      );
+
+      setContent({
+        ...content,
+        primaryNews: newsAssortment.slice(0, newsAssortment.length / 2),
+        secondaryNews: newsAssortment.slice(
+          newsAssortment.length / 2,
+          newsAssortment.length
+        ),
+        opinion: opinionNews,
+      });
+    }
+  }, [theFeedNews, theOpinionNews]);
+
+  const firstOpinion = content.opinion[0];
   const featuredOpinions = content.opinion.slice(1, content.opinion.length);
   const otherNews = content.primaryNews.slice(11, 14);
 
@@ -56,7 +54,7 @@ const Home = () => {
     : null;
 
   const topEditorsPicks = content.primaryNews.slice(
-    content.primaryNews.length - 3,
+    content.primaryNews.length - 6,
     content.primaryNews.length
   );
 
@@ -71,7 +69,7 @@ const Home = () => {
     <div>
       <span className="label">Opinion</span>
       <div className="border-partial"></div>
-      {firstOpinion[0] ? <MediaCard details={firstOpinion[0]} /> : null}
+      {firstOpinion ? <MediaCard details={firstOpinion} /> : null}
     </div>
   );
 
